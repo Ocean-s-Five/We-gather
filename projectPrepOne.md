@@ -1,16 +1,16 @@
 # Project: Prep #1
 
-## In this file we will write our plan during out project
+## In this file we will write our plan during our project
 
 ## A) **Conflict Plan :**
 
-### To start working in a project we should do a plan avoid conflict so in our project we decide to each one of us to work in different page so by doing that we may not face  any conflict.
+### To start working in a project we should do a plan to  avoid conflict so in our project we decide to each one of us to work in different page so by doing that we may not face any conflict.
 
 ## If we get a conflict we will meet up and discuss how to resolve the conflict.
 
 ## B) **Communication Plan :**
 
-### We are already connect with each other in from 9:00-17:00 using zoom after that we have slack channel to contact and we can crate a zoom meeting if we need to discuss any thing.
+### We are already connect with each other in zoom  from 9:00-17:00  after that we have slack channel to contact and we can crate a zoom meeting if we need to discuss any thing.
 
 ## C) **Work Plan :**
 

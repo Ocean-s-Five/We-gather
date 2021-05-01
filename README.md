@@ -46,10 +46,11 @@ Communication plan and strategy :
 * As a guest you can sign up as a user,volunteer or organization.
 
 * As a user (after logging in):
-- ask for help in a specific services.
-- see users posts.
-- participate in helping other users.
-- Donate for other users(by card or cash)
+1. ask for help in a specific services.
+2. see users posts.
+3. see users posts.
+4. participate in helping other users.
+5. Donate for other users(by card or cash)
 
 * As a volunteer (after logging in):
  - see users posts.

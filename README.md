@@ -60,7 +60,7 @@ Communication plan and strategy :
 3. participate in serving other users.
 4. Donate for other users(by card or cash)
 
-## Domain Modeling:
+## Database Relationships:
 ![homepage](https://github.com/Ocean-s-Five/We-gather/blob/main/wireframe/5.PNG)
 
 

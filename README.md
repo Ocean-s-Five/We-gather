@@ -53,12 +53,12 @@ Communication plan and strategy :
 5. Donate for other users(by card or cash)
 
 * As a volunteer (after logging in):
- - see users posts.
- - participate in helping other users.
+ 1. see users posts.
+ 2. participate in helping other users.
  
 * As an organization (after logging in):
- - see users posts.
- - Donate for other users (by card or cash)
+ 1. see users posts.
+ 2. Donate for other users (by card or cash)
 
 
  

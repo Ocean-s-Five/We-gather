@@ -61,7 +61,7 @@ Communication plan and strategy :
  2. Donate for other users (by card or cash)
 
 ## Domain Modeling:
-
+![homepage](https://github.com/Ocean-s-Five/We-gather/blob/main/wireframe/5.PNG)
 
 
 ## Wireframe:

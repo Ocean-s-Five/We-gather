@@ -43,7 +43,7 @@ Communication plan and strategy :
 - Fostering desire to help others.
 
 ## User sotries:
-- As a guest you can sign up as a user,volunteer or organization.
+** As a guest you can sign up as a user,volunteer or organization.
 
 - As a user (after logging in):
  * ask for help in a specific services.

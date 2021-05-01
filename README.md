@@ -60,5 +60,9 @@ Communication plan and strategy :
  1. see users posts.
  2. Donate for other users (by card or cash)
 
+## Wire frame:
+![homepage](wireframe/1.png)
+
+
 
  

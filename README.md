@@ -47,22 +47,18 @@ Communication plan and strategy :
 - Fostering desire to help others.
 
 ## User sotries:
-* As a guest you can sign up as a user,volunteer or organization.
-
-* As a user (after logging in):
-1. ask for help in a specific services.
-2. see users posts.
-3. see users posts.
-4. participate in helping other users.
-5. Donate for other users(by card or cash)
+* As a guest you can sign up as a volunteer or contributer.
+* Admins have a global authorities.
 
 * As a volunteer (after logging in):
  1. see users posts.
- 2. participate in helping other users.
+ 2. participate in serving other users.
  
-* As an organization (after logging in):
- 1. see users posts.
- 2. Donate for other users (by card or cash)
+* As a contributer (after logging in):
+1. ask for help in a specific services.
+2. see users posts.
+3. participate in serving other users.
+4. Donate for other users(by card or cash)
 
 ## Domain Modeling:
 ![homepage](https://github.com/Ocean-s-Five/We-gather/blob/main/wireframe/5.PNG)

@@ -60,8 +60,16 @@ Communication plan and strategy :
  1. see users posts.
  2. Donate for other users (by card or cash)
 
-## Wire frame:
-![homepage](wireframe/1.png)
+## Domain Modeling:
+
+
+
+## Wireframe:
+![homepage](https://github.com/Ocean-s-Five/We-gather/blob/main/wireframe/2.PNG)
+![homepage](https://github.com/Ocean-s-Five/We-gather/blob/main/wireframe/4.PNG)
+![homepage](https://github.com/Ocean-s-Five/We-gather/blob/main/wireframe/3.PNG)
+
+
 
 
 

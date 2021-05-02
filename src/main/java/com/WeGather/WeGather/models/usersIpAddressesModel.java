@@ -23,4 +23,8 @@ public class usersIpAddressesModel {
     public ArrayList<String> getIpAddresses() {
         return ipAddresses;
     }
+
+    public void setIpAddresses(ArrayList<String> ipAddresses) {
+        this.ipAddresses = ipAddresses;
+    }
 }

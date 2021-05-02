@@ -45,4 +45,20 @@ public class feedbackModel {
     public String getEmail() {
         return email;
     }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public void setTimeStamp(Date timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

@@ -36,4 +36,16 @@ public class userConfigurationModel {
     public String getCurrency() {
         return currency;
     }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public void setTimeZone(String timeZone) {
+        this.timeZone = timeZone;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
 }

@@ -18,10 +18,7 @@ public class SystemConfiguration {
     private String branch;
     private String region;
     private String defaultCurrency;
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "defaultTimeZone")
-    private Date defaultTimeZone;
+    private String defaultTimeZone;
     private String defaultLanguage;
     private long countryCode;
     private long googleMapKey;
@@ -32,7 +29,7 @@ public class SystemConfiguration {
     public SystemConfiguration() {
     }
 
-    public SystemConfiguration(String country, String branch, String region, String defaultCurrency, Date defaultTimeZone, String defaultLanguage, long countryCode, long googleMapKey, List<Long> phoneMassageNumbersService, List<String> mailingServiceMainEmails) {
+    public SystemConfiguration(String country, String branch, String region, String defaultCurrency, String defaultTimeZone, String defaultLanguage, long countryCode, long googleMapKey, List<Long> phoneMassageNumbersService, List<String> mailingServiceMainEmails) {
         this.country = country;
         this.branch = branch;
         this.region = region;
@@ -84,11 +81,11 @@ public class SystemConfiguration {
         this.defaultCurrency = defaultCurrency;
     }
 
-    public Date getDefaultTimeZone() {
+    public String getDefaultTimeZone() {
         return defaultTimeZone;
     }
 
-    public void setDefaultTimeZone(Date defaultTimeZone) {
+    public void setDefaultTimeZone(String defaultTimeZone) {
         this.defaultTimeZone = defaultTimeZone;
     }
 

@@ -14,11 +14,23 @@ public class CharityWorkContributors {
     private Long workedRaiserId;
     private Long userWorkRaiserId;
     private Long contributedUserid;
+    private Integer status;
 
-    public CharityWorkContributors(Long workedRaiserId, Long userWorkRaiserId, Long contributedUserid) {
+
+    public CharityWorkContributors(Long workedRaiserId, Long userWorkRaiserId, Long contributedUserid,Integer status) {
         this.workedRaiserId = workedRaiserId;
         this.userWorkRaiserId = userWorkRaiserId;
         this.contributedUserid = contributedUserid;
+        this.status=status ;
+
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Long getId() {

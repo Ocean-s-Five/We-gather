@@ -15,15 +15,25 @@ public class CharityFundContributors {
     private Long userFundRaiserId ;
     private String amountPaid ;
     private String date ;
+    private Integer status;
 
     public CharityFundContributors(){
 
     }
-    public CharityFundContributors(Long raisedFundId, Long userFundRaiserId, String amountPaid, String date) {
+    public CharityFundContributors(Long raisedFundId, Long userFundRaiserId, String amountPaid, String date,Integer status) {
         RaisedFundId = raisedFundId;
         this.userFundRaiserId = userFundRaiserId;
         this.amountPaid = amountPaid;
         this.date = date;
+        this.status=status ;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Long getId() {

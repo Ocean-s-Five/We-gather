@@ -1,7 +1,7 @@
 package com.WeGather.WeGather.repositories;
 
 import com.WeGather.WeGather.models.userConfigurationModel;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface userConfigurationRepository extends CrudRepository <userConfigurationModel,Long> {
+public interface userConfigurationRepository extends JpaRepository<userConfigurationModel,Long> {
 }

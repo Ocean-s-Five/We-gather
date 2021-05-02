@@ -1,11 +1,8 @@
 package com.WeGather.WeGather.models;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -17,7 +14,8 @@ public class feedbackModel {
     private String title;
     private String body;
 
-    @DateTimeFormat(pattern="yyyy-mm-dd HH:mm:ss")
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     private  Date timeStamp;
 
     private String email;

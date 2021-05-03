@@ -1,6 +1,7 @@
 package com.WeGather.WeGather.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class RaisedWorkProject {
@@ -16,6 +17,10 @@ public class RaisedWorkProject {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "location_id",referencedColumnName = "id")
     private Location location;
+
+    @OneToMany(mappedBy = "RaisedWorkProject", cascade = CascadeType.ALL)
+    private List<Comments> comments;
+
 
     //===================== Constructors ======================
     public RaisedWorkProject(){}
@@ -54,5 +59,13 @@ public class RaisedWorkProject {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
     }
 }

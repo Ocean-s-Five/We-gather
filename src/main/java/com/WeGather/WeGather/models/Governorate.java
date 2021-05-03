@@ -1,9 +1,7 @@
 package com.WeGather.WeGather.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Governorate {
@@ -13,6 +11,11 @@ public class Governorate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String governorateName;
+
+
+    //    ======= TABLE RELATIONS ===============
+    @OneToMany(mappedBy = "governorate", cascade = CascadeType.ALL)
+    private List<District> district;
 
 
     // ==========ALL CONSTRUCTORS============
@@ -39,6 +42,11 @@ public class Governorate {
     public void setGovernorateName(String governorateName) {
         this.governorateName = governorateName;
     }
+
+    public List<District> getDistrict() {
+        return district;
+    }
+
 
     @Override
     public String toString() {

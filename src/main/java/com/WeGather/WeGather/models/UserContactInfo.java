@@ -16,6 +16,12 @@ public class UserContactInfo {
     private String district;
     private String suburb;
 
+    //    ======= TABLE RELATIONS ===============
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private Users user;
+
     // ==========ALL CONSTRUCTORS============
 
 
@@ -30,7 +36,6 @@ public class UserContactInfo {
         this.district = district;
         this.suburb = suburb;
     }
-
 
     //    ==========GETTERS AND SETTERS=============
 
@@ -86,6 +91,15 @@ public class UserContactInfo {
     public void setSuburb(String suburb) {
         this.suburb = suburb;
     }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
 
     @Override
     public String toString() {

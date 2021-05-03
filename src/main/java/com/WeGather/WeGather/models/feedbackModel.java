@@ -16,7 +16,7 @@ public class feedbackModel {
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    private  Date timeStamp;
+    private Date timeStamp;
 
     private String email;
 
@@ -60,5 +60,9 @@ public class feedbackModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public long getId() {
+        return id;
     }
 }

@@ -48,4 +48,8 @@ public class userConfigurationModel {
     public void setCurrency(String currency) {
         this.currency = currency;
     }
+
+    public long getId() {
+        return id;
+    }
 }

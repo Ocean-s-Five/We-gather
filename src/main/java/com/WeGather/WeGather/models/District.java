@@ -12,7 +12,6 @@ public class District {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String districtName;
-    private Long governorate_id;
 
 
     //    ======= TABLE RELATIONS ===============
@@ -30,7 +29,6 @@ public class District {
 
     public District(String districtName, Long governorate_id, Governorate governorate) {
         this.districtName = districtName;
-        this.governorate_id = governorate_id;
         this.governorate = governorate;
     }
 //    ==========GETTERS AND SETTERS=============
@@ -48,13 +46,6 @@ public class District {
         this.districtName = districtName;
     }
 
-    public Long getGovernorate_id() {
-        return governorate_id;
-    }
-
-    public void setGovernorate_id(Long governorate_id) {
-        this.governorate_id = governorate_id;
-    }
 
     public Governorate getGovernorate() {
         return governorate;
@@ -78,7 +69,6 @@ public class District {
         return "District{" +
                 "id=" + id +
                 ", districtName='" + districtName + '\'' +
-                ", governorate_id=" + governorate_id +
                 '}';
     }
 }

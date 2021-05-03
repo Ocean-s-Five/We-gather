@@ -11,7 +11,7 @@ public class Suburb {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String suburbName;
-    private Long district_id;
+
 
 
     //    ======= TABLE RELATIONS ===============
@@ -26,7 +26,6 @@ public class Suburb {
 
     public Suburb(String suburbName, Long district_id, District district) {
         this.suburbName = suburbName;
-        this.district_id = district_id;
         this.district = district;
     }
 
@@ -44,13 +43,6 @@ public class Suburb {
         this.suburbName = suburbName;
     }
 
-    public Long getDistrict_id() {
-        return district_id;
-    }
-
-    public void setDistrict_id(Long district_id) {
-        this.district_id = district_id;
-    }
 
     public District getDistrict() {
         return district;

@@ -1,15 +1,13 @@
 package com.WeGather.WeGather.models;
 
-import org.hibernate.annotations.CreationTimestamp;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 public
-class Employee  extends Users{
-
+class Employee extends Users {
 
 
     @Column(unique = true)
@@ -21,60 +19,49 @@ class Employee  extends Users{
     private String nameWrittenInPassport;
 
 
-
-
     // empty constructor
-    public
-    Employee(){ }
+    public Employee() {
+    }
 
     // parametrized constructor
-    public
-    Employee(String userName, String password, String firstName, String middleName, String lastName, String nationalNumber, String nationalCardNumber, String passportNumber, String nameWrittenInPassport, List<String> profilePictures, Date createdAt, String authority) {
-        super(userName,password,firstName,middleName,lastName,profilePictures, createdAt,authority);
+    public Employee(String userName, String password, String firstName, String middleName, String lastName, String nationalNumber, String nationalCardNumber, String passportNumber, String nameWrittenInPassport, List<String> profilePictures, Date createdAt, String authority) {
+        super(userName, password, firstName, middleName, lastName, profilePictures, createdAt, authority);
 
-        this.nationalNumber =nationalNumber;
-        this.nationalCardNumber =nationalCardNumber;
-        this.nameWrittenInPassport=nameWrittenInPassport;
-        this.passportNumber=passportNumber;
-    }
-
-    public
-    String getNationalNumber() {
-        return nationalNumber;
-    }
-
-    public
-    void setNationalNumber(String nationalNumber) {
         this.nationalNumber = nationalNumber;
-    }
-
-    public
-    String getNationalCardNumber() {
-        return nationalCardNumber;
-    }
-
-    public
-    void setNationalCardNumber(String nationalCardNumber) {
         this.nationalCardNumber = nationalCardNumber;
-    }
-
-    public
-    String getPassportNumber() {
-        return passportNumber;
-    }
-
-    public
-    void setPassportNumber(String passportNumber) {
+        this.nameWrittenInPassport = nameWrittenInPassport;
         this.passportNumber = passportNumber;
     }
 
-    public
-    String getNameWrittenInPassport() {
+    public String getNationalNumber() {
+        return nationalNumber;
+    }
+
+    public void setNationalNumber(String nationalNumber) {
+        this.nationalNumber = nationalNumber;
+    }
+
+    public String getNationalCardNumber() {
+        return nationalCardNumber;
+    }
+
+    public void setNationalCardNumber(String nationalCardNumber) {
+        this.nationalCardNumber = nationalCardNumber;
+    }
+
+    public String getPassportNumber() {
+        return passportNumber;
+    }
+
+    public void setPassportNumber(String passportNumber) {
+        this.passportNumber = passportNumber;
+    }
+
+    public String getNameWrittenInPassport() {
         return nameWrittenInPassport;
     }
 
-    public
-    void setNameWrittenInPassport(String nameWrittenInPassport) {
+    public void setNameWrittenInPassport(String nameWrittenInPassport) {
         this.nameWrittenInPassport = nameWrittenInPassport;
     }
 }

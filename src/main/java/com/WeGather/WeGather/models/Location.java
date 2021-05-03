@@ -18,7 +18,7 @@ public class Location {
 
     // ================== Relation =================
 
-    @OneToOne(mappedBy = "location")
+    @OneToOne(mappedBy = "location_id",cascade = CascadeType.ALL)
     private RaisedWorkProject raisedWorkProject;
     // ==========ALL CONSTRUCTORS============
 

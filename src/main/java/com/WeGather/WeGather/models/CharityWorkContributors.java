@@ -17,11 +17,11 @@ public class CharityWorkContributors {
     private Integer status;
 
 
-    public CharityWorkContributors(Long workedRaiserId, Long userWorkRaiserId, Long contributedUserid,Integer status) {
+    public CharityWorkContributors(Long workedRaiserId, Long userWorkRaiserId, Long contributedUserid, Integer status) {
         this.workedRaiserId = workedRaiserId;
         this.userWorkRaiserId = userWorkRaiserId;
         this.contributedUserid = contributedUserid;
-        this.status=status ;
+        this.status = status;
 
     }
 

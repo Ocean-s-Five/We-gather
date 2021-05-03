@@ -29,6 +29,9 @@ public class Comments {
     @ManyToOne
     private RaisedFundUser raisedFund;
 
+    @ManyToOne
+    private RaisedWorkProject raisedWork;
+
 
     //================== Constructors =====================
     public Comments(){}
@@ -37,13 +40,14 @@ public class Comments {
 //        this.body = body;
 //    }
 
-    public Comments(Long userId, Date createdAt, String body, Long raisedWorkFundId, int commentTypeId, RaisedFundUser raisedFund) {
+    public Comments(Long userId, Date createdAt, String body, Long raisedWorkFundId, int commentTypeId, RaisedFundUser raisedFund, RaisedWorkProject raisedWorkProject) {
         this.userId = userId;
         this.createdAt = createdAt;
         this.body = body;
         this.raisedWorkFundId = raisedWorkFundId;
         this.commentTypeId = commentTypeId;
         this.raisedFund = raisedFund;
+        this.raisedWork = raisedWorkProject;
     }
     //=============== Getters And Setters =================
 
@@ -98,5 +102,13 @@ public class Comments {
 
     public void setRaisedFund(RaisedFundUser raisedFund) {
         this.raisedFund = raisedFund;
+    }
+
+    public RaisedWorkProject getRaisedWork() {
+        return raisedWork;
+    }
+
+    public void setRaisedWork(RaisedWorkProject raisedWork) {
+        this.raisedWork = raisedWork;
     }
 }

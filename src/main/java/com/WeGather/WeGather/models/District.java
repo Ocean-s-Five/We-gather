@@ -27,7 +27,7 @@ public class District {
     public District() {
     }
 
-    public District(String districtName, Long governorate_id, Governorate governorate) {
+    public District(String districtName, Governorate governorate) {
         this.districtName = districtName;
         this.governorate = governorate;
     }

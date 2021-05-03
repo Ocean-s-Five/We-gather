@@ -1,9 +1,6 @@
 package com.WeGather.WeGather.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class RaisedWorkProject {
@@ -12,6 +9,13 @@ public class RaisedWorkProject {
     private Long id;
     private Long userId;
     private Long locationId;
+
+    //============== Relation =================
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id",referencedColumnName = "id")
+    private Location location;
 
     //===================== Constructors ======================
     public RaisedWorkProject(){}
@@ -42,5 +46,13 @@ public class RaisedWorkProject {
 
     public void setLocationId(Long locationId) {
         this.locationId = locationId;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

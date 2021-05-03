@@ -17,8 +17,15 @@ public class RaisedFundUser {
     private String createdDate;
     private String startFrom;
     private String endAt;
+
     @ElementCollection
     private List<String> images;
+
+
+    //==================== Relation ==================
+    @OneToMany(mappedBy = "raisedFund",cascade = CascadeType.ALL)
+    private List<Comments> comments;
+
 
 
     public RaisedFundUser(){
@@ -93,5 +100,13 @@ public class RaisedFundUser {
 
     public void setImages(List<String> images) {
         this.images = images;
+    }
+
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
     }
 }

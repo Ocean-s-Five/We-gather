@@ -1,10 +1,7 @@
 package com.WeGather.WeGather.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -19,6 +16,7 @@ public class RaisedFundUser {
     private String createdDate;
     private String startFrom;
     private String endAt;
+    @ElementCollection
     private List<String> images;
 
     public RaisedFundUser(){

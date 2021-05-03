@@ -25,6 +25,10 @@ public class Comments {
 //    commentType_id(1/2)
     private int commentTypeId;
 
+    //======================= Relation ===================
+    @ManyToOne
+    private RaisedFundUser raisedFund;
+
 
     //================== Constructors =====================
     public Comments(){}
@@ -33,12 +37,13 @@ public class Comments {
 //        this.body = body;
 //    }
 
-    public Comments(Long userId, Date createdAt, String body, Long raisedWorkFundId, int commentTypeId) {
+    public Comments(Long userId, Date createdAt, String body, Long raisedWorkFundId, int commentTypeId, RaisedFundUser raisedFund) {
         this.userId = userId;
         this.createdAt = createdAt;
         this.body = body;
         this.raisedWorkFundId = raisedWorkFundId;
         this.commentTypeId = commentTypeId;
+        this.raisedFund = raisedFund;
     }
     //=============== Getters And Setters =================
 
@@ -85,5 +90,13 @@ public class Comments {
 
     public void setCommentTypeId(int commentTypeId) {
         this.commentTypeId = commentTypeId;
+    }
+
+    public RaisedFundUser getRaisedFund() {
+        return raisedFund;
+    }
+
+    public void setRaisedFund(RaisedFundUser raisedFund) {
+        this.raisedFund = raisedFund;
     }
 }

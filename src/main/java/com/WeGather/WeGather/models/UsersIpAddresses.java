@@ -14,10 +14,15 @@ public class UsersIpAddresses {
     @ElementCollection
     private List<String> ipAddresses;
 
+    //============== Relation =================
 
-    public UsersIpAddresses() {
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private Users user;
 
-    }
+
+
+    public UsersIpAddresses() {}
 
     @ElementCollection
     public List<String> getIpAddresses() {
@@ -27,6 +32,15 @@ public class UsersIpAddresses {
     public void setIpAddresses(List<String> ipAddresses) {
         this.ipAddresses = ipAddresses;
     }
+
+    public Users getUser() {
+        return user;
+    }
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
+
 
     public long getId() {
         return id;

@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 
-public class RaisedFundUser {
+public class RaisedFundProject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,18 +23,18 @@ public class RaisedFundUser {
 
 
     //==================== Relation ==================
-    @OneToMany(mappedBy = "raisedFund", cascade = CascadeType.ALL)
-    private List<Comments> comments;
+//    @OneToMany(mappedBy = "rasiedWorkFund_id", cascade = CascadeType.ALL)
+//    private List<Comments> comments;
 
     //    relation between Users & raisedFund
-    @ManyToOne
-    private Users users;
+//    @ManyToOne
+//    private Users users;
 
-    public RaisedFundUser() {
+    public RaisedFundProject() {
 
     }
 
-    public RaisedFundUser(String requiredAmount, String topic, String description, String createdDate, String strartFrom, String endAt, List<String> images) {
+    public RaisedFundProject(String requiredAmount, String topic, String description, String createdDate, String strartFrom, String endAt, List<String> images) {
         this.requiredAmount = requiredAmount;
         this.topic = topic;
         this.description = description;
@@ -104,11 +104,11 @@ public class RaisedFundUser {
         this.images = images;
     }
 
-    public List<Comments> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comments> comments) {
-        this.comments = comments;
-    }
+//    public List<Comments> getComments() {
+//        return comments;
+//    }
+//
+//    public void setComments(List<Comments> comments) {
+//        this.comments = comments;
+//    }
 }

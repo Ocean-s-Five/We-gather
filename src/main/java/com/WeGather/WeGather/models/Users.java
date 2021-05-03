@@ -27,8 +27,8 @@ class Users {
     private String authority;
 
     //    relation between Users & raisedFund
-    @OneToMany(mappedBy = "raisedFund", cascade = CascadeType.ALL)
-    private List<RaisedFundUser> funds;
+//    @OneToMany(mappedBy = "raised_Fund_Project_id", cascade = CascadeType.ALL)
+//    private List<RaisedFundProject> funds;
 
     public Users(String userName, String password, String firstName, String middleName, String lastName, List<String> profilePictures, Date createdAt, String authority) {
         this.username = userName;

@@ -26,11 +26,11 @@ public class Comments {
     private int commentTypeId;
 
     //======================= Relation ===================
-    @ManyToOne
-    private RaisedFundUser raisedFund;
-
-    @ManyToOne
-    private RaisedWorkProject raisedWork;
+//    @ManyToOne
+//    private RaisedFundProject rasiedWorkFund_id;
+//
+//    @ManyToOne
+//    private RaisedWorkProject rasiedWorkFund_id;
 
 
     //================== Constructors =====================
@@ -41,14 +41,14 @@ public class Comments {
 //        this.body = body;
 //    }
 
-    public Comments(Long userId, Date createdAt, String body, Long raisedWorkFundId, int commentTypeId, RaisedFundUser raisedFund, RaisedWorkProject raisedWorkProject) {
+    public Comments(Long userId, Date createdAt, String body, Long raisedWorkFundId, int commentTypeId) {
         this.userId = userId;
         this.createdAt = createdAt;
         this.body = body;
         this.raisedWorkFundId = raisedWorkFundId;
         this.commentTypeId = commentTypeId;
-        this.raisedFund = raisedFund;
-        this.raisedWork = raisedWorkProject;
+//        this.raised_Fund_Project_id = raisedFund;
+//        this.raisedWork = raisedWorkProject;
     }
     //=============== Getters And Setters =================
 
@@ -97,19 +97,19 @@ public class Comments {
         this.commentTypeId = commentTypeId;
     }
 
-    public RaisedFundUser getRaisedFund() {
-        return raisedFund;
-    }
-
-    public void setRaisedFund(RaisedFundUser raisedFund) {
-        this.raisedFund = raisedFund;
-    }
-
-    public RaisedWorkProject getRaisedWork() {
-        return raisedWork;
-    }
-
-    public void setRaisedWork(RaisedWorkProject raisedWork) {
-        this.raisedWork = raisedWork;
-    }
+//    public RaisedFundProject getRaisedFund() {
+//        return raised_Fund_Project_id;
+//    }
+//
+//    public void setRaisedFund(RaisedFundProject raisedFund) {
+//        this.raised_Fund_Project_id = raisedFund;
+//    }
+//
+//    public RaisedWorkProject getRaisedWork() {
+//        return raisedWork;
+//    }
+//
+//    public void setRaisedWork(RaisedWorkProject raisedWork) {
+//        this.raisedWork = raisedWork;
+//    }
 }

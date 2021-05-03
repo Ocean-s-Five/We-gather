@@ -1,5 +1,6 @@
 package com.WeGather.WeGather.models;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,12 @@ public class UserConfiguration {
     private String language;
     private String timeZone;
     private String currency;
+
+    //============== Relation =================
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private Users user;
 
 
     public UserConfiguration() {
@@ -50,6 +57,14 @@ public class UserConfiguration {
     public void setCurrency(String currency) {
         this.currency = currency;
     }
+    public Users getUser() {
+        return user;
+    }
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
+
 
     public long getId() {
         return id;

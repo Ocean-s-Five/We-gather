@@ -59,5 +59,4 @@ public class Suburb {
     public void setDistrict(District district) {
         this.district = district;
     }
-
 }

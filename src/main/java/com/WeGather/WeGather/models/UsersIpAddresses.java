@@ -22,9 +22,7 @@ public class UsersIpAddresses {
 
 
 
-    public UsersIpAddresses() {
-
-    }
+    public UsersIpAddresses() {}
 
     @ElementCollection
     public List<String> getIpAddresses() {

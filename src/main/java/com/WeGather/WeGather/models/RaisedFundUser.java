@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+
 public class RaisedFundUser {
 
     @Id
@@ -18,6 +19,7 @@ public class RaisedFundUser {
     private String endAt;
     @ElementCollection
     private List<String> images;
+
 
     public RaisedFundUser(){
 

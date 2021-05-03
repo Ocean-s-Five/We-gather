@@ -20,6 +20,10 @@
 *.rar
 .idea
 .gradle
+<<<<<<< HEAD
+=======
+build
+>>>>>>> 51a1db83a3ca6577e8723a32bcc885bc74545c24
 /src/main/resources/application.properties
 
 

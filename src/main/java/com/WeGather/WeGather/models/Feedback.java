@@ -6,7 +6,9 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class FeedbackModel {
+
+public class Feedback {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
@@ -21,11 +23,11 @@ public class FeedbackModel {
     private String email;
 
 
-    public
-    FeedbackModel(){}
 
-    public
-    FeedbackModel(String title, String body, Date timeStamp, String email) {
+    public Feedback(){}
+
+    public Feedback(String title, String body, Date timeStamp, String email) {
+
         this.title = title;
         this.body = body;
         this.timeStamp = timeStamp;

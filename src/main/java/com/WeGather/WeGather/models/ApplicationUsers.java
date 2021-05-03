@@ -19,7 +19,7 @@ class ApplicationUsers implements UserDetails {
 // constructors
 
     public
-    ApplicationUsers(User user) {
+    ApplicationUsers(Users user) {
         this.user = user;
     }
 

@@ -1,49 +1,59 @@
-com/WeGather/WeGather/models/User.java
- com.WeGather.WeGather.models.User
-com/WeGather/WeGather/models/ApplicationEmployee.java
- com.WeGather.WeGather.models.ApplicationEmployee
+com/WeGather/WeGather/repositories/RasisdFundRepositorise.java
+ com.WeGather.WeGather.repositories.RasisdFundRepositorise
+com/WeGather/WeGather/repositories/SystemConfigurationRepository.java
+ com.WeGather.WeGather.repositories.SystemConfigurationRepository
+com/WeGather/WeGather/models/Location.java
+ com.WeGather.WeGather.models.Location
 com/WeGather/WeGather/models/UserContactInfo.java
  com.WeGather.WeGather.models.UserContactInfo
-com/WeGather/WeGather/models/Employee.java
- com.WeGather.WeGather.models.Employee
-com/WeGather/WeGather/configurations/WebSecurityConfig.java
- com.WeGather.WeGather.configurations.WebSecurityConfig
+com/WeGather/WeGather/repositories/UsersIpAddressesRepository.java
+ com.WeGather.WeGather.repositories.UsersIpAddressesRepository
+com/WeGather/WeGather/models/RaisedFundUser.java
+ com.WeGather.WeGather.models.RaisedFundUser
 com/WeGather/WeGather/repositories/LocationRepository.java
  com.WeGather.WeGather.repositories.LocationRepository
-com/WeGather/WeGather/models/ApplicationUser.java
- com.WeGather.WeGather.models.ApplicationUser
 com/WeGather/WeGather/models/Comments.java
  com.WeGather.WeGather.models.Comments
+com/WeGather/WeGather/models/CharityFundContributors.java
+ com.WeGather.WeGather.models.CharityFundContributors
 com/WeGather/WeGather/repositories/UserRepository.java
  com.WeGather.WeGather.repositories.UserRepository
-com/WeGather/WeGather/models/SystemConfiguration.java
- com.WeGather.WeGather.models.SystemConfiguration
-com/WeGather/WeGather/models/ApplicationAdmin.java
- com.WeGather.WeGather.models.ApplicationAdmin
+com/WeGather/WeGather/models/UsersIpAddresses.java
+ com.WeGather.WeGather.models.UsersIpAddresses
 com/WeGather/WeGather/repositories/CommentsRepository.java
  com.WeGather.WeGather.repositories.CommentsRepository
 com/WeGather/WeGather/repositories/EmployeeRepository.java
  com.WeGather.WeGather.repositories.EmployeeRepository
 com/WeGather/WeGather/models/Dictionary.java
  com.WeGather.WeGather.models.Dictionary
+com/WeGather/WeGather/repositories/CharityFundContributorsRepository.java
+ com.WeGather.WeGather.repositories.CharityFundContributorsRepository
 com/WeGather/WeGather/controllers/test.java
  com.WeGather.WeGather.controllers.test
 com/WeGather/WeGather/repositories/FeedbackRepository.java
  com.WeGather.WeGather.repositories.FeedbackRepository
+com/WeGather/WeGather/models/UserConfiguration.java
+ com.WeGather.WeGather.models.UserConfiguration
 com/WeGather/WeGather/repositories/UserConfigurationRepository.java
  com.WeGather.WeGather.repositories.UserConfigurationRepository
 com/WeGather/WeGather/models/Payments.java
  com.WeGather.WeGather.models.Payments
 com/WeGather/WeGather/repositories/RaisedWorkProjectRepository.java
  com.WeGather.WeGather.repositories.RaisedWorkProjectRepository
-com/WeGather/WeGather/models/FeedbackModel.java
- com.WeGather.WeGather.models.FeedbackModel
+com/WeGather/WeGather/models/SystemConfiguration.java
+ com.WeGather.WeGather.models.SystemConfiguration
+com/WeGather/WeGather/models/CharityWorkContributors.java
+ com.WeGather.WeGather.models.CharityWorkContributors
 com/WeGather/WeGather/repositories/UserContactInfoRepository.java
  com.WeGather.WeGather.repositories.UserContactInfoRepository
-com/WeGather/WeGather/services/UsersService.java
- com.WeGather.WeGather.services.UsersService
+com/WeGather/WeGather/repositories/DictionaryRepository.java
+ com.WeGather.WeGather.repositories.DictionaryRepository
+com/WeGather/WeGather/models/Feedback.java
+ com.WeGather.WeGather.models.Feedback
 com/WeGather/WeGather/repositories/PaymentsRepository.java
  com.WeGather.WeGather.repositories.PaymentsRepository
+com/WeGather/WeGather/repositories/CharityWorkContributorsRepository.java
+ com.WeGather.WeGather.repositories.CharityWorkContributorsRepository
 com/WeGather/WeGather/repositories/AdminRepository.java
  com.WeGather.WeGather.repositories.AdminRepository
 com/WeGather/WeGather/models/Suburb.java
@@ -58,17 +68,19 @@ com/WeGather/WeGather/models/RaisedWorkProject.java
  com.WeGather.WeGather.models.RaisedWorkProject
 com/WeGather/WeGather/models/Governorate.java
  com.WeGather.WeGather.models.Governorate
+com/WeGather/WeGather/models/ApplicationUsers.java
+ com.WeGather.WeGather.models.ApplicationUsers
+com/WeGather/WeGather/models/Users.java
+ com.WeGather.WeGather.models.Users
+com/WeGather/WeGather/models/User.java
+ com.WeGather.WeGather.models.User
+com/WeGather/WeGather/models/Employee.java
+ com.WeGather.WeGather.models.Employee
+com/WeGather/WeGather/repositories/UsersRepository.java
+ com.WeGather.WeGather.repositories.UsersRepository
+com/WeGather/WeGather/configurations/WebSecurityConfig.java
+ com.WeGather.WeGather.configurations.WebSecurityConfig
+com/WeGather/WeGather/services/UsersService.java
+ com.WeGather.WeGather.services.UsersService
 com/WeGather/WeGather/models/Admin.java
  com.WeGather.WeGather.models.Admin
-com/WeGather/WeGather/repositories/DictionaryRepository.java
- com.WeGather.WeGather.repositories.DictionaryRepository
-com/WeGather/WeGather/models/UserConfigurationModel.java
- com.WeGather.WeGather.models.UserConfigurationModel
-com/WeGather/WeGather/repositories/UsersIpAddressesRepository.java
- com.WeGather.WeGather.repositories.UsersIpAddressesRepository
-com/WeGather/WeGather/models/Location.java
- com.WeGather.WeGather.models.Location
-com/WeGather/WeGather/repositories/SystemConfigurationRepository.java
- com.WeGather.WeGather.repositories.SystemConfigurationRepository
-com/WeGather/WeGather/models/UsersIpAddressesModel.java
- com.WeGather.WeGather.models.UsersIpAddressesModel

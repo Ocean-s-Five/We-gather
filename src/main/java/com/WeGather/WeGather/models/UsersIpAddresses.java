@@ -4,15 +4,20 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class UsersIpAddressesModel {
+
+public class UsersIpAddresses {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
+    @ElementCollection
     private List<String> ipAddresses;
 
-    public
-    UsersIpAddressesModel() {
+
+
+    public UsersIpAddresses() {
+
     }
 
     @ElementCollection

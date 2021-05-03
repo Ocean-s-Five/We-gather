@@ -14,7 +14,7 @@ class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
-    private String userName;
+    private String username;
     private String password;
     private String firstName;
     private String middleName;
@@ -29,7 +29,7 @@ class Users {
 
     public
     Users( String userName, String password, String firstName, String middleName, String lastName, List<String> profilePictures, Date createdAt, String authority) {
-        this.userName = userName;
+        this.username = userName;
         this.password = password;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -52,12 +52,12 @@ class Users {
 
     public
     String getUserName() {
-        return userName;
+        return username;
     }
 
     public
     void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public

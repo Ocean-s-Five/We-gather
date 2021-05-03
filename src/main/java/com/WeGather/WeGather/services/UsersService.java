@@ -5,6 +5,7 @@ import com.WeGather.WeGather.models.*;
 import com.WeGather.WeGather.repositories.AdminRepository;
 import com.WeGather.WeGather.repositories.EmployeeRepository;
 import com.WeGather.WeGather.repositories.UserRepository;
+import com.WeGather.WeGather.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,7 +17,7 @@ public
 class UsersService  implements UserDetailsService {
 
     @Autowired
-    AdminRepository adminRepository;
+    UsersRepository usersRepository;
 
     @Autowired
     EmployeeRepository employeeRepository;
@@ -26,21 +27,21 @@ class UsersService  implements UserDetailsService {
 
     @Override
     public
-    UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
-        Admin admin = adminRepository.findByUsername(username);
-        Employee employee = employeeRepository.findByUsername(username);
-        User user = userRepository.findByUsername(username);
+        Admin admin = (Admin) usersRepository.findByUsername(userName);
+        Employee employee = (Employee) usersRepository.findByUsername(userName);
+        User user = (User) usersRepository.findByUsername(userName);
 
 
         if (admin !=null){
-            return new ApplicationAdmin(admin);
+            return new ApplicationUsers(admin);
         }else if (employee!=null){
-            return new ApplicationEmployee(employee);
+            return new ApplicationUsers(employee);
         }else if (user!=null){
             return new ApplicationUsers(user);
         }
 
-        throw new UsernameNotFoundException("User "+username+" does not exist");
+        throw new UsernameNotFoundException("User "+userName+" does not exist");
     }
 }

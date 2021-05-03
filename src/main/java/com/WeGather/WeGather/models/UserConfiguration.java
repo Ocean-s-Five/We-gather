@@ -1,12 +1,9 @@
 package com.WeGather.WeGather.models;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
 
 @Entity
 
@@ -20,7 +17,8 @@ public class UserConfiguration {
     private String currency;
 
 
-    public UserConfiguration(){}
+    public UserConfiguration() {
+    }
 
     public UserConfiguration(String language, String timeZone, String currency) {
 
@@ -33,20 +31,20 @@ public class UserConfiguration {
         return language;
     }
 
-    public String getTimeZone() {
-        return timeZone;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
     public void setLanguage(String language) {
         this.language = language;
     }
 
+    public String getTimeZone() {
+        return timeZone;
+    }
+
     public void setTimeZone(String timeZone) {
         this.timeZone = timeZone;
+    }
+
+    public String getCurrency() {
+        return currency;
     }
 
     public void setCurrency(String currency) {

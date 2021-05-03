@@ -13,7 +13,7 @@ public class Dictionary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String englishWords;
-    private String  arabicWords;
+    private String arabicWords;
 
     // ==========ALL CONSTRUCTORS============
 

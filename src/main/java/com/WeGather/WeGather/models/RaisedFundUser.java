@@ -23,14 +23,14 @@ public class RaisedFundUser {
 
 
     //==================== Relation ==================
-    @OneToMany(mappedBy = "raisedFund",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "raisedFund", cascade = CascadeType.ALL)
     private List<Comments> comments;
 
     //    relation between Users & raisedFund
     @ManyToOne
-    private  Users users ;
+    private Users users;
 
-    public RaisedFundUser(){
+    public RaisedFundUser() {
 
     }
 

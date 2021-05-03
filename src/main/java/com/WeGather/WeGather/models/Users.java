@@ -28,10 +28,9 @@ class Users {
 
     //    relation between Users & raisedFund
     @OneToMany(mappedBy = "raisedFund", cascade = CascadeType.ALL)
-    private List<RaisedFundUser> funds ;
+    private List<RaisedFundUser> funds;
 
-    public
-    Users( String userName, String password, String firstName, String middleName, String lastName, List<String> profilePictures, Date createdAt, String authority) {
+    public Users(String userName, String password, String firstName, String middleName, String lastName, List<String> profilePictures, Date createdAt, String authority) {
         this.username = userName;
         this.password = password;
         this.firstName = firstName;
@@ -42,94 +41,75 @@ class Users {
         this.authority = authority;
     }
 
-    public
-    Users() {
+    public Users() {
     }
 
-    public
-    Long getId() {
+    public Long getId() {
         return id;
     }
 
 
-
-    public
-    String getUserName() {
+    public String getUserName() {
         return username;
     }
 
-    public
-    void setUserName(String userName) {
+    public void setUserName(String userName) {
         this.username = userName;
     }
 
-    public
-    String getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public
-    void setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public
-    String getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public
-    void setFirstName(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public
-    String getMiddleName() {
+    public String getMiddleName() {
         return middleName;
     }
 
-    public
-    void setMiddleName(String middleName) {
+    public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
 
-    public
-    String getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public
-    void setLastName(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public
-    List<String> getProfilePictures() {
+    public List<String> getProfilePictures() {
         return profilePictures;
     }
 
-    public
-    void setProfilePictures(List<String> profilePictures) {
+    public void setProfilePictures(List<String> profilePictures) {
         this.profilePictures = profilePictures;
     }
 
-    public
-    Date getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public
-    void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    public
-    String getAuthority() {
+    public String getAuthority() {
         return authority;
     }
 
-    public
-    void setAuthority(String authority) {
+    public void setAuthority(String authority) {
         this.authority = authority;
     }
 }

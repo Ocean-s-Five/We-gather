@@ -12,35 +12,27 @@ public
 class ApplicationUsers implements UserDetails {
 
 
-
     Users user;
 
 
 // constructors
 
-    public
-    ApplicationUsers(Users user) {
+    public ApplicationUsers(Users user) {
         this.user = user;
     }
-
-
 
 
     //getters & setters
 
 
-    public
-    Long getId() {
-        return  user.getId();
+    public Long getId() {
+        return user.getId();
     }
-
-
 
 
     // UserDetails override methods
     @Override
-    public
-    Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities() {
 
         SimpleGrantedAuthority simpleGrantedAuthorityUser = new SimpleGrantedAuthority(user.getAuthority());
         List<SimpleGrantedAuthority> userAuthorities = new ArrayList<SimpleGrantedAuthority>();
@@ -51,40 +43,34 @@ class ApplicationUsers implements UserDetails {
     }
 
     @Override
-    public
-    String getPassword() {
+    public String getPassword() {
 
-            return user.getPassword();
+        return user.getPassword();
     }
 
     @Override
-    public
-    String getUsername() {
+    public String getUsername() {
 
-            return user.getUserName();
+        return user.getUserName();
     }
 
     @Override
-    public
-    boolean isAccountNonExpired() {
+    public boolean isAccountNonExpired() {
         return true;
     }
 
     @Override
-    public
-    boolean isAccountNonLocked() {
+    public boolean isAccountNonLocked() {
         return true;
     }
 
     @Override
-    public
-    boolean isCredentialsNonExpired() {
+    public boolean isCredentialsNonExpired() {
         return true;
     }
 
     @Override
-    public
-    boolean isEnabled() {
+    public boolean isEnabled() {
         return true;
     }
 }

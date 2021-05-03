@@ -15,7 +15,7 @@ public class RaisedWorkProject {
 
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "location_id",referencedColumnName = "id")
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
 
     @OneToMany(mappedBy = "RaisedWorkProject", cascade = CascadeType.ALL)
@@ -23,7 +23,8 @@ public class RaisedWorkProject {
 
 
     //===================== Constructors ======================
-    public RaisedWorkProject(){}
+    public RaisedWorkProject() {
+    }
 
     public RaisedWorkProject(Long userId, Long locationId) {
         this.userId = userId;

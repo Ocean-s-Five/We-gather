@@ -11,21 +11,22 @@ public class CharityFundContributors {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long RaisedFundId ;
-    private Long userFundRaiserId ;
-    private String amountPaid ;
-    private String date ;
+    private Long RaisedFundId;
+    private Long userFundRaiserId;
+    private String amountPaid;
+    private String date;
     private Integer status;
 
-    public CharityFundContributors(){
+    public CharityFundContributors() {
 
     }
-    public CharityFundContributors(Long raisedFundId, Long userFundRaiserId, String amountPaid, String date,Integer status) {
+
+    public CharityFundContributors(Long raisedFundId, Long userFundRaiserId, String amountPaid, String date, Integer status) {
         RaisedFundId = raisedFundId;
         this.userFundRaiserId = userFundRaiserId;
         this.amountPaid = amountPaid;
         this.date = date;
-        this.status=status ;
+        this.status = status;
     }
 
     public Integer getStatus() {

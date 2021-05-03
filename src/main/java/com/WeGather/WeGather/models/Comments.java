@@ -22,7 +22,7 @@ public class Comments {
     private String body;
     private Long raisedWorkFundId;
 
-//    commentType_id(1/2)
+    //    commentType_id(1/2)
     private int commentTypeId;
 
     //======================= Relation ===================
@@ -34,7 +34,8 @@ public class Comments {
 
 
     //================== Constructors =====================
-    public Comments(){}
+    public Comments() {
+    }
 
 //    public Comments(String body) {
 //        this.body = body;

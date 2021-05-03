@@ -15,7 +15,6 @@ public class UsersIpAddresses {
     private List<String> ipAddresses;
 
 
-
     public UsersIpAddresses() {
 
     }

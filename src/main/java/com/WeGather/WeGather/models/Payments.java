@@ -14,7 +14,7 @@ public class Payments {
     private Long fundRaisedId;
     private Long userId;
 
-//    pickup_type/cash/credit_card
+    //    pickup_type/cash/credit_card
 //    https://stackoverflow.com/questions/43391439/integrating-payment-methods-in-db-schemas
     private int pickupType;
 
@@ -22,7 +22,8 @@ public class Payments {
     private Long locationId;
 
     // ============ Constructors ================
-    public Payments(){}
+    public Payments() {
+    }
 
 //    public Payments(int pickupType) {
 //        this.pickupType = pickupType;

@@ -17,6 +17,7 @@ public class RaisedFundUser {
     private String createdDate;
     private String startFrom;
     private String endAt;
+    private Integer category;
     @ElementCollection
     private List<String> images;
 
@@ -25,13 +26,14 @@ public class RaisedFundUser {
 
     }
 
-    public RaisedFundUser(String requiredAmount, String topic, String description, String createdDate, String strartFrom, String endAt, List<String> images) {
+    public RaisedFundUser(String requiredAmount, String topic, String description, String createdDate, String strartFrom, String endAt,Integer category, List<String> images) {
         this.requiredAmount = requiredAmount;
         this.topic = topic;
         this.description = description;
         this.createdDate = createdDate;
         this.startFrom = strartFrom;
         this.endAt = endAt;
+        this.category= category;
         this.images = images;
     }
 
@@ -85,6 +87,16 @@ public class RaisedFundUser {
 
     public void setEndAt(String endAt) {
         this.endAt = endAt;
+    }
+
+    public
+    Integer getCategory() {
+        return category;
+    }
+
+    public
+    void setCategory(Integer category) {
+        this.category = category;
     }
 
     public List<String> getImages() {

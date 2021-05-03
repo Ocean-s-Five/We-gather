@@ -27,6 +27,13 @@ class Users {
     private String authority;
 
 
+    // empty constructor
+    public
+    Users() {
+    }
+
+
+    // parameterized  constructor
     public
     Users( String userName, String password, String firstName, String middleName, String lastName, List<String> profilePictures, Date createdAt, String authority) {
         this.username = userName;
@@ -39,9 +46,24 @@ class Users {
         this.authority = authority;
     }
 
-    public
-    Users() {
-    }
+
+
+
+    // relationships
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private UserContactInfo userContactInfo;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private UsersIpAddresses usersIpAddresses;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private UserConfiguration userConfiguration;
+
+
+
 
     public
     Long getId() {

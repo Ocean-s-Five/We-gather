@@ -32,6 +32,11 @@ public class UserContactInfo {
     }
 
 
+    // relationships
+
+    @OneToOne(mappedBy = "userContactInfo")
+    private Users users;
+
     //    ==========GETTERS AND SETTERS=============
 
     public Long getId() {

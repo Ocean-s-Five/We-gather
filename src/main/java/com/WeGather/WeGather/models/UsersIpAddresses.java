@@ -15,8 +15,6 @@ public class UsersIpAddresses {
     private List<String> ipAddresses;
 
 
-    @OneToOne(mappedBy = "usersIpAddresses")
-    private Users users;
 
 
     public UsersIpAddresses() {

@@ -28,8 +28,6 @@ public class UserConfiguration {
 
     //getter & setters
 
-    @OneToOne(mappedBy = "userConfiguration")
-    private Users users;
 
 
 

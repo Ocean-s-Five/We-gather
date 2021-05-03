@@ -55,12 +55,6 @@ class Users {
     private UserContactInfo userContactInfo;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private UsersIpAddresses usersIpAddresses;
-
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private UserConfiguration userConfiguration;
 
 
 

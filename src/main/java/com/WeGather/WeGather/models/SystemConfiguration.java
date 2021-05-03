@@ -4,7 +4,6 @@ import com.sun.istack.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,7 +21,9 @@ public class SystemConfiguration {
     private String defaultLanguage;
     private long countryCode;
     private long googleMapKey;
+    @ElementCollection
     private List<Long> phoneMassageNumbersService;
+    @ElementCollection
     private List<String> mailingServiceMainEmails;
 
     // ==========ALL CONSTRUCTORS============

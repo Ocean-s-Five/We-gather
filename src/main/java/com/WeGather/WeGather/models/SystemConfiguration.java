@@ -1,10 +1,11 @@
 package com.WeGather.WeGather.models;
 
 import com.sun.istack.NotNull;
-import org.hibernate.annotations.CreationTimestamp;
+
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class SystemConfiguration {
@@ -24,13 +25,13 @@ public class SystemConfiguration {
     @ElementCollection
     private List<Long> phoneMassageNumbersService;
     @ElementCollection
-    private List<String> mailingServiceMainEmails;
+    private Set<String> mailingServiceMainEmails;
 
     // ==========ALL CONSTRUCTORS============
     public SystemConfiguration() {
     }
 
-    public SystemConfiguration(String country, String branch, String region, String defaultCurrency, String defaultTimeZone, String defaultLanguage, long countryCode, long googleMapKey, List<Long> phoneMassageNumbersService, List<String> mailingServiceMainEmails) {
+    public SystemConfiguration(String country, String branch, String region, String defaultCurrency, String defaultTimeZone, String defaultLanguage, long countryCode, long googleMapKey, List<Long> phoneMassageNumbersService, Set<String> mailingServiceMainEmails) {
         this.country = country;
         this.branch = branch;
         this.region = region;
@@ -122,11 +123,11 @@ public class SystemConfiguration {
         this.phoneMassageNumbersService = phoneMassageNumbersService;
     }
 
-    public List<String> getMailingServiceMainEmails() {
+    public Set<String> getMailingServiceMainEmails() {
         return mailingServiceMainEmails;
     }
 
-    public void setMailingServiceMainEmails(List<String> mailingServiceMainEmails) {
+    public void setMailingServiceMainEmails(Set<String> mailingServiceMainEmails) {
         this.mailingServiceMainEmails = mailingServiceMainEmails;
     }
 

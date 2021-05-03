@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+
 public class RaisedFundUser {
 
     @Id
@@ -20,12 +21,12 @@ public class RaisedFundUser {
     @ElementCollection
     private List<String> images;
 
+
     //==================== Relation ==================
     @OneToMany(mappedBy = "raisedFund",cascade = CascadeType.ALL)
     private List<Comments> comments;
 
 
-    //==================== Constructor ==================
 
     public RaisedFundUser(){
 

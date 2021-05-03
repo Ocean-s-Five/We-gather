@@ -26,7 +26,9 @@ public class RaisedFundUser {
     @OneToMany(mappedBy = "raisedFund",cascade = CascadeType.ALL)
     private List<Comments> comments;
 
-
+    //    relation between Users & raisedFund
+    @ManyToOne
+    private  Users users ;
 
     public RaisedFundUser(){
 

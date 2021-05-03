@@ -26,6 +26,9 @@ class Users {
     private Date createdAt;
     private String authority;
 
+    //    relation between Users & raisedFund
+    @OneToMany(mappedBy = "raisedFund", cascade = CascadeType.ALL)
+    private List<RaisedFundUser> funds ;
 
     public
     Users( String userName, String password, String firstName, String middleName, String lastName, List<String> profilePictures, Date createdAt, String authority) {

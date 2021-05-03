@@ -20,6 +20,7 @@
 *.rar
 .idea
 .gradle
+build
 /src/main/resources/application.properties
 
 

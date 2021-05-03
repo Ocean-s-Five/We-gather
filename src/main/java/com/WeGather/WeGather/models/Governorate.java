@@ -47,6 +47,9 @@ public class Governorate {
         return district;
     }
 
+    public void setDistrict(List<District> district) {
+        this.district = district;
+    }
 
     @Override
     public String toString() {

@@ -68,6 +68,10 @@ public class District {
         return suburb;
     }
 
+    public void setSuburb(List<Suburb> suburb) {
+        this.suburb = suburb;
+    }
+
     @Override
     public String toString() {
         return "District{" +

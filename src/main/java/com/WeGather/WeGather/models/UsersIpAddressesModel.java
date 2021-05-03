@@ -1,22 +1,21 @@
 package com.WeGather.WeGather.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class usersIpAddressesModel {
+public class UsersIpAddressesModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
     private List<String> ipAddresses;
 
-    public usersIpAddressesModel() {
+    public
+    UsersIpAddressesModel() {
     }
 
+    @ElementCollection
     public List<String> getIpAddresses() {
         return ipAddresses;
     }

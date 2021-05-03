@@ -1,18 +1,14 @@
 package com.WeGather.WeGather.models;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 public
-class Users implements UserDetails {
-
+class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,45 +19,36 @@ class Users implements UserDetails {
     private String firstName;
     private String middleName;
     private String lastName;
-    @Column(unique = true)
-    private String nationalNumber;
-    @Column(unique = true)
-    private String nationalCardNumber;
-    @Column(unique = true)
-    private String passportNumber;
-    private String nameWrittenInPassport;
+    @ElementCollection
     private List<String> profilePictures;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+    private String authority;
 
-    // empty constructor
-    public
-    Users(){ }
 
-    // parametrized constructor
     public
-    Users(String userName, String password, String firstName, String middleName, String lastName, String nationalNumber, String nationalCardNumber, String nameWrittenInPassport, String passportNumber, List<String> profilePictures, Date createdAt) {
+    Users( String userName, String password, String firstName, String middleName, String lastName, List<String> profilePictures, Date createdAt, String authority) {
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
-        this.nationalNumber = nationalNumber;
-        this.nationalCardNumber = nationalCardNumber;
-        this.nameWrittenInPassport = nameWrittenInPassport;
-        this.passportNumber = passportNumber;
         this.profilePictures = profilePictures;
         this.createdAt = createdAt;
+        this.authority = authority;
     }
 
+    public
+    Users() {
+    }
 
-
-    // getters and setters
     public
     Long getId() {
         return id;
     }
+
+
 
     public
     String getUserName() {
@@ -71,6 +58,16 @@ class Users implements UserDetails {
     public
     void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public
+    String getPassword() {
+        return password;
+    }
+
+    public
+    void setPassword(String password) {
+        this.password = password;
     }
 
     public
@@ -104,46 +101,6 @@ class Users implements UserDetails {
     }
 
     public
-    String getNationalNumber() {
-        return nationalNumber;
-    }
-
-    public
-    void setNationalNumber(String nationalNumber) {
-        this.nationalNumber = nationalNumber;
-    }
-
-    public
-    String getNationalCardNumber() {
-        return nationalCardNumber;
-    }
-
-    public
-    void setNationalCardNumber(String nationalCardNumber) {
-        this.nationalCardNumber = nationalCardNumber;
-    }
-
-    public
-    String getNameWrittenInPassport() {
-        return nameWrittenInPassport;
-    }
-
-    public
-    void setNameWrittenInPassport(String nameWrittenInPassport) {
-        this.nameWrittenInPassport = nameWrittenInPassport;
-    }
-
-    public
-    String getPassportNumber() {
-        return passportNumber;
-    }
-
-    public
-    void setPassportNumber(String passportNumber) {
-        this.passportNumber = passportNumber;
-    }
-
-    public
     List<String> getProfilePictures() {
         return profilePictures;
     }
@@ -153,46 +110,23 @@ class Users implements UserDetails {
         this.profilePictures = profilePictures;
     }
 
-    // authorities
-    @Override
     public
-    Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+    Date getCreatedAt() {
+        return createdAt;
     }
 
-    @Override
     public
-    String getPassword() {
-        return this.password;
+    void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    @Override
     public
-    String getUsername() {
-        return this.userName;
+    String getAuthority() {
+        return authority;
     }
 
-    @Override
     public
-    boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public
-    boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public
-    boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public
-    boolean isEnabled() {
-        return true;
+    void setAuthority(String authority) {
+        this.authority = authority;
     }
 }

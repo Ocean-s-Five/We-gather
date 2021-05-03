@@ -60,12 +60,4 @@ public class Suburb {
         this.district = district;
     }
 
-    @Override
-    public String toString() {
-        return "Suburb{" +
-                "id=" + id +
-                ", suburbName='" + suburbName + '\'' +
-                ", district_id=" + district_id +
-                '}';
-    }
 }

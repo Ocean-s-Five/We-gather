@@ -51,6 +51,7 @@ public class Governorate {
         this.district = district;
     }
 
+
     @Override
     public String toString() {
         return "Governorate{" +

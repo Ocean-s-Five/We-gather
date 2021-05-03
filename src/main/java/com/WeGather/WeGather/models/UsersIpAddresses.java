@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class usersIpAddresses {
+public class UsersIpAddresses {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,7 +12,7 @@ public class usersIpAddresses {
     @ElementCollection
     private List<String> ipAddresses;
 
-    public usersIpAddresses() {
+    public UsersIpAddresses() {
     }
 
     public List<String> getIpAddresses() {

@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class userConfiguration {
+public class UserConfiguration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
@@ -17,9 +17,9 @@ public class userConfiguration {
     private String timeZone;
     private String currency;
 
-    public userConfiguration(){}
+    public UserConfiguration(){}
 
-    public userConfiguration(String language, String timeZone, String currency) {
+    public UserConfiguration(String language, String timeZone, String currency) {
         this.language = language;
         this.timeZone = timeZone;
         this.currency = currency;

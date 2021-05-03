@@ -1,2 +1,0 @@
-com/WeGather/WeGather/WeGatherApplicationTests.java
- com.WeGather.WeGather.WeGatherApplicationTests

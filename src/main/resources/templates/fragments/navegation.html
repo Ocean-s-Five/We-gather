@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+
+<div th:fragment="navbar">
+    <nav class="navbar navbar-expand-md " >
+        <a href="#" class="navbar-brand">
+            <img src="/examples/images/logo.svg" height="28" alt="We Gather">
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="#" class="nav-item nav-link ">Home</a>
+                <a href="#" class="nav-item nav-link">Raised Work</a>
+                <a href="#" class="nav-item nav-link">Raised Funds</a>
+
+<!--                <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>-->
+            </div>
+            <div class="navbar-nav ml-auto">
+
+
+
+                <a href="#" class="nav-item nav-link"  sec:authorize="!isAuthenticated()">Login</a>
+                <a href="#" class="nav-item nav-link" sec:authorize="!isAuthenticated()">SignUp</a>
+                <a href="#" class="nav-item nav-link" sec:authorize="isAuthenticated()">logout</a>
+
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text input-group-sm border-0" id="search-addon"><i class="fas fa-search"></i></span>
+                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                           aria-describedby="search-addon" />
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

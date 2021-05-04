@@ -1,9 +1,6 @@
 package com.WeGather.WeGather.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Suburb {
@@ -14,15 +11,22 @@ public class Suburb {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String suburbName;
-    private Long district_id;
+
+
+
+    //    ======= TABLE RELATIONS ===============
+
+    @ManyToOne
+    private District district;
+
     // ==========ALL CONSTRUCTORS============
 
     public Suburb() {
     }
 
-    public Suburb(String suburbName, Long district_id) {
+    public Suburb(String suburbName, Long district_id, District district) {
         this.suburbName = suburbName;
-        this.district_id = district_id;
+        this.district = district;
     }
 
     //    ==========GETTERS AND SETTERS=============
@@ -39,20 +43,13 @@ public class Suburb {
         this.suburbName = suburbName;
     }
 
-    public Long getDistrict_id() {
-        return district_id;
+
+    public District getDistrict() {
+        return district;
     }
 
-    public void setDistrict_id(Long district_id) {
-        this.district_id = district_id;
+    public void setDistrict(District district) {
+        this.district = district;
     }
 
-    @Override
-    public String toString() {
-        return "Suburb{" +
-                "id=" + id +
-                ", suburbName='" + suburbName + '\'' +
-                ", district_id=" + district_id +
-                '}';
-    }
 }

@@ -1,9 +1,7 @@
 package com.WeGather.WeGather.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class RaisedWorkProject {
@@ -11,14 +9,28 @@ public class RaisedWorkProject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long userId;
-    private Long locationId;
+    //============== Relation =================
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private Location location_id;
+
+
+    @ManyToOne
+    private Users users;
+
+//    @OneToMany(mappedBy = "rasiedWorkFund_id", cascade = CascadeType.ALL)
+//    private List<Comments> comments;
+
 
     //===================== Constructors ======================
-    public RaisedWorkProject(){}
+    public RaisedWorkProject() {
+    }
 
-    public RaisedWorkProject(Long userId, Long locationId) {
+    public RaisedWorkProject(Long userId, Location location_id) {
         this.userId = userId;
-        this.locationId = locationId;
+        this.location_id = location_id;
     }
 
     //================ Getters And Setters =============
@@ -36,11 +48,29 @@ public class RaisedWorkProject {
         this.userId = userId;
     }
 
-    public Long getLocationId() {
-        return locationId;
+    public Location getLocation_id() {
+        return location_id;
     }
 
-    public void setLocationId(Long locationId) {
-        this.locationId = locationId;
+    public void setLocation_id(Location location_id) {
+        this.location_id = location_id;
+    }
+//
+//    public List<Comments> getComments() {
+//        return comments;
+//    }
+//
+//    public void setComments(List<Comments> comments) {
+//        this.comments = comments;
+//    }
+
+    public
+    Users getUsers() {
+        return users;
+    }
+
+    public
+    void setUsers(Users users) {
+        this.users = users;
     }
 }

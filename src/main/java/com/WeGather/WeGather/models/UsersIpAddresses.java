@@ -1,3 +1,4 @@
+
 package com.WeGather.WeGather.models;
 
 import javax.persistence.*;
@@ -15,10 +16,22 @@ public class UsersIpAddresses {
     private List<String> ipAddresses;
 
 
+    @OneToOne(mappedBy = "usersIpAddresses")
+    private Users users;
 
 
     public UsersIpAddresses() {
 
+    }
+
+    public
+    Users getUsers() {
+        return users;
+    }
+
+    public
+    void setUsers(Users users) {
+        this.users = users;
     }
 
     @ElementCollection
@@ -34,5 +47,4 @@ public class UsersIpAddresses {
         return id;
     }
 }
-
 

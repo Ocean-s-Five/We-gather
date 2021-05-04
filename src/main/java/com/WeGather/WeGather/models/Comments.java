@@ -22,12 +22,20 @@ public class Comments {
     private String body;
     private Long raisedWorkFundId;
 
-//    commentType_id(1/2)
+    //    commentType_id(1/2)
     private int commentTypeId;
+
+    //======================= Relation ===================
+//    @ManyToOne
+//    private RaisedFundProject rasiedWorkFund_id;
+//
+//    @ManyToOne
+//    private RaisedWorkProject rasiedWorkFund_id;
 
 
     //================== Constructors =====================
-    public Comments(){}
+    public Comments() {
+    }
 
 //    public Comments(String body) {
 //        this.body = body;
@@ -39,6 +47,8 @@ public class Comments {
         this.body = body;
         this.raisedWorkFundId = raisedWorkFundId;
         this.commentTypeId = commentTypeId;
+//        this.raised_Fund_Project_id = raisedFund;
+//        this.raisedWork = raisedWorkProject;
     }
     //=============== Getters And Setters =================
 
@@ -86,4 +96,20 @@ public class Comments {
     public void setCommentTypeId(int commentTypeId) {
         this.commentTypeId = commentTypeId;
     }
+
+//    public RaisedFundProject getRaisedFund() {
+//        return raised_Fund_Project_id;
+//    }
+//
+//    public void setRaisedFund(RaisedFundProject raisedFund) {
+//        this.raised_Fund_Project_id = raisedFund;
+//    }
+//
+//    public RaisedWorkProject getRaisedWork() {
+//        return raisedWork;
+//    }
+//
+//    public void setRaisedWork(RaisedWorkProject raisedWork) {
+//        this.raisedWork = raisedWork;
+//    }
 }

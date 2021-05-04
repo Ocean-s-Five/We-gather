@@ -1,3 +1,4 @@
+
 package com.WeGather.WeGather.models;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,10 +27,23 @@ public class UserConfiguration {
         this.currency = currency;
     }
 
+
+    @OneToOne(mappedBy = "userConfiguration")
+    private Users users;
+
+
     //getter & setters
 
 
+    public
+    Users getUsers() {
+        return users;
+    }
 
+    public
+    void setUsers(Users users) {
+        this.users = users;
+    }
 
     public String getLanguage() {
         return language;

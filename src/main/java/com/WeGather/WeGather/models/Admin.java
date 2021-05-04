@@ -23,4 +23,5 @@ class Admin extends Users {
         super(userName,password,firstName,middleName,lastName,profilePictures,createdAt,authority);
     }
 
+
 }

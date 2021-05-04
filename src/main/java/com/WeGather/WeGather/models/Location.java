@@ -1,9 +1,6 @@
 package com.WeGather.WeGather.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Location {
@@ -19,6 +16,10 @@ public class Location {
     private Long district_id;
     private Long suburb_id;
 
+    // ================== Relation =================
+
+    @OneToOne(mappedBy = "location_id",cascade = CascadeType.ALL)
+    private RaisedWorkProject raisedWorkProject;
     // ==========ALL CONSTRUCTORS============
 
     public Location() {
@@ -86,6 +87,14 @@ public class Location {
 
     public void setSuburb_id(Long suburb_id) {
         this.suburb_id = suburb_id;
+    }
+
+    public RaisedWorkProject getRaisedWorkProject() {
+        return raisedWorkProject;
+    }
+
+    public void setRaisedWorkProject(RaisedWorkProject raisedWorkProject) {
+        this.raisedWorkProject = raisedWorkProject;
     }
 
     @Override

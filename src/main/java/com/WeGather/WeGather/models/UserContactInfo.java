@@ -16,6 +16,13 @@ public class UserContactInfo {
     private String district;
     private String suburb;
 
+    //    ======= TABLE RELATIONS ===============
+
+    @OneToOne(mappedBy = "userContactInfo")
+    private Users user;
+
+
+
     // ==========ALL CONSTRUCTORS============
 
 
@@ -32,12 +39,13 @@ public class UserContactInfo {
     }
 
 
-    // relationships
 
-    @OneToOne(mappedBy = "userContactInfo")
-    private Users users;
+
+
 
     //    ==========GETTERS AND SETTERS=============
+
+
 
     public Long getId() {
         return id;
@@ -91,6 +99,15 @@ public class UserContactInfo {
     public void setSuburb(String suburb) {
         this.suburb = suburb;
     }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
 
     @Override
     public String toString() {

@@ -13,15 +13,11 @@ public class UserContactInfoController {
     @Autowired
     UserContactInfoRepository userContactInfoRepository;
 
-
-//    @GetMapping
+//
+//    @GetMapping("/contact_info")
 //
 //
 //    @PostMapping
-//
-//
-//    @DeleteMapping
-//
-//
-//    @PutMapping
+
+
 }

@@ -6,7 +6,8 @@
 <body>
 
 <div class="container">
-<div th:replace="fragments/navegation :: navbar" th:remove="tag"></div>
+<div th:replace="fragments/common :: navbar" th:remove="tag"></div>
+
 
 <!--    <div th:replace="/navbar :: headerNavbar" th:remove="tag"></div>-->
 
@@ -174,6 +175,12 @@
         </div>
     </div>
 </section>
+
+</div>
+
+<div th:replace="fragments/common :: footer" th:remove="tag"></div>
+
+
 </body>
 <div th:replace="fragments/bootstrapFragment :: BSfragmentScript" th:remove="tag"></div>
 </html>

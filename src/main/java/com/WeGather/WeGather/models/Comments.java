@@ -41,6 +41,13 @@ public class Comments {
 //        this.body = body;
 //    }
 
+//    public Comments(String body, Long raisedWorkFundId, int commentTypeId) {
+//        this.body = body;
+//        this.raisedWorkFundId = raisedWorkFundId;
+//        this.commentTypeId = commentTypeId;
+////        this.raised_Fund_Project_id = raisedFund;
+////        this.raisedWork = raisedWorkProject;
+//    }
     public Comments(Long userId, Date createdAt, String body, Long raisedWorkFundId, int commentTypeId) {
         this.userId = userId;
         this.createdAt = createdAt;

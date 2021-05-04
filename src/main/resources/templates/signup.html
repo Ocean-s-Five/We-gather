@@ -1,67 +1,103 @@
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <title>CodePen - Sign Up Modal </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans"><link rel="stylesheet" href="/css/signup.css">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"><head>
+    <div th:replace="fragments/bootstrapFragment :: head" th:remove="tag"></div>
 
 </head>
 <body>
+
 <!-- partial:index.partial.html -->
-<!-- Button trigger modal --> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Sign Up
-</button>
+<!-- Button trigger modal -->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="column" id="main">
+
+<div th:replace="fragments/common :: navbar" th:remove="tag"></div>
+<div class="container">
+
+    <div class="row">
+                <div class="col-md-6 " id="main">
+
+
+
+
                     <h1>Sign Up </h1>
                     <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
-                    <form action="/" method="post">
+                    <form action="/signup" method="post">
                         <div class="form-group">
-                            <label for="exampleInputName">Name</label>
-                            <input type="name" class="form-control" id="exampleInputName" placeholder="Name">
+                            <label for="username">username</label>
+                            <input type="name" class="form-control" id="username" name="username" placeholder="Name">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">E-mail </label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail">
+                            <label for="email">E-mail </label>
+                            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="E-mail">
                         </div>
+
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <label for="firstName">firstName</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="firstName">
                         </div>
+
+                        <div class="form-group">
+                            <label for="middleName">middleName</label>
+                            <input type="text" class="form-control" id="middleName" name="middleName" placeholder="middleName">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">lastName</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="lastName">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nationalNumber">nationalNumber</label>
+                            <input type="number" class="form-control" id="nationalNumber"  name="nationalNumber" placeholder="nationalNumber">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="nationalCardNumber">nationalCardNumber</label>
+                            <input type="number" class="form-control" id="nationalCardNumber" name="nationalCardNumber" placeholder="nationalCardNumber">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="passportNumber">passportNumber</label>
+                            <input type="number" class="form-control" id="passportNumber" name="passportNumber" placeholder="passportNumber">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nameWrittenInPassport">nameWrittenInPassport</label>
+                            <input type="number" class="form-control" id="nameWrittenInPassport" name="nameWrittenInPassport" placeholder="nameWrittenInPassport">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profilePictures">profilePictures</label>
+                            <input type="hiddefielnfile" class="form-control" id="profilePictures"  name="profilePictures"  value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPg_r7-255SHFnzImyFmu97bCtrEhNPvmPjExskeTtXFTWePPjOYC43yO1qBf-2XJ0mB8&usqp=CAU">
+                        </div>
+
+<!--                        -->
                         <button type="submit" class="btn btn-primary">Sign Up</button>
                     </form>
+
                 </div>
-                <div>
-                    <?xml version="1.0" encoding="UTF-8"?>
-                    <svg width="67px" height="578px" viewBox="0 0 67 578" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
-                        <title>Path</title>
-                        <desc>Created with Sketch.</desc>
-                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <path d="M11.3847656,-5.68434189e-14 C-7.44726562,36.7213542 5.14322917,126.757812 49.15625,270.109375 C70.9827986,341.199016 54.8877465,443.829224 0.87109375,578 L67,578 L67,-5.68434189e-14 L11.3847656,-5.68434189e-14 Z" id="Path" fill="#F9BC35"></path>
-                        </g>
-                    </svg>
-                </div>
-                <div class="column" id="secondary">
+                <div class="col-md-6" id="secondary">
                     <div class="sec-content">
                         <h2>Welcome Back!</h2>
                         <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
                         <button type="button" class="btn btn-primary">Login</button>
                     </div>
                 </div>
-            </div>
-        </div>
+
     </div>
 </div>
-<!-- partial -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script><script src="./script.js"></script>
+</div>
 
+<div th:replace="fragments/common :: footer" th:remove="tag"></div>
 
+<div th:replace="fragments/bootstrapFragment :: BSfragmentScript" th:remove="tag"></div>
 
-</body></html>
+</body>
+</html>

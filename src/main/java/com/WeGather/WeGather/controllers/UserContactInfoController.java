@@ -8,20 +8,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @Controller
-public class UserContactInfo {
+public class UserContactInfoController {
 
     @Autowired
     UserContactInfoRepository userContactInfoRepository;
 
-
-//    @GetMapping
+//
+//    @GetMapping("/contact_info")
 //
 //
 //    @PostMapping
-//
-//
-//    @DeleteMapping
-//
-//
-//    @PutMapping
+
+
 }

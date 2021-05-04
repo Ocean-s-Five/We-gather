@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -34,12 +35,13 @@ class ApplicationUsers implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        SimpleGrantedAuthority simpleGrantedAuthorityUser = new SimpleGrantedAuthority(user.getAuthority());
-        List<SimpleGrantedAuthority> userAuthorities = new ArrayList<SimpleGrantedAuthority>();
-
-        userAuthorities.add(simpleGrantedAuthorityUser);
-
-        return userAuthorities;
+//        SimpleGrantedAuthority simpleGrantedAuthorityUser = new SimpleGrantedAuthority(user.getAuthority());
+//        List<SimpleGrantedAuthority> userAuthorities = new ArrayList<SimpleGrantedAuthority>();
+//
+//        userAuthorities.add(simpleGrantedAuthorityUser);
+//
+//        return userAuthorities;
+       return null;
     }
 
     @Override

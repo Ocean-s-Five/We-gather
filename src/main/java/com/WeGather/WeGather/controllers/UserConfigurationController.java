@@ -33,6 +33,7 @@ public class UserConfigurationController {
             ) {
         Users user = (Users) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
         UserConfiguration userConfiguration = new UserConfiguration(language,timeZone,currency,user);
+        userConfigurationRepository.save(userConfiguration);
         return new RedirectView("/userConfiguration");
     }
 

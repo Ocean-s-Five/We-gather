@@ -32,6 +32,7 @@ public class IpAddressController {
             , Principal p){
         Users user = (Users) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
         UsersIpAddresses usersIpAddresses = new UsersIpAddresses(IpAddress,user);
+        UsersIpAddressesRepository.save(usersIpAddresses);
         return new RedirectView("/IpAddress");
 
     }

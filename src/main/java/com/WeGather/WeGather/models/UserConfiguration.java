@@ -22,19 +22,22 @@ public class UserConfiguration {
     private String timeZone;
     private String currency;
 
+    @OneToOne(mappedBy = "userConfiguration")
+    private Users user;
+
     // constructors
     public UserConfiguration(){}
 
-    public UserConfiguration(String language, String timeZone, String currency) {
+    public UserConfiguration(String language, String timeZone, String currency,Users user) {
 
         this.language = language;
         this.timeZone = timeZone;
         this.currency = currency;
+        this.user=user;
     }
 
 
-    @OneToOne(mappedBy = "userConfiguration")
-    private Users users;
+
 
 
     //getter & setters
@@ -42,12 +45,12 @@ public class UserConfiguration {
 
     public
     Users getUsers() {
-        return users;
+        return user;
     }
 
     public
     void setUsers(Users users) {
-        this.users = users;
+        this.user = users;
     }
 
     public String getLanguage() {

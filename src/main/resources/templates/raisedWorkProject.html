@@ -13,7 +13,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <style>
-
+    #map {
+        height: 500px;
+        width: 500px;
+    }
 </style>
 
 <body>
@@ -21,36 +24,81 @@
     <main>
         <div class="container">
             <h2>Raised Work Project</h2>
-            <form action="/raisedWork" method="post">
-                <div class="form-group">
-                    <label for="startFrom">Start From:</label>
-                    <input type="datetime-local" class="form-control" id="startFrom" name="startFrom">
+
+            <form action="/raisedWork">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="startFrom">Start From:</label>
+                            <input type="datetime-local" class="form-control" id="startFrom" name="startFrom">
+                        </div>
+                        <div class="form-group">
+                            <label for="endAt">End At:</label>
+                            <input type="datetime-local" class="form-control" id="endAt" name="endAt">
+                        </div>
+                        <div class="form-group">
+                            <label for="Image">Image:</label>
+                            <input type="text" class="form-control" id="Image"
+                                placeholder="Enter the link of your Image" name="Image">
+                        </div>
+                        <div class="form-group">
+                            <label for="topic">Topic:</label>
+                            <input type="text" class="form-control" id="topic" placeholder="Enter a Topic" name="topic">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <textarea name="description" class="form-control" id="description" cols="30" rows="10"
+                                placeholder="Enter a an enough description about the work the you will publish"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="col">
+                        <h5 class="display-5">Select your location on the Map</h5>
+                        <div style="height: 400px;" id="map"></div>
+
+                        <input style="display: none;" type="text" name="longitude" id="longitude" value="">
+                        <input style="display: none;" type="text" name="latitude" id="latitude" value="">
+
+                        <div class="form-group">
+                            <label for="locDescription">Description:</label>
+                            <textarea name="locDescription" class="form-control" id="locDescription" cols="20" rows="2"
+                                placeholder="Enter a an enough description about your location"></textarea>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="distric">
+                            <label class="form-check-label" for="distric">distric</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="distric">
+                            <label class="form-check-label" for="distric">distric</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="distric">
+                            <label class="form-check-label" for="distric">distric</label>
+                        </div>
+                        <!-- <button onclick="myFunction()" class="btn btn-primary">Submit</button> -->
+                        <!-- </form> -->
+                    </div>
+
                 </div>
-                <div class="form-group">
-                    <label for="endAt">End At:</label>
-                    <input type="datetime-local" class="form-control" id="endAt" name="endAt">
+                <div class="row">
+                    <button onclick="myFunction()" type="submit" class="btn btn-primary">Submit</button>
                 </div>
-                <div class="form-group">
-                    <label for="Image">Image:</label>
-                    <input type="text" class="form-control" id="Image" placeholder="Enter the link of your Image"
-                        name="image">
-                </div>
-                <div class="form-group">
-                    <label for="topic">Topic:</label>
-                    <input type="text" class="form-control" id="topic" placeholder="Enter a Topic" name="topic">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea name="description" class="form-control" id="description" cols="30" rows="10"
-                        placeholder="Enter a an enough description about the work the you will publish"></textarea>
-                </div>
+
                 <input type="hidden" name="raisedWork_id">
 
                 <button type="submit" class="btn btn-primary">Submit</button>
+
             </form>
         </div>
     </main>
 
 </body>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_NC3RTlIGZ7XHIO79VdPXs_MPyTcFUbg&callback=initMap"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+<script src="js/location.js"></script>
 
 </html>

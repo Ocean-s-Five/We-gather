@@ -25,7 +25,7 @@
         <div class="container">
             <h2>Raised Work Project</h2>
 
-            <form action="/raisedWork">
+            <form action="/raisedWork" method="post">
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
@@ -37,9 +37,9 @@
                             <input type="datetime-local" class="form-control" id="endAt" name="endAt">
                         </div>
                         <div class="form-group">
-                            <label for="Image">Image:</label>
-                            <input type="text" class="form-control" id="Image"
-                                placeholder="Enter the link of your Image" name="Image">
+                            <label for="image">Image:</label>
+                            <input type="text" class="form-control" id="image"
+                                placeholder="Enter the link of your Image" name="image">
                         </div>
                         <div class="form-group">
                             <label for="topic">Topic:</label>
@@ -60,21 +60,21 @@
                         <input style="display: none;" type="text" name="latitude" id="latitude" value="">
 
                         <div class="form-group">
-                            <label for="locDescription">Description:</label>
-                            <textarea name="locDescription" class="form-control" id="locDescription" cols="20" rows="2"
+                            <label for="locationDescription">Description:</label>
+                            <textarea name="locationDescription" class="form-control" id="locationDescription" cols="20" rows="2"
                                 placeholder="Enter a an enough description about your location"></textarea>
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="distric">
-                            <label class="form-check-label" for="distric">distric</label>
+                            <input type="checkbox" class="form-check-input" id="governate">
+                            <label class="form-check-label" for="governate">Governate</label>
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="distric">
-                            <label class="form-check-label" for="distric">distric</label>
+                            <input type="checkbox" class="form-check-input" id="district">
+                            <label class="form-check-label" for="district">District</label>
                         </div>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="distric">
-                            <label class="form-check-label" for="distric">distric</label>
+                            <input type="checkbox" class="form-check-input" id="suburb">
+                            <label class="form-check-label" for="suburb">Suburb</label>
                         </div>
                         <!-- <button onclick="myFunction()" class="btn btn-primary">Submit</button> -->
                         <!-- </form> -->
@@ -85,9 +85,9 @@
                     <button onclick="myFunction()" type="submit" class="btn btn-primary">Submit</button>
                 </div>
 
-                <input type="hidden" name="raisedWork_id">
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+
+
 
             </form>
         </div>

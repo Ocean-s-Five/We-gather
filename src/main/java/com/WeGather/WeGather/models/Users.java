@@ -15,6 +15,7 @@ class Users {
     private Long id;
     @Column(unique = true)
     private String username;
+    private String email;
     private String password;
     private String firstName;
     private String middleName;
@@ -30,7 +31,7 @@ class Users {
 //    @OneToMany(mappedBy = "raised_Fund_Project_id", cascade = CascadeType.ALL)
 //    private List<RaisedFundProject> funds;
 
-    public Users(String userName, String password, String firstName, String middleName, String lastName, List<String> profilePictures, Date createdAt, String authority) {
+    public Users(String userName, String password, String firstName, String middleName, String lastName, List<String> profilePictures, Date createdAt, String authority, String email ) {
         this.username = userName;
         this.password = password;
         this.firstName = firstName;
@@ -39,6 +40,7 @@ class Users {
         this.profilePictures = profilePictures;
         this.createdAt = createdAt;
         this.authority = authority;
+        this.email = email;
     }
 
     public Users() {
@@ -111,5 +113,13 @@ class Users {
 
     public void setAuthority(String authority) {
         this.authority = authority;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

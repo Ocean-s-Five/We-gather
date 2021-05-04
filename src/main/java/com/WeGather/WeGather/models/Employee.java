@@ -24,8 +24,8 @@ class Employee extends Users {
     }
 
     // parametrized constructor
-    public Employee(String userName, String password, String firstName, String middleName, String lastName, String nationalNumber, String nationalCardNumber, String passportNumber, String nameWrittenInPassport, List<String> profilePictures, Date createdAt, String authority) {
-        super(userName, password, firstName, middleName, lastName, profilePictures, createdAt, authority);
+    public Employee(String userName, String password, String firstName, String middleName, String lastName, String nationalNumber, String nationalCardNumber, String passportNumber, String nameWrittenInPassport, List<String> profilePictures, Date createdAt, String authority,String email) {
+        super(userName, password, firstName, middleName, lastName, profilePictures, createdAt, authority,email);
 
         this.nationalNumber = nationalNumber;
         this.nationalCardNumber = nationalCardNumber;

@@ -1,0 +1,16 @@
+
+
+spring.datasource.platform=postgres
+spring.datasource.url=jdbc:postgresql://localhost:5432/wegather
+spring.datasource.username=abd
+spring.datasource.password=0000
+spring.jpa.hibernate.ddl-auto=update
+server.port=8080
+
+spring.mvc.hiddenmethod.filter.enabled=true
+
+server.error.whitelabel.enabled=false
+
+spring.thymeleaf.cache=false
+
+#spring.devtools.restart.exclude=static/**,public/**

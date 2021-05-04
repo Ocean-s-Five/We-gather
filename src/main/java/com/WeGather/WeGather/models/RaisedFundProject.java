@@ -38,7 +38,7 @@ public class RaisedFundProject {
 
     }
 
-    public RaisedFundProject(String requiredAmount, String topic, String description, String createdDate, String strartFrom, String endAt, List<String> images) {
+    public RaisedFundProject(String requiredAmount, String topic, String description, String createdDate, String strartFrom, String endAt, List<String> images,Users users) {
         this.requiredAmount = requiredAmount;
         this.topic = topic;
         this.description = description;
@@ -46,6 +46,7 @@ public class RaisedFundProject {
         this.startFrom = strartFrom;
         this.endAt = endAt;
         this.images = images;
+        this.users=users;
     }
 
     public Long getId() {

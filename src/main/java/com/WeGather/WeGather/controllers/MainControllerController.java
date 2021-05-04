@@ -62,6 +62,13 @@ class MainControllerController {
         return  new RedirectView("/");
     }
 
+    @PostMapping("/login")
+    public String login(@RequestParam String username, @RequestParam String password) {
+
+            return "login.html";
+
+    }
+
 
     @GetMapping("/signup")
     public String signup() {

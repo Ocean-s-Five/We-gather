@@ -20,23 +20,15 @@ class UsersService  implements UserDetailsService {
     @Autowired
     UsersRepository usersRepository;
 
-    @Autowired
-    BCryptPasswordEncoder cryptPasswordEncoder;
     @Override
     public
     UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
-        Admin admin = (Admin) usersRepository.findByUsername(userName);
-        Employee employee = (Employee) usersRepository.findByUsername(userName);
-        User user = (User) usersRepository.findByUsername(userName);
 
-        String pwd= cryptPasswordEncoder.encode("ksdfjhkashl");
+        Users user =  usersRepository.findByUsername(userName);
 
-        if (admin !=null){
-            return new ApplicationUsers(admin);
-        }else if (employee!=null){
-            return new ApplicationUsers(employee);
-        }else if (user!=null){
+
+        if (user!=null){
             return new ApplicationUsers(user);
         }
 

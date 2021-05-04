@@ -1,11 +1,12 @@
+
 package com.WeGather.WeGather.models;
 
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-
 public class RaisedFundProject {
 
     @Id
@@ -29,6 +30,9 @@ public class RaisedFundProject {
     //    relation between Users & raisedFund
 //    @ManyToOne
 //    private Users users;
+
+    @ManyToOne
+    private Users users;
 
     public RaisedFundProject() {
 
@@ -111,4 +115,15 @@ public class RaisedFundProject {
 //    public void setComments(List<Comments> comments) {
 //        this.comments = comments;
 //    }
+
+
+    public
+    Users getUsers() {
+        return users;
+    }
+
+    public
+    void setUsers(Users users) {
+        this.users = users;
+    }
 }

@@ -18,9 +18,10 @@ public class UserContactInfo {
 
     //    ======= TABLE RELATIONS ===============
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "userContactInfo")
     private Users user;
+
+
 
     // ==========ALL CONSTRUCTORS============
 
@@ -37,7 +38,14 @@ public class UserContactInfo {
         this.suburb = suburb;
     }
 
+
+
+
+
+
     //    ==========GETTERS AND SETTERS=============
+
+
 
     public Long getId() {
         return id;

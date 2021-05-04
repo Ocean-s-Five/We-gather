@@ -16,6 +16,10 @@ public class RaisedWorkProject {
 //    @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location_id;
 
+
+    @ManyToOne
+    private Users users;
+
 //    @OneToMany(mappedBy = "rasiedWorkFund_id", cascade = CascadeType.ALL)
 //    private List<Comments> comments;
 
@@ -59,4 +63,14 @@ public class RaisedWorkProject {
 //    public void setComments(List<Comments> comments) {
 //        this.comments = comments;
 //    }
+
+    public
+    Users getUsers() {
+        return users;
+    }
+
+    public
+    void setUsers(Users users) {
+        this.users = users;
+    }
 }

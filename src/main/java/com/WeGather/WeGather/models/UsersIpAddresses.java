@@ -1,3 +1,4 @@
+
 package com.WeGather.WeGather.models;
 
 import javax.persistence.*;
@@ -14,15 +15,24 @@ public class UsersIpAddresses {
     @ElementCollection
     private List<String> ipAddresses;
 
-    //============== Relation =================
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private Users user;
+    @OneToOne(mappedBy = "usersIpAddresses")
+    private Users users;
 
 
+    public UsersIpAddresses() {
 
-    public UsersIpAddresses() {}
+    }
+
+    public
+    Users getUsers() {
+        return users;
+    }
+
+    public
+    void setUsers(Users users) {
+        this.users = users;
+    }
 
     @ElementCollection
     public List<String> getIpAddresses() {
@@ -33,18 +43,8 @@ public class UsersIpAddresses {
         this.ipAddresses = ipAddresses;
     }
 
-    public Users getUser() {
-        return user;
-    }
-    public void setUser(Users user) {
-        this.user = user;
-    }
-
-
-
     public long getId() {
         return id;
     }
 }
-
 

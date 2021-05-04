@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div th:fragment="bootstrapHeaderFragment">
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="../static/navbarstyle.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet'
+              type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Lato:100,300italic,400,700,900' rel='stylesheet'
+              type='text/css'>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    </div>
+    <title>Document</title>
+</head>
+<body>
+
+<div th:fragment="headerNavbar">
+
+    <nav>
+        <label class="logo">We Gather</label>
+        <ul>
+            <li><a class="active" href="#">Home</a></li>
+            <li><a href="#">Raise Charity
+                <i class="fas fa-caret-down"></i>
+            </a>
+                <ul>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#">Others</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Profile
+                <i class="fas fa-caret-down"></i>
+            </a>
+                <ul>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#">Others
+                        <i class="fas fa-caret-right"></i>
+                    </a>
+                        <ul>
+                            <li><a href="#">Links</a></li>
+                            <li><a href="#">Works</a></li>
+                            <li><a href="#">Status</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+        <div class="search-icon">
+            <span class="fas fa-search"></span></div>
+        <div class="cancel-icon">
+            <span class="fas fa-times"></span></div>
+        <form action="#">
+            <input type="search" class="search-data" placeholder="Search" required>
+            <button type="submit" class="fas fa-search"></button>
+        </form>
+    </nav>
+
+</div>
+</body>
+
+</html>

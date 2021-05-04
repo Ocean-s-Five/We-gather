@@ -14,6 +14,7 @@ public class RaisedWorkProject {
     private Long userId;
     private String startFrom;
     private String endAt;
+    @ElementCollection
     private List<String> images;
     private String topic;
     private String description;

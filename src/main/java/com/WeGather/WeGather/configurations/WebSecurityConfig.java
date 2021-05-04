@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.File;
@@ -42,14 +41,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                     .csrf().disable()
                     .authorizeRequests()
                     .antMatchers("/").permitAll()
-                    .antMatchers("/**").permitAll()
                     .antMatchers("/signup").permitAll()
                     .antMatchers("/login").permitAll()
-                    .antMatchers("/resources/**", "/static/**","/webjars/**","/css/**","/footer","/navbar").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
                     .loginPage("/login")
+                    .defaultSuccessUrl("/")
                     .failureUrl("/login?error=true")
                     .and()
                     .logout()
@@ -65,6 +63,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         public void configure(WebSecurity web) throws Exception {
             web
                     .ignoring()
-                    .antMatchers("/resources/**", "/static/**","/webjars/**");
+                    .antMatchers("/resources/**", "/static/**","/webjars/**","/css/**");
         }
 }

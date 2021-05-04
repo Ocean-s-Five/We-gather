@@ -5,7 +5,7 @@
 <body>
 
 <div th:fragment="navbar">
-    <nav class="navbar navbar-expand-md " >
+    <nav class="navbar navbar-expand-md  nav-bg-color" >
         <a href="#" class="navbar-brand">
             <img src="images/logo.png"  class="rounded-sm"  height="60" width="110" alt="We Gather">
         </a>
@@ -22,7 +22,6 @@
                 <!--                <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>-->
             </div>
             <div class="navbar-nav ml-auto">
-
 
 
                 <a href="/login" class="nav-item nav-link text-white"  sec:authorize="!isAuthenticated()">Login</a>

@@ -2,6 +2,7 @@
 package com.WeGather.WeGather.models;
 
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -17,21 +18,25 @@ public class UsersIpAddresses {
 
 
     @OneToOne(mappedBy = "usersIpAddresses")
-    private Users users;
+    private Users user;
 
 
-    public UsersIpAddresses() {
+    public UsersIpAddresses() {}
+
+    public UsersIpAddresses(List<String> ipAddresses,Users user){
+        this.ipAddresses= ipAddresses;
+        this.user=user;
 
     }
 
     public
     Users getUsers() {
-        return users;
+        return user;
     }
 
     public
     void setUsers(Users users) {
-        this.users = users;
+        this.user = users;
     }
 
     @ElementCollection

@@ -12,5 +12,4 @@ public class DictionaryController {
     DictionaryRepository dictionaryRepository;
 
 
-
 }

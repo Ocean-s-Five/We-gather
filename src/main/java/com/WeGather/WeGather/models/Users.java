@@ -190,7 +190,7 @@ class Users {
     public
     void setRaisedWorkProjects(Set<RaisedWorkProject> raisedWorkProjects) {
         this.raisedWorkProjects = raisedWorkProjects;
-
+    }
     public String getEmail() {
         return email;
     }

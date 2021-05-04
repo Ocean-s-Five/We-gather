@@ -26,6 +26,23 @@ class MainController {
         return "signup.html";
     }
 
+    @GetMapping("/profile")
+    public String profile(){
+
+        return "profile.html";
+    }
+    @GetMapping("/navbar")
+    public String navbar(){
+
+        return "navbar.html";
+    }
+
+    @GetMapping("/footer")
+    public String footer(){
+
+        return "footer.html";
+    }
+
 
 
 }

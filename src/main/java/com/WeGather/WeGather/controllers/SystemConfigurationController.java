@@ -1,6 +1,6 @@
 package com.WeGather.WeGather.controllers;
 
-//import com.WeGather.WeGather.models.SystemConfiguration;
+import com.WeGather.WeGather.models.SystemConfiguration;
 import com.WeGather.WeGather.repositories.SystemConfigurationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.List;
+import java.util.Set;
+
 @Controller
-public class SystemConfiguration {
+public class SystemConfigurationController {
 
     @Autowired
     SystemConfigurationRepository systemConfigurationRepository;
@@ -32,11 +35,11 @@ public class SystemConfiguration {
                          , @RequestParam(value = "defaultLanguage") String defaultLanguage
                          , @RequestParam(value = "countryCode") Long countryCode
                          , @RequestParam(value = "googleMapKey") Long googleMapKey
-                         , @RequestParam(value = "phoneMassageNumbersService") Long phoneMassageNumbersService,
-                           @RequestParam(value = "mailingServiceMainEmails") String mailingServiceMainEmails) {
+                         , @RequestParam(value = "phoneMassageNumbersService") List<Long> phoneMassageNumbersService,
+                           @RequestParam(value = "mailingServiceMainEmails") Set<String> mailingServiceMainEmails) {
 
 
-//        SystemConfiguration systemConfiguration = new SystemConfiguration( country,  branch,  region,  defaultCurrency,  defaultTimeZone,  defaultLanguage,  countryCode,  googleMapKey,  phoneMassageNumbersService, mailingServiceMainEmails)
+        SystemConfiguration systemConfiguration = new SystemConfiguration( country,  branch,  region,  defaultCurrency,  defaultTimeZone,  defaultLanguage,  countryCode,  googleMapKey,  phoneMassageNumbersService, mailingServiceMainEmails);
 
 
         return new RedirectView("/system_configuration");

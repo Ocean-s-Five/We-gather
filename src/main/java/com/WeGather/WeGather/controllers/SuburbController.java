@@ -1,11 +1,11 @@
 package com.WeGather.WeGather.controllers;
-import com.WeGather.WeGather.repositories.LocationRepository;
+import com.WeGather.WeGather.repositories.SuburbRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class Location {
+public class SuburbController {
 
     @Autowired
-    LocationRepository locationRepository;
+    SuburbRepository suburbRepository;
 }

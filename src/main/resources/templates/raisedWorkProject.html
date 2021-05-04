@@ -21,7 +21,7 @@
     <main>
         <div class="container">
             <h2>Raised Work Project</h2>
-            <form action="/raisedWork">
+            <form action="/raisedWork" method="post">
                 <div class="form-group">
                     <label for="startFrom">Start From:</label>
                     <input type="datetime-local" class="form-control" id="startFrom" name="startFrom">
@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label for="Image">Image:</label>
                     <input type="text" class="form-control" id="Image" placeholder="Enter the link of your Image"
-                        name="Image">
+                        name="image">
                 </div>
                 <div class="form-group">
                     <label for="topic">Topic:</label>
@@ -44,6 +44,8 @@
                     <textarea name="description" class="form-control" id="description" cols="30" rows="10"
                         placeholder="Enter a an enough description about the work the you will publish"></textarea>
                 </div>
+                <input type="hidden" name="raisedWork_id">
+
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

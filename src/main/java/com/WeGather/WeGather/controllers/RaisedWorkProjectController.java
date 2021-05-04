@@ -34,9 +34,6 @@ public class RaisedWorkProjectController {
     @Autowired
     CharityWorkContributorsRepository charityWorkContributorsRepository;
 
-    @Autowired
-    UsersRepository usersRepository;
-
     @GetMapping("/raisedWork")
     public String getRaisedWork(){
         return "raisedWorkProject.html";
@@ -49,12 +46,14 @@ public class RaisedWorkProjectController {
                                       @RequestParam(value = "topic") String topic,
                                       @RequestParam(value = "description") String description ,
                                       @RequestParam(value = "raisedWork_id") String raisedWork_id,
-                                      @RequestParam(value = "longitude") Long longitude,
-                                      @RequestParam(value = "latitude") Long latitude,
+                                      @RequestParam(value = "longitude") String longitude,
+                                      @RequestParam(value = "latitude") String latitude,
                                       @RequestParam(value = "locationDescription") String locationDescription,
-                                      @RequestParam(value = "governorate_id") Long governorate_id,
-                                      @RequestParam(value = "district_id") Long district_id,
-                                      @RequestParam(value = "suburb_id") Long suburb_id, Principal p){
+//                                      @RequestParam(value = "governorate_id") Long governorate_id,
+//                                      @RequestParam(value = "district_id") Long district_id,
+//                                      @RequestParam(value = "suburb_id") Long suburb_id, Principal p
+                                      Principal p  )
+                                      {
 
 
 
@@ -66,7 +65,7 @@ public class RaisedWorkProjectController {
         List<String> images =new ArrayList<>();
         images.add(image);
 
-        Location location =new Location(longitude,latitude,locationDescription,governorate_id, district_id,suburb_id);
+        Location location =new Location(longitude,latitude,locationDescription);
 
         String loggedInUserName= p.getName();
 

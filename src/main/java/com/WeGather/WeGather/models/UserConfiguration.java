@@ -1,6 +1,7 @@
 
 package com.WeGather.WeGather.models;
 
+import com.sun.istack.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public class UserConfiguration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
+    @NotNull
     private String language;
     private String timeZone;
     private String currency;

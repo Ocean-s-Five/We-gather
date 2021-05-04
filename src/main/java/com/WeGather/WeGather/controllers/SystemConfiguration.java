@@ -24,16 +24,16 @@ public class SystemConfiguration {
 
     @PostMapping("/system_configuration")
     public RedirectView getSystemConfiguration(
-                           @RequestParam(value = "country") String country
-                         , @RequestParam(value = "branch") String branch
-                         , @RequestParam(value = "region") String region
-                         , @RequestParam(value = "defaultCurrency") String defaultCurrency
-                         , @RequestParam(value = "defaultTimeZone") String defaultTimeZone
-                         , @RequestParam(value = "defaultLanguage") String defaultLanguage
-                         , @RequestParam(value = "countryCode") Long countryCode
-                         , @RequestParam(value = "googleMapKey") Long googleMapKey
-                         , @RequestParam(value = "phoneMassageNumbersService") Long phoneMassageNumbersService,
-                           @RequestParam(value = "mailingServiceMainEmails") String mailingServiceMainEmails) {
+            @RequestParam(value = "country") String country
+            , @RequestParam(value = "branch") String branch
+            , @RequestParam(value = "region") String region
+            , @RequestParam(value = "defaultCurrency") String defaultCurrency
+            , @RequestParam(value = "defaultTimeZone") String defaultTimeZone
+            , @RequestParam(value = "defaultLanguage") String defaultLanguage
+            , @RequestParam(value = "countryCode") Long countryCode
+            , @RequestParam(value = "googleMapKey") Long googleMapKey
+            , @RequestParam(value = "phoneMassageNumbersService") Long phoneMassageNumbersService,
+            @RequestParam(value = "mailingServiceMainEmails") String mailingServiceMainEmails) {
 
 
 //        SystemConfiguration systemConfiguration = new SystemConfiguration( country,  branch,  region,  defaultCurrency,  defaultTimeZone,  defaultLanguage,  countryCode,  googleMapKey,  phoneMassageNumbersService, mailingServiceMainEmails)

@@ -12,5 +12,4 @@ public class Dictionary {
     DictionaryRepository dictionaryRepository;
 
 
-
 }

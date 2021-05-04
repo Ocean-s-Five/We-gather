@@ -9,8 +9,8 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private long longitude;
-    private long latitude;
+    private String longitude;
+    private String latitude;
     private String description;
     private Long governorate_id;
     private Long district_id;
@@ -24,15 +24,23 @@ public class Location {
 
     public Location() {
     }
-
-    public Location(long longitude, long latitude, String description, Long governorate_id, Long district_id, Long suburb_id) {
+    public Location(String longitude, String latitude, String description) {
         this.longitude = longitude;
         this.latitude = latitude;
         this.description = description;
-        this.governorate_id = governorate_id;
-        this.district_id = district_id;
-        this.suburb_id = suburb_id;
+        this.governorate_id = null;
+        this.district_id = null;
+        this.suburb_id = null;
     }
+
+//    public Location(long longitude, long latitude, String description, Long governorate_id, Long district_id, Long suburb_id) {
+//        this.longitude = longitude;
+//        this.latitude = latitude;
+//        this.description = description;
+//        this.governorate_id = governorate_id;
+//        this.district_id = district_id;
+//        this.suburb_id = suburb_id;
+//    }
 
     //    ==========GETTERS AND SETTERS=============
 
@@ -41,19 +49,19 @@ public class Location {
     }
 
 
-    public long getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(long longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
-    public long getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(long latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 

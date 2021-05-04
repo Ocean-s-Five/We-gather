@@ -33,6 +33,7 @@ public class FeedbackController {
             , @RequestParam(value = "email") String email){
 
         Feedback feedback = new Feedback(title,body,timeStamp,email);
+        feedbackRepository.save(feedback);
         return new RedirectView("/feedback");
     }
 

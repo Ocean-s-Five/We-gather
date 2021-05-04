@@ -24,7 +24,7 @@ public class Suburb {
     public Suburb() {
     }
 
-    public Suburb(String suburbName, Long district_id, District district) {
+    public Suburb(String suburbName, District district) {
         this.suburbName = suburbName;
         this.district = district;
     }

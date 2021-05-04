@@ -1,6 +1,9 @@
 package com.WeGather.WeGather.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -9,6 +12,18 @@ public class RaisedWorkProject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long userId;
+    private String startFrom;
+    private String endAt;
+    private List<String> images;
+    private String topic;
+    private String description;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "createdAt")
+    private Date createdAt;
+
+
     //============== Relation =================
 
 
@@ -31,6 +46,18 @@ public class RaisedWorkProject {
     public RaisedWorkProject(Long userId, Location location_id) {
         this.userId = userId;
         this.location_id = location_id;
+    }
+
+    public RaisedWorkProject(Long userId, String startFrom, String endAt, List<String> images, String topic, String description, Date createdAt, Location location_id, Users users) {
+        this.userId = userId;
+        this.startFrom = startFrom;
+        this.endAt = endAt;
+        this.images = images;
+        this.topic = topic;
+        this.description = description;
+        this.createdAt = createdAt;
+        this.location_id = location_id;
+        this.users = users;
     }
 
     //================ Getters And Setters =============
@@ -72,5 +99,53 @@ public class RaisedWorkProject {
     public
     void setUsers(Users users) {
         this.users = users;
+    }
+
+    public String getStartFrom() {
+        return startFrom;
+    }
+
+    public void setStartFrom(String startFrom) {
+        this.startFrom = startFrom;
+    }
+
+    public String getEndAt() {
+        return endAt;
+    }
+
+    public void setEndAt(String endAt) {
+        this.endAt = endAt;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }

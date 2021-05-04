@@ -6,6 +6,7 @@ import com.WeGather.WeGather.repositories.CharityWorkContributorsRepository;
 import com.WeGather.WeGather.models.Location;
 import com.WeGather.WeGather.models.RaisedWorkProject;
 import com.WeGather.WeGather.models.Users;
+import com.WeGather.WeGather.repositories.LocationRepository;
 import com.WeGather.WeGather.repositories.RaisedWorkProjectRepository;
 import com.WeGather.WeGather.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,9 @@ public class RaisedWorkProjectController {
     @Autowired
     CharityWorkContributorsRepository charityWorkContributorsRepository;
 
+    @Autowired
+    LocationRepository locationRepository;
+
     @GetMapping("/raisedWork")
     public String getRaisedWork(){
         return "raisedWorkProject.html";
@@ -45,15 +49,14 @@ public class RaisedWorkProjectController {
                                       @RequestParam(value = "image") String image,
                                       @RequestParam(value = "topic") String topic,
                                       @RequestParam(value = "description") String description ,
-                                      @RequestParam(value = "raisedWork_id") String raisedWork_id,
+
                                       @RequestParam(value = "longitude") String longitude,
                                       @RequestParam(value = "latitude") String latitude,
-                                      @RequestParam(value = "locationDescription") String locationDescription,
+                                      @RequestParam(value = "locationDescription") String locationDescription
 //                                      @RequestParam(value = "governorate_id") Long governorate_id,
 //                                      @RequestParam(value = "district_id") Long district_id,
-//                                      @RequestParam(value = "suburb_id") Long suburb_id, Principal p
-                                      Principal p  )
-                                      {
+//                                      @RequestParam(value = "suburb_id") Long suburb_id
+            , Principal p){
 
 
 
@@ -64,15 +67,17 @@ public class RaisedWorkProjectController {
 
         List<String> images =new ArrayList<>();
         images.add(image);
-
+        System.out.println(images);
         Location location =new Location(longitude,latitude,locationDescription);
-
+        System.out.println("location: "+location);
         String loggedInUserName= p.getName();
+        locationRepository.save(location);
 
         Users loggedInUser = usersRepository.findByUsername(loggedInUserName);
 
+        System.out.println("logged in user " + loggedInUser);
         RaisedWorkProject raisedWorkProject =new RaisedWorkProject(startFrom,endAt,images,topic,description,location,loggedInUser);
-
+        System.out.println("raisedWorkProject "+ raisedWorkProject);
         raisedWorkProjectRepository.save(raisedWorkProject);
 
         return new RedirectView("/raisedWorkView");

@@ -11,14 +11,12 @@ public class RaisedWorkProject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long userId;
     private String startFrom;
     private String endAt;
     @ElementCollection
     private List<String> images;
     private String topic;
     private String description;
-
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "createdAt")
@@ -44,19 +42,21 @@ public class RaisedWorkProject {
     public RaisedWorkProject() {
     }
 
-    public RaisedWorkProject(Long userId, Location location_id) {
-        this.userId = userId;
-        this.location_id = location_id;
-    }
 
-    public RaisedWorkProject(Long userId, String startFrom, String endAt, List<String> images, String topic, String description, Date createdAt, Location location_id, Users users) {
-        this.userId = userId;
+
+    public RaisedWorkProject( String startFrom,
+                              String endAt,
+                              List<String> images,
+                              String topic,
+                              String description,
+                              Location location_id,
+                              Users users) {
+
         this.startFrom = startFrom;
         this.endAt = endAt;
         this.images = images;
         this.topic = topic;
         this.description = description;
-        this.createdAt = createdAt;
         this.location_id = location_id;
         this.users = users;
     }
@@ -68,13 +68,6 @@ public class RaisedWorkProject {
         return id;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
 
     public Location getLocation_id() {
         return location_id;

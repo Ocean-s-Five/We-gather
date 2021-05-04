@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
-
+.fixed-nav{
+position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    left: 0;
+    }
 
 html,body{
 background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
@@ -11,8 +17,7 @@ font-family: 'Numans', sans-serif;
 }
 
 
-.nav-bg-color{
-    background: linear-gradient(to bottom, #ffffff, #75932f);}
+
 .container-full-height{
 height: 100%;
 align-content: center;

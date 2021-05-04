@@ -12,7 +12,6 @@ public class SystemConfiguration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
     private String country;
     private String branch;
     private String region;

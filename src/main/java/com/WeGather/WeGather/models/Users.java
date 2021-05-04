@@ -16,6 +16,7 @@ class Users {
     private Long id;
     @Column(unique = true)
     private String username;
+    private String email;
     private String password;
     private String firstName;
     private String middleName;
@@ -32,7 +33,7 @@ class Users {
 //    private List<RaisedFundProject> funds;
 
 
-    public Users(String userName, String password, String firstName, String middleName, String lastName, List<String> profilePictures, Date createdAt, String authority) {
+    public Users(String userName, String password, String firstName, String middleName, String lastName, List<String> profilePictures, Date createdAt, String authority, String email ) {
 
         this.username = userName;
         this.password = password;
@@ -42,6 +43,7 @@ class Users {
         this.profilePictures = profilePictures;
         this.createdAt = createdAt;
         this.authority = authority;
+        this.email = email;
     }
 
 
@@ -139,6 +141,7 @@ class Users {
         this.authority = authority;
     }
 
+
     public
     UserContactInfo getUserContactInfo() {
         return userContactInfo;
@@ -187,5 +190,13 @@ class Users {
     public
     void setRaisedWorkProjects(Set<RaisedWorkProject> raisedWorkProjects) {
         this.raisedWorkProjects = raisedWorkProjects;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+
     }
 }

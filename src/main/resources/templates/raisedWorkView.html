@@ -1,91 +1,92 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Snippet - BBBootstrap</title>
-    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
-    <link href='' rel='stylesheet'>
-    <style>
-        .profile-head {
-            transform: translateY(5rem)
-        }
-
-        .cover {
-                    background-image: url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
-
-            background-size: cover;
-            background-repeat: no-repeat
-        }
-
-        body {
-            background: linear-gradient(to right);
-            min-height: 100vh
-        }
-    </style>
-    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script type='text/javascript'
-            src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
-    <script type='text/javascript'></script>
+    <div th:replace="fragments/bootstrapFragment :: head" th:remove="tag"></div>
+    <link th:rel="stylesheet" th:href="@{/css/raisedWorkView.css}"/>
 </head>
 
 
 <body oncontextmenu='return false' class='snippet-body'>
-<div class="row py-5 px-4">
-    <div class="col-md-5 mx-auto">
-        <!-- Profile widget -->
-        <div class="bg-white shadow rounded overflow-hidden">
-            <div class="px-4 pt-0 pb-4 cover">
-                <div class="media align-items-end profile-head">
-                    <div class="media-body mb-5 text-white">
-                        <h4 class="mt-0 mb-0">Mark Williams</h4>
-                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>New York</p>
+
+<div class="container">
+    <div th:replace="fragments/common :: navbar" th:remove="tag">
+
+    </div>
+    <div class="row">
+        <h2 class="pt-3 pb-1 col-12" th:text="${raisedWorkProject.topic}">About</h2>
+    </div>
+    <div class="row">
+
+
+        <div class="grid-container col-8">
+
+            <div class="bg-white shadow rounded overflow-hidden profile1 card">
+
+                <div class="px-4 pt-0 pb-4 cover">
+
+
+                    <img class="profile-img image-size" th:src="${raisedWorkProject.images.get(0)}" alt="">
+                    <div class="media align-items-end profile-head">
+
+                        <div class="media-body mb-5 text-white">
+                            <h4 class="mt-0 mb-0">Mark Williams</h4>
+                            <p class="small mb-4"><i class="fas fa-map-marker-alt mr-2"></i>New York</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-light p-4 d-flex justify-content-end text-center">
+                    <ul class="list-inline mb-0">
+                        <li class="row align-items-start ">
+                            <h5> Start At: <h5 class="font-weight-bold mb-0 d-block"
+                                               th:text="${raisedWorkProject.startFrom}"></h5></h5>
+                        </li>
+                        <li class="row align-items-end">
+                            <h5> End At: <h5 class="font-weight-bold mb-0 d-block"
+                                             th:text="${raisedWorkProject.endAt}"></h5>
+                            </h5>
+                        </li>
+                    </ul>
+                </div>
+                <div class="px-4 py-3">
+                    <h5 class="mb-0">About</h5>
+                    <div class="p-4 rounded shadow-sm bg-light">
+                        <p class="font-italic mb-0" th:text="${raisedWorkProject.description}"></p>
+                    </div>
+                </div>
+                <div class="py-4 px-4">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <h5 class="mb-0">Recent photos</h5><a href="#" class="btn btn-link text-muted">Show all</a>
                     </div>
                 </div>
             </div>
-            <div class="bg-light p-4 d-flex justify-content-end text-center">
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block" th:text="${raisedWorkProject.startFrom}"></h5><small class="text-muted"> <i
-                            class="fas fa-image mr-1"></i>Start From</small>
-                    </li>
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block"  th:text="${raisedWorkProject.startFrom}"></h5><small class="text-muted"> <i
-                            class="fas fa-user mr-1"></i>End at</small>
-                    </li>
-                    <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block"  th:text="${raisedWorkProject.createdAt}"></h5><small class="text-muted"> <i
-                            class="fas fa-user mr-1"></i>created At</small>
-                    </li>
-                </ul>
-            </div>
-            <div class="px-4 py-3">
-                <h5 class="mb-0" th:text="${raisedWorkProject.topic}">About</h5>
-                <div class="p-4 rounded shadow-sm bg-light">
-                    <p class="font-italic mb-0" th:text="${raisedWorkProject.description}">Web Developer</p>
-                    <p class="font-italic mb-0">Lives in New York</p>
-                    <p class="font-italic mb-0">Photographer</p>
-                </div>
-            </div>
-            <div class="py-4 px-4">
-                <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h5 class="mb-0">Recent photos</h5><a href="#" class="btn btn-link text-muted">Show all</a>
+
+        </div>
+        <div class="form-card col-4">
+
+            <div class="card card-container">
+
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+
+
+                    <form action="/addContributors" method="post">
+                        <input type="hidden" name="workedRaised_id" th:value="${raisedWorkProject.id}">
+                        <input type="hidden" name="userWorkRaiser_id" th:value="${userId}">
+                        <input type="hidden" name="status" value="1">
+                        <input type="submit" value="Contributor" class="btn   btn-success">
+                    </form>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
-<form action="/addContributors" method="post">
-
-    <input type="hidden" name="workedRaised_id" th:value="${raisedWorkProject.id}">
-    <input type="hidden" name="userWorkRaiser_id" th:value="${userId}">
-    <input type="hidden" name="status" value="1">
-    <input type="submit" value="Contributor" class="btn float-right   btn-success">
-
-</form>
-
+<div th:replace="fragments/common :: footer" th:remove="tag"></div>
 
 </body>
+<div th:replace="fragments/bootstrapFragment :: BSfragmentScript" th:remove="tag"></div>
 
 </html>

@@ -46,7 +46,7 @@ public class CharityFundContributorsController {
         return "displayContributors.html";
     }
 
-    @PostMapping("/AddContributors")
+    @PostMapping("/donate")
     public RedirectView AddContributors(@RequestParam(value = "amountPAid") String amountPAid,
                                         @RequestParam(value = "fundRaisedId") Long fundRaisedId,
                                         @RequestParam(value = "loggedInUser") Long loggedInUser,

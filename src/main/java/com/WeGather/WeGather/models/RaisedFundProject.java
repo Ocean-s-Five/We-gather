@@ -15,7 +15,7 @@ public class RaisedFundProject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String requiredAmount;
+    private Integer requiredAmount;
     private String topic;
     @Column(length = 2000000)
     private String description;
@@ -46,7 +46,7 @@ public class RaisedFundProject {
 
     }
 
-    public RaisedFundProject(String requiredAmount, String topic, String description,  String strartFrom, String endAt, List<String> images,Users users) {
+    public RaisedFundProject(Integer requiredAmount, String topic, String description,  String strartFrom, String endAt, List<String> images,Users users) {
         this.requiredAmount = requiredAmount;
         this.topic = topic;
         this.description = description;
@@ -61,11 +61,11 @@ public class RaisedFundProject {
         return id;
     }
 
-    public String getRequiredAmount() {
+    public Integer getRequiredAmount() {
         return requiredAmount;
     }
 
-    public void setRequiredAmount(String requiredAmount) {
+    public void setRequiredAmount(Integer requiredAmount) {
         this.requiredAmount = requiredAmount;
     }
 

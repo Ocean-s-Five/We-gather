@@ -13,7 +13,7 @@ public class CharityFundContributors {
     private Long id;
     private Long RaisedFundId;
     private Long userFundRaiserId;
-    private String amountPaid;
+    private Integer amountPaid;
     private String date;
     private Integer status;
 
@@ -21,7 +21,7 @@ public class CharityFundContributors {
 
     }
 
-    public CharityFundContributors(Long raisedFundId, Long userFundRaiserId, String amountPaid, String date, Integer status) {
+    public CharityFundContributors(Long raisedFundId, Long userFundRaiserId, Integer amountPaid, String date, Integer status) {
         RaisedFundId = raisedFundId;
         this.userFundRaiserId = userFundRaiserId;
         this.amountPaid = amountPaid;
@@ -57,11 +57,11 @@ public class CharityFundContributors {
         this.userFundRaiserId = userFundRaiserId;
     }
 
-    public String getAmountPaid() {
+    public Integer getAmountPaid() {
         return amountPaid;
     }
 
-    public void setAmountPaid(String amountPaid) {
+    public void setAmountPaid(Integer amountPaid) {
         this.amountPaid = amountPaid;
     }
 

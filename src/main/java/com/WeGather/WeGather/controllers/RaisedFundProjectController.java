@@ -33,7 +33,7 @@ public class RaisedFundProjectController {
 //    @GetMapping("/displayForm")
 //    public String displayRaisedFund() {
 //
-//        return "RaisedFundProject.html";
+//        return "AddRaisedFundProject.html";
 //    }
 
 //        @GetMapping("/header")
@@ -44,7 +44,7 @@ public class RaisedFundProjectController {
 
     @GetMapping("/displayForm")
     public String displayRaisedFund(Principal p, Model m){
-        return "RaisedFundProject.html";
+        return "AddRaisedFundProject.html";
     }
 
 
@@ -75,7 +75,7 @@ public class RaisedFundProjectController {
 //        Iterable<RaisedFundProject> df =rasisdFundProjectRepositorise.findAll() ;
 //        m.addAttribute("user",df);
 
-        return "fundCards.html";
+        return "ViewRaisedFund.html";
     }
 
 

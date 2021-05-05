@@ -6,11 +6,12 @@
     <link th:rel="stylesheet" th:href="@{/css/login.css}"/>
 </head>
 <body>
+
 <div class="container container-full-height">
-<div th:replace="fragments/common :: navbar" th:remove="tag"></div>
+    <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
 
 
-
+    <main>
         <div class="d-flex justify-content-center  h-100">
             <div class="login_card">
                 <div class="card-header">
@@ -51,6 +52,7 @@
         </div>
 
 </div>
+</main>
 <div th:replace="fragments/common :: footer" th:remove="tag"></div>
 </body>
 <div th:replace="fragments/bootstrapFragment :: BSfragmentScript" th:remove="tag"></div>

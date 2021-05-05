@@ -2,7 +2,10 @@
 package com.WeGather.WeGather.models;
 
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -15,7 +18,11 @@ public class RaisedFundProject {
     private String requiredAmount;
     private String topic;
     private String description;
-    private String createdDate;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "createdAt")
+    private Date createdAt;
     private String startFrom;
     private String endAt;
 
@@ -38,11 +45,11 @@ public class RaisedFundProject {
 
     }
 
-    public RaisedFundProject(String requiredAmount, String topic, String description, String createdDate, String strartFrom, String endAt, List<String> images,Users users) {
+    public RaisedFundProject(String requiredAmount, String topic, String description,  String strartFrom, String endAt, List<String> images,Users users) {
         this.requiredAmount = requiredAmount;
         this.topic = topic;
         this.description = description;
-        this.createdDate = createdDate;
+//        this.createdDate = createdDate;
         this.startFrom = strartFrom;
         this.endAt = endAt;
         this.images = images;
@@ -76,14 +83,14 @@ public class RaisedFundProject {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public String getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
-    }
+//
+//    public String getCreatedDate() {
+//        return createdDate;
+//    }
+//
+//    public void setCreatedDate(String createdDate) {
+//        this.createdDate = createdDate;
+//    }
 
     public String getStartFrom() {
         return startFrom;

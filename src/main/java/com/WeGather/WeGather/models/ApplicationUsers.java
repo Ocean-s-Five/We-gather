@@ -9,9 +9,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+
 public
 class ApplicationUsers implements UserDetails {
 
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
 
     Users user;
 

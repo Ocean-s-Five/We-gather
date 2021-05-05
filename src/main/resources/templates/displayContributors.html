@@ -10,8 +10,23 @@
 
 </head>
 <body>
+<h1>hello there</h1>
+<div class="container">
+    <img th:src="${user.images.get(0)}"alt="">
+    <h2>topic: <span th:text="${user.images.get(0)}"/></h2>
+    <h2>topic: <span th:text="${user.topic}"/></h2>
+    <h2>description: <span th:text="${user.description}"/></h2>
+    <h2>start From: <span th:text="${user.startFrom}"/></h2>
+    <h2>end At : <span th:text="${user.endAt}"/></h2>
 
-<form class="needs-validation" novalidate>
+<!--    <h2>end At : <span th:text="${user.id}"/></h2>-->
+<!--    <h2>end At : <span th:text="${logedUser.id}"/></h2>-->
+<!--    <h2>end At : <span th:text="${logedUser.username}"/></h2>-->
+
+
+
+</div>
+<form class="needs-validation" action="/AddContributors" method="post" novalidate>
     <div class="form-row">
         <div class="col-md-4 mb-3">
             <label for="validationCustom01">Amount PAid</label>
@@ -20,6 +35,8 @@
                 Looks good!
             </div>
         </div>
+        <input type="hidden" th:value="${user.id}" name="fundRaisedId">
+        <input type="hidden" th:value="${logedUser.id}" name="logedUserId">
         <div class="col-md-4 mb-3">
             <label for="validationCustom02">Date</label>
             <input type="date" class="form-control" id="validationCustom02" name="date" required>
@@ -30,7 +47,5 @@
     </div>
     <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
-
-
 </body>
 </html>

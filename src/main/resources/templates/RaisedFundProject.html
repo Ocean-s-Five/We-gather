@@ -29,24 +29,24 @@
     </div>
 
 
-        <input type="hidden" class="form-control" aria-describedby="inputGroupPrepend" name="userId" value="1" required>
+        <input type="hidden" class="form-control" aria-describedby="inputGroupPrepend" name="userId" th:value="${#authentication.principal.id}" required>
 
 
   <div class="form-row">
     <div class="col-md-6 mb-3">
-      <label for="validationCustom03">Description</label>
+      <label for="validationCustom03"><span th:text="${#authentication.principal.id}"> id</span></label>
       <input type="text" class="form-control" id="validationCustom03" name="Description" required>
       <div class="invalid-feedback">
         Please provide a valid city.
       </div>
     </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom04">Create Date</label>
-      <input type="text" class="form-control" id="validationCustom04" name="createDate" required>
-      <div class="invalid-feedback">
-        Please provide a valid state.
-      </div>
-    </div>
+<!--    <div class="col-md-3 mb-3">-->
+<!--      <label for="validationCustom04">Create Date</label>-->
+<!--      <input type="text" class="form-control" id="validationCustom04" name="createDate" required>-->
+<!--      <div class="invalid-feedback">-->
+<!--        Please provide a valid state.-->
+<!--      </div>-->
+<!--    </div>-->
 
     <div class="col-md-3 mb-3">
       <label for="validationCustom04">Image</label>

@@ -72,12 +72,7 @@ public class RaisedFundProjectController {
         Users user =usersRepository.findByUsername(userName);
         Iterable<RaisedFundProject> df =rasisdRepositorise.findAll() ;
         m.addAttribute("user",df);
-        for ( RaisedFundProject var : df)
-        {
-            if (var.getImages().get(0)!=null){
-                System.out.println(var.getImages().get(0)+"sssssssssssssssssssssssssssssssssssssssssss");
-            }
-        }
+
         return "fundCards.html";
     }
 

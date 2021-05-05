@@ -17,6 +17,7 @@ public class RaisedFundProject {
     private Long id;
     private String requiredAmount;
     private String topic;
+    @Column(length = 2000000)
     private String description;
 
     @CreationTimestamp

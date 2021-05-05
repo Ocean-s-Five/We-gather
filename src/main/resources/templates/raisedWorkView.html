@@ -76,12 +76,11 @@
         </div>
     </div>
 </div>
-<h2 th:text="${raisedWorkProject.id}"></h2>
 <form action="/addContributors" method="post">
 
-    <input type="text" name="workedRaised_id" th:value="${raisedWorkProject.id}">
-    <input type="text" name="userWorkRaiser_id" value="1">
-    <input type="text" name="status" value="1">
+    <input type="hidden" name="workedRaised_id" th:value="${raisedWorkProject.id}">
+    <input type="hidden" name="userWorkRaiser_id" th:value="${userId}">
+    <input type="hidden" name="status" value="1">
     <input type="submit" value="Contributor" class="btn float-right   btn-success">
 
 </form>

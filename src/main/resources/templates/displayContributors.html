@@ -10,20 +10,12 @@
 
 </head>
 <body>
-<h1>hello there</h1>
 <div class="container">
     <img th:src="${raisedFund.images.get(0)}"alt="">
-    <h2>topic: <span th:text="${raisedFund.images.get(0)}"/></h2>
     <h2>topic: <span th:text="${raisedFund.topic}"/></h2>
     <h2>description: <span th:text="${raisedFund.description}"/></h2>
     <h2>start From: <span th:text="${raisedFund.startFrom}"/></h2>
     <h2>end At : <span th:text="${raisedFund.endAt}"/></h2>
-
-<!--    <h2>end At : <span th:text="${raisedFund.id}"/></h2>-->
-<!--    <h2>end At : <span th:text="${logedraisedFund.id}"/></h2>-->
-<!--    <h2>end At : <span th:text="${logedraisedFund.raisedFundname}"/></h2>-->
-
-
 
 </div>
 <form class="needs-validation" action="/AddContributors" method="post" novalidate>

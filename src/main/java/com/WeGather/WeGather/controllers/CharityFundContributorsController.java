@@ -47,7 +47,7 @@ public class CharityFundContributorsController {
     }
 
     @PostMapping("/AddContributors")
-    public RedirectView AddContributors(@RequestParam(value = "amountPAid") String amountPAid,
+    public RedirectView AddContributors(@RequestParam(value = "amountPAid") Integer amountPAid,
                                         @RequestParam(value = "fundRaisedId") Long fundRaisedId,
                                         @RequestParam(value = "loggedInUser") Long loggedInUser,
                                         @RequestParam(value = "date") String date, Integer status, Principal p) {

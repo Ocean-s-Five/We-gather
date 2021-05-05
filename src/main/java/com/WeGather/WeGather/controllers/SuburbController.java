@@ -8,4 +8,6 @@ public class SuburbController {
 
     @Autowired
     SuburbRepository suburbRepository;
+
+
 }

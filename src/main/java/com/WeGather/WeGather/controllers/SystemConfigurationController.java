@@ -19,29 +19,30 @@ public class SystemConfigurationController {
     SystemConfigurationRepository systemConfigurationRepository;
 
 
-//    @GetMapping("/system_configuration")
-//    public String systemConfiguration() {
-//
-//        return "SystemConfiguration.html";
-//    }
-//
-//    @PostMapping("/system_configuration")
-//    public RedirectView getSystemConfiguration(
-//                           @RequestParam(value = "country") String country
-//                         , @RequestParam(value = "branch") String branch
-//                         , @RequestParam(value = "region") String region
-//                         , @RequestParam(value = "defaultCurrency") String defaultCurrency
-//                         , @RequestParam(value = "defaultTimeZone") String defaultTimeZone
-//                         , @RequestParam(value = "defaultLanguage") String defaultLanguage
-//                         , @RequestParam(value = "countryCode") Long countryCode
-//                         , @RequestParam(value = "googleMapKey") Long googleMapKey
-//                         , @RequestParam(value = "phoneMassageNumbersService") List<Long> phoneMassageNumbersService,
-//                           @RequestParam(value = "mailingServiceMainEmails") Set<String> mailingServiceMainEmails) {
-//
-//        SystemConfiguration systemConfiguration = new SystemConfiguration( country,  branch,  region,  defaultCurrency,  defaultTimeZone,  defaultLanguage,  countryCode,  googleMapKey,  phoneMassageNumbersService, mailingServiceMainEmails);
-//
-//        systemConfigurationRepository.save(systemConfiguration);
-//        return new RedirectView("/system_configuration");
-//    }
+    @GetMapping("/system_configuration")
+    public String systemConfiguration() {
+
+        return "SystemConfiguration.html";
+    }
+
+    @PostMapping("/system_configuration")
+    public RedirectView getSystemConfiguration(
+                           @RequestParam(value = "country") String country
+                         , @RequestParam(value = "branch") String branch
+                         , @RequestParam(value = "region") String region
+                         , @RequestParam(value = "defaultCurrency") String defaultCurrency
+                         , @RequestParam(value = "defaultTimeZone") String defaultTimeZone
+                         , @RequestParam(value = "defaultLanguage") String defaultLanguage
+                         , @RequestParam(value = "countryCode") Long countryCode
+                         , @RequestParam(value = "googleMapKey") Long googleMapKey
+                         , @RequestParam(value = "phoneMassageNumbersService") List<Long> phoneMassageNumbersService,
+                           @RequestParam(value = "mailingServiceMainEmails") Set<String> mailingServiceMainEmails) {
+
+        SystemConfiguration systemConfiguration = new SystemConfiguration( country,  branch,  region,  defaultCurrency,  defaultTimeZone,  defaultLanguage,  countryCode,  googleMapKey,  phoneMassageNumbersService, mailingServiceMainEmails);
+
+
+        systemConfigurationRepository.save(systemConfiguration);
+        return new RedirectView("/system_configuration");
+    }
 
 }

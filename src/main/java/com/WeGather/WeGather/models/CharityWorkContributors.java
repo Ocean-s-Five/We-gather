@@ -16,8 +16,11 @@ public class CharityWorkContributors {
     private Integer availableContAmount;
     private Integer status;
 
+    public
+    CharityWorkContributors() {
+    }
 
-    public CharityWorkContributors(Long workedRaiserId, Long userWorkRaiserId, Integer availableContAmount ,Integer status) {
+    public CharityWorkContributors(Long workedRaiserId, Long userWorkRaiserId, Integer availableContAmount , Integer status) {
         this.workedRaiserId = workedRaiserId;
         this.userWorkRaiserId = userWorkRaiserId;
         this.availableContAmount = availableContAmount;

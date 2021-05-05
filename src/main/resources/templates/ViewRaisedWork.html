@@ -1,25 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--<html lang="en">-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta charset="UTF-8">
-    <title>All raised work</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <div th:replace="fragments/bootstrapFragment :: head" th:remove="tag"></div>
+    <!--    <meta charset="UTF-8">-->
+    <!--    <title>All raised work</title>-->
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>-->
+    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
 </head>
+<style>
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* .progress {
+        position: relative;
+        bottom: -109px;
+    } */
+</style>
+
 <body>
-<div class="bodyclass" th:each="post : ${user.raisedWorkProjects}">
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" th:src="${post.images}" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title"> <h3 th:text="${post.topic}"> </h3> </h5>
-            <h5 class="card-title"> <h3 th:text="${post.id}"> </h3>
-                </h5>
-                <p class="card-text"><span th:text="${post.description}"></span></p>
-                <a th:href="@{/fundContributors/} + ${post.id}" class="btn btn-primary">Go somewhere</a>
+    <div class="container fixed-nav rounded-bottom" id="fixed-nav">
+        <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
+    </div>
+    <!--        <h1>Amount:<h3 th:text="${amountArray[post.getId()-1L]}"> </h3></h1>-->
+
+    <!--    <div class="bodyclass" th:each="post : ${user}">-->
+    <!--        <div class="card" style="width: 21rem;">-->
+    <!--            <img class="card-img-top" style="height: 20rem;" th:src="${post.images[0]}" alt="Card image cap">-->
+    <!--            <div class="card-body">-->
+    <!--                <h5 class="card-title">-->
+    <!--                    <h3 th:text="${post.topic}"></h3>-->
+    <!--                </h5>-->
+    <!--                &lt;!&ndash; <h5 class="card-title"> <h3 th:text="${post.id}"> </h3> &ndash;&gt;-->
+    <!--                &lt;!&ndash; </h5> &ndash;&gt;-->
+    <!--                <p class="card-text"><span th:text="${#strings.abbreviate(post.description,200)}"></span></p>-->
+
+    <!--                <a th:href="@{/fundContributors/} + ${post.id}" class="btn btn-primary">Go somewhere</a>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!-- //////////////////////////////////////////////// -->
+    <div class="container">
+        <div class="row">
+            <div class="col-4" style="height: 700px;" th:each="post : ${user}">
+                <a th:href="@{/fundContributors/} + ${post.id}">
+                    <div class="card" style="width:100%; height:100%;">
+                        <img class="card-img-top img-size" th:src="${post.images[0]}" alt="Card image"
+                            style="width:100%; height:300px;">
+                        <h4 class="card-title" style="height: 100px;" th:text="${post.getTopic()}"></h4>
+                        <div class="card-body">
+                            <p class="card-text" th:text="${#strings.abbreviate(post.description,200)}"></p>
+                            <!--                        <div class="progress">-->
+                            <!--                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100"-->
+                            <!--                                 aria-valuemin="0" th:attr="aria-valuemax=${post.requiredContAmount}"></div>-->
+                            <!--                        </div>-->
+                            <div class="mb-3" style="position:absolute; left:9px; bottom:0px;width: 100%;">
+                                <div class="progress bottom-progress">
+                                    <div class="progress-bar" style="width:30px;"></div>
+                                    <!--                            <div class="progress-bar" th:style="'width:'+ ${amountArray[post.getId()-1L][0]/post.requiredContAmount}+'%;'}"></div>-->
+                                </div>
+                            </div>
+                            <!--                        <div class="progress">-->
+                            <!--                            <div class="progress-bar bg-success" th:style="@{| width: ${ ( amountArray[post.getId()-1L]+0.00/ (post.requiredContAmount()+0.00) ) * 100.00 }%; |}" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>-->
+                            <!--                        </div>-->
+
+                            <!-- <span th:text="${amountArray[post.getId()-1L]}"></span> -->
+
+                            <!-- 
+                        <span th:text="${amountArray[post.getId()-1L]}"></span>
+                        <span th:text="${post.requiredContAmount}"></span> -->
+
+                            <div class="mt-3">
+                                Contributed <span class="text-success"><span
+                                        th:text="${amountArray[post.getId()-1L]}"></span> out of <span
+                                        th:text="${post.requiredContAmount}"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
-</div>
+
+
 </body>
+<script>
+
+</script>
+
 </html>

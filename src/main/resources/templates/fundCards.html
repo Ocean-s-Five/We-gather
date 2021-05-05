@@ -9,9 +9,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="bodyclass" th:each="post : ${user}">
+<div class="bodyclass" th:each="post : ${user.raisedFundProject}">
 <div class="card" style="width: 18rem;">
-    <img class="card-img-top" th:src="${post.getImages().get(0)}" alt="Card image cap">
+    <img class="card-img-top" th:src="${post.getImages()}" alt="Card image cap">
     <div class="card-body">
         <h5 class="card-title"> <h3 th:text="${post.getTopic()}"> </h3></h5>
             <h5 class="card-title"> <h3 th:text="${post.getId()}"> </h3>

@@ -1,7 +1,6 @@
 package com.WeGather.WeGather.controllers;
 
 import com.WeGather.WeGather.models.CharityFundContributors;
-import com.WeGather.WeGather.models.RaisedFundProject;
 import com.WeGather.WeGather.models.Users;
 import com.WeGather.WeGather.repositories.CharityFundContributorsRepository;
 import com.WeGather.WeGather.repositories.RasisdFundProjectRepositorise;
@@ -22,42 +21,44 @@ import java.security.Principal;
 public class CharityFundContributorsController {
 
     @Autowired
-    RasisdFundProjectRepositorise rasisdRepositorise;
+    RasisdFundProjectRepositorise rasisdFundProjectRepositorise;
 
     @Autowired
-    UsersRepository usersRepository ;
+    UsersRepository usersRepository;
 
     @Autowired
-    CharityFundContributorsRepository charityFundContributorsRepository ;
-
-    @GetMapping("/addfund")
-    public String addfund(){
-        return "CharityFundContributors.html";
-    }
+    CharityFundContributorsRepository charityFundContributorsRepository;
+//
+//    @GetMapping("/addfund")
+//    public String addfund(){
+//        return "CharityFundContributors.html";
+//    }
 
     @GetMapping("/displayContributors/{id}")
-    public String displayContributors(@PathVariable(value="id")Long id , Model m, Principal p){
-        String userName= ((UsernamePasswordAuthenticationToken)p).getName();
-        m.addAttribute("user",rasisdRepositorise.findById(id).get() );
+    public String displayContributors(@PathVariable(value = "id") Long id, Model m, Principal p) {
 
-        String meUser= ((UsernamePasswordAuthenticationToken)p).getName();
-        Users logedUser =usersRepository.findByUsername(meUser);
-        m.addAttribute("logedUser",logedUser );
+        m.addAttribute("raisedFund", rasisdFundProjectRepositorise.findById(id)
+                                                                  .get());
+        String user = ((UsernamePasswordAuthenticationToken) p).getName();
+        Users loggedInUser = usersRepository.findByUsername(user);
+        m.addAttribute("loggedInUser", loggedInUser);
 
         return "displayContributors.html";
     }
-    @PostMapping("/AddContributors")
-    public RedirectView AddContributors(@RequestParam(value="amountPAid") String amountPAid,
-                                        @RequestParam(value="fundRaisedId") Long fundRaisedId,
-                                        @RequestParam(value="logedUserId") Long logedUserId,
-                                        @RequestParam(value="date") String date, Integer status, Principal p){
 
-        String userName= ((UsernamePasswordAuthenticationToken)p).getName();
-        Users user =usersRepository.findByUsername(userName);
-        CharityFundContributors charityFundContributors=new CharityFundContributors( fundRaisedId, logedUserId,amountPAid, date,1);
+    @PostMapping("/AddContributors")
+    public RedirectView AddContributors(@RequestParam(value = "amountPAid") String amountPAid,
+                                        @RequestParam(value = "fundRaisedId") Long fundRaisedId,
+                                        @RequestParam(value = "loggedInUser") Long loggedInUser,
+                                        @RequestParam(value = "date") String date, Integer status, Principal p) {
+//
+//        String userName = ((UsernamePasswordAuthenticationToken) p).getName();
+//        Users user = usersRepository.findByUsername(userName);
+        CharityFundContributors charityFundContributors = new CharityFundContributors(fundRaisedId, loggedInUser, amountPAid, date, 1);
         charityFundContributorsRepository.save(charityFundContributors);
 
-return new RedirectView("/displayCards") ;  }
+        return new RedirectView("/displayCards");
+    }
 
 
 }

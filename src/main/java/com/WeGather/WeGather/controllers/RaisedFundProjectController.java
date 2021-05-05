@@ -28,7 +28,7 @@ public class RaisedFundProjectController {
     UsersRepository usersRepository;
 
     @Autowired
-    RasisdFundProjectRepositorise rasisdRepositorise;
+    RasisdFundProjectRepositorise rasisdFundProjectRepositorise;
 
 //    @GetMapping("/displayForm")
 //    public String displayRaisedFund() {
@@ -60,7 +60,7 @@ public class RaisedFundProjectController {
         String userName= ((UsernamePasswordAuthenticationToken)p).getName();
         Users user =usersRepository.findByUsername(userName);
         RaisedFundProject raisedFundProject= new RaisedFundProject( RequiredAmount,  topic,  description,   StartFrom, endAt, image,user) ;
-        rasisdRepositorise.save(raisedFundProject);
+        rasisdFundProjectRepositorise.save(raisedFundProject);
 
 
         return new RedirectView("/displayCards");
@@ -68,10 +68,12 @@ public class RaisedFundProjectController {
 
     @GetMapping("/displayCards")
     public String  displayPost(Principal p,Model m){
-        String userName= ((UsernamePasswordAuthenticationToken)p).getName();
-        Users user =usersRepository.findByUsername(userName);
-        Iterable<RaisedFundProject> df =rasisdRepositorise.findAll() ;
-        m.addAttribute("user",df);
+        String userName = ((UsernamePasswordAuthenticationToken) p).getName();
+        Users user = usersRepository.findByUsername(userName);
+        m.addAttribute("user", usersRepository.findById(user.getId())
+                                              .get());
+//        Iterable<RaisedFundProject> df =rasisdFundProjectRepositorise.findAll() ;
+//        m.addAttribute("user",df);
 
         return "fundCards.html";
     }

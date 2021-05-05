@@ -35,12 +35,12 @@ public class RaisedWorkProjectController {
     @Autowired
     LocationRepository locationRepository;
 
-    @GetMapping("/raisedWork")
+    @GetMapping(value = "/raisedWork")
     public String getRaisedWork() {
         return "raisedWorkProject.html";
     }
 
-    @PostMapping("/raisedWork")
+    @PostMapping(value = "/raisedWork")
     public RedirectView addRaisedWork(@RequestParam(value = "startFrom") String startFrom,
                                       @RequestParam(value = "endAt") String endAt,
                                       @RequestParam(value = "image") String image,
@@ -81,7 +81,7 @@ public class RaisedWorkProjectController {
     }
 
 
-    @GetMapping("/raisedWorkView")
+    @GetMapping(value = "/raisedWorkView")
     public String getAllRaisedWork(Principal p, Model m) {
         String userName = ((UsernamePasswordAuthenticationToken) p).getName();
         Users user = usersRepository.findByUsername(userName);
@@ -90,25 +90,29 @@ public class RaisedWorkProjectController {
         return "allRaisedWork.html";
     }
 
-    @GetMapping("/displayContributors/{id}")
-    public String displayRaisedWork(@PathVariable Long id, Model m) {
+    @GetMapping(value = "/fundContributors/{id}")
+    public String displayRaisedWork(@PathVariable Long id, Model m,Principal p) {
 
 
         RaisedWorkProject raisedWorkProject = raisedWorkProjectRepository.findById(id)
                                                                          .get();
         m.addAttribute("raisedWorkProject", raisedWorkProject);
+        String loggedInUserName = p.getName();
+        Users loggedInUser = usersRepository.findByUsername(loggedInUserName);
+        m.addAttribute("userId",loggedInUser.getId());
         return "raisedWorkView.html";
     }
 
 
-    @PostMapping("/addContributors")
+    @PostMapping(value = "/addContributors")
     public RedirectView addContribute(@RequestParam(value = "workedRaised_id") Long workedRaised_id,
                                       @RequestParam(value = "userWorkRaiser_id") Long userWorkRaiser_id,
-                                      @RequestParam(value = "status") Integer status) {
+                                      @RequestParam(value = "status") Integer status ) {
 
         CharityWorkContributors charityWorkContributors = new CharityWorkContributors(workedRaised_id, userWorkRaiser_id, status);
         charityWorkContributorsRepository.save(charityWorkContributors);
 
-        return new RedirectView("/allRaisedWork");
+
+        return new RedirectView("/raisedWorkView");
     }
 }

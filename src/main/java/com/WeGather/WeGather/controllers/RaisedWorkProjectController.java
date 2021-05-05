@@ -152,10 +152,10 @@ public class RaisedWorkProjectController {
     @PostMapping(value = "/addContributors")
     public RedirectView addContribute(@RequestParam(value = "workedRaised_id") Long workedRaised_id,
                                       @RequestParam(value = "userWorkRaiser_id") Long userWorkRaiser_id,
-                                      @RequestParam(value = "availableContAmount") Integer availableContAmount,
+
                                       @RequestParam(value = "status") Integer status ) {
 
-        CharityWorkContributors charityWorkContributors = new CharityWorkContributors(workedRaised_id, userWorkRaiser_id, availableContAmount, status);
+        CharityWorkContributors charityWorkContributors = new CharityWorkContributors(workedRaised_id, userWorkRaiser_id, 1, status);
         charityWorkContributorsRepository.save(charityWorkContributors);
 
 

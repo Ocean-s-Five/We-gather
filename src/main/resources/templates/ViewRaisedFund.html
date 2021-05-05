@@ -3,33 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <div th:replace="fragments/bootstrapFragment :: head" th:remove="tag"></div>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link th:rel="stylesheet" th:href="@{/css/ViewRaisedFundStyle.css}"/>
+
 </head>
 <body>
-<!--<div class="bodyclass" th:each="post : ${user}">-->
-<!--    Amount:<h3 th:text="${amountArray[post.getId()-1L]}"> </h3>-->
-<!--    time:<h3 th:text="${arraycount[post.getId()-1L]}"> </h3>-->
-<!--  requier : <h3 th:text="${post.getRequiredAmount()}"> </h3>-->
-
-<!--        <div class="card" style="width: 18rem;">-->
-<!--    <img class="card-img-top" th:src="${post.getImages().get(0)}" alt="Card image cap">-->
-<!--    <div class="card-body">-->
-<!--        <h5 class="card-title"> <h3 th:text="${post.getTopic()}"> </h3></h5>-->
-
-<!--        <h5 class="card-title"> <h3 th:text="${post.getRequiredAmount()}"> </h3>-->
-<!--        </h5>-->
-<!--        <p class="card-text"><span th:text="${post.getDescription()}"></span></p>-->
-<!--    </div>-->
-<!--</div>-->
-<!--</div>-->
+<div class="container container-full-height">
+    <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
 
 <div class="container">
     <div class="row mt-3">
-        <div class="bodyclass col"  th:each="post : ${user}">
-            <a th:href="@{/displayContributors/}+ ${post.id}">
+        <div class="bodyclass col mt-3"  th:each="post : ${user}">
+            <a class="hideLink" th:href="@{/displayContributors/}+ ${post.id}" style="text-decoration:none">
 
                 <div class="card" style="width:300PX">
                     <img class="card-img-top img-size" th:src="${post.getImages().get(0)}" alt="Card image" style="width:100%">
@@ -41,18 +30,13 @@
                             <div class="progress-bar bg-success" th:style="@{| width: ${ ( amountArray[post.getId()]/ (post.getRequiredAmount()+0.00) ) * 100.00 }%; |}" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
 
-<!--                                <div class="progress-bar" th:style="'width:'+ ${post.getRequiredAmount()/amountArray[post.getId()]}+'%'}"></div>-->
-<!--                        <div class="progress-bar" th:style="'width:'+ ${post.getRequiredAmount()/amountArray[post.getId()]}"></div>-->
-
-
                     </div>
-                        <div class="mt-3">
-                            <b>Raised<span th:text="${amountArray[post.getId()]}" class="text-success"></span> $ out of <span th:text="${post.getRequiredAmount()}"></span>$ </b>
+                        <div class="Raised mb-3">
+                            <b>Raised <span th:text="${amountArray[post.getId()]}" class="text-success"></span>$ out of <span th:text="${post.getRequiredAmount()}"></span>$ </b>
                         </div>
                     </div>
-<!--                    <a th:href="@{/displayContributors/} + ${post.id}" class="btn btn-primary">Go Fund</a>-->
-
                 </div>
+
             </a>
         </div>
     </div>

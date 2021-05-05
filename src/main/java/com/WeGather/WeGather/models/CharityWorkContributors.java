@@ -13,13 +13,14 @@ public class CharityWorkContributors {
     private Long id;
     private Long workedRaiserId;
     private Long userWorkRaiserId;
+    private Integer availableContAmount;
     private Integer status;
 
 
-    public CharityWorkContributors(Long workedRaiserId, Long userWorkRaiserId, Integer status) {
+    public CharityWorkContributors(Long workedRaiserId, Long userWorkRaiserId, Integer availableContAmount ,Integer status) {
         this.workedRaiserId = workedRaiserId;
         this.userWorkRaiserId = userWorkRaiserId;
-
+        this.availableContAmount = availableContAmount;
         this.status = status;
 
     }
@@ -52,4 +53,11 @@ public class CharityWorkContributors {
         this.userWorkRaiserId = userWorkRaiserId;
     }
 
+    public Integer getAvailableContAmount() {
+        return availableContAmount;
+    }
+
+    public void setAvailableContAmount(Integer availableContAmount) {
+        this.availableContAmount = availableContAmount;
+    }
 }

@@ -28,11 +28,7 @@ public class CharityFundContributorsController {
 
     @Autowired
     CharityFundContributorsRepository charityFundContributorsRepository;
-//
-//    @GetMapping("/addfund")
-//    public String addfund(){
-//        return "CharityFundContributors.html";
-//    }
+
 
     @GetMapping("/displayContributors/{id}")
     public String displayContributors(@PathVariable(value = "id") Long id, Model m, Principal p) {

@@ -37,7 +37,7 @@ public class RaisedWorkProjectController {
 
     @GetMapping(value = "/raisedWork")
     public String getRaisedWork() {
-        return "raisedWorkProject.html";
+        return "AddRaisedWorkProject.html";
     }
 
     @PostMapping(value = "/raisedWork")
@@ -87,7 +87,7 @@ public class RaisedWorkProjectController {
         Users user = usersRepository.findByUsername(userName);
         m.addAttribute("user", usersRepository.findById(user.getId())
                                               .get());
-        return "allRaisedWork.html";
+        return "ViewRaisedWork.html";
     }
 
     @GetMapping(value = "/fundContributors/{id}")

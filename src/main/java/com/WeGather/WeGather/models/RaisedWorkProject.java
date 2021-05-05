@@ -16,6 +16,7 @@ public class RaisedWorkProject {
     @ElementCollection
     private List<String> images;
     private String topic;
+    private Integer requiredContAmount;
 
     @Column(length = 200000)
     private String description;
@@ -50,6 +51,7 @@ public class RaisedWorkProject {
                               String endAt,
                               List<String> images,
                               String topic,
+                              Integer requiredContAmount,
                               String description,
                               Location location_id,
                               Users users) {
@@ -58,6 +60,7 @@ public class RaisedWorkProject {
         this.endAt = endAt;
         this.images = images;
         this.topic = topic;
+        this.requiredContAmount = requiredContAmount;
         this.description = description;
         this.location_id = location_id;
         this.users = users;
@@ -135,6 +138,14 @@ public class RaisedWorkProject {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getRequiredContAmount() {
+        return requiredContAmount;
+    }
+
+    public void setRequiredContAmount(Integer requiredContAmount) {
+        this.requiredContAmount = requiredContAmount;
     }
 
     public Date getCreatedAt() {

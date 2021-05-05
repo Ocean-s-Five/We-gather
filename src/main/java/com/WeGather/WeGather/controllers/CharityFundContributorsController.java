@@ -1,3 +1,4 @@
+
 package com.WeGather.WeGather.controllers;
 
 import com.WeGather.WeGather.models.CharityFundContributors;
@@ -29,7 +30,6 @@ public class CharityFundContributorsController {
     @Autowired
     CharityFundContributorsRepository charityFundContributorsRepository;
 
-
     @GetMapping("/displayContributors/{id}")
     public String displayContributors(@PathVariable(value = "id") Long id, Model m, Principal p) {
 
@@ -42,14 +42,13 @@ public class CharityFundContributorsController {
         return "displayContributors.html";
     }
 
-    @PostMapping("/AddContributors")
+
+    @PostMapping("/donate")
     public RedirectView AddContributors(@RequestParam(value = "amountPAid") Integer amountPAid,
+
                                         @RequestParam(value = "fundRaisedId") Long fundRaisedId,
                                         @RequestParam(value = "loggedInUser") Long loggedInUser,
                                         @RequestParam(value = "date") String date, Integer status, Principal p) {
-//
-//        String userName = ((UsernamePasswordAuthenticationToken) p).getName();
-//        Users user = usersRepository.findByUsername(userName);
         CharityFundContributors charityFundContributors = new CharityFundContributors(fundRaisedId, loggedInUser, amountPAid, date, 1);
         charityFundContributorsRepository.save(charityFundContributors);
 
@@ -58,3 +57,4 @@ public class CharityFundContributorsController {
 
 
 }
+

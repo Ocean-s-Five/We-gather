@@ -1,45 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <div th:replace="fragments/bootstrapFragment :: head" th:remove="tag"></div>
+  <link th:rel="stylesheet" th:href="@{/css/addfund.css}"/>
 
 </head>
 <body>
 
-<form class="needs-validation" action="/AddRaise" method="post" novalidate>
-  <div class="form-row">
-    <div class="col-md-4 mb-3">
-      <label for="validationCustom01">Required Amount</label>
-      <input type="number" class="form-control" id="validationCustom01" name="RequiredAmount"   required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationCustom02">topic</label>
-      <input type="text" class="form-control" id="validationCustom02" name="topic"   required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
+<div class="container">
+  <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
+  <div class=" row ">
+    <div class=" d-flex justify-content-center col-md-12">
+      <h1 class="text-white">Raise New Fund </h1>
     </div>
 
+  </div>
+  <div class=" d-flex justify-content-center  row p-3">
 
-        <input type="hidden" class="form-control" aria-describedby="inputGroupPrepend" name="userId" th:value="${#authentication.principal.id}" required>
-
-
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationCustom03"><span th:text="${#authentication.principal.id}"> id</span></label>
-      <input type="text" class="form-control" id="validationCustom03" name="Description" required>
-      <div class="invalid-feedback">
-        Please provide a valid city.
-      </div>
+<form  action="/AddRaise" method="post" >
+  <div class="row">
+    <div class="col-md-6">
+      <label for="validationCustom01">Required Amount:</label>
+      <input type="number" class="form-control" id="validationCustom01" name="RequiredAmount" required>
     </div>
+
 
 
     <div class="col-md-3 mb-3">
@@ -47,40 +30,55 @@
       <input type="text" class="form-control" name="image"  required>
       <div class="invalid-feedback">
         Please provide a valid image.
+
       </div>
     </div>
-
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom05">Start From</label>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label for="validationCustom05">Start From:</label>
       <input type="date" class="form-control" id="validationCustom05" name="StartFrom" required>
-      <div class="invalid-feedback">
-        Please provide a valid zip.
-      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="validationCustom05">End At:</label>
+      <input type="date" class="form-control" id="validationCustomUsername" name="EndAt" required>
+    </div>
+  </div>
+    <input type="hidden" class="form-control" aria-describedby="inputGroupPrepend" name="userId" th:value="${#authentication.principal.id}" required>
+
+  <div class="row">
+    <div class="col-md-12">
+      <label for="validationCustom04">Image:</label>
+      <input type="file" class="form-control" id="validationCustom04" name="image"  required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label for="validationCustom03"> Description:</label>
+      <textarea   class="form-control" id="validationCustom03" name="Description" required>
+      </textarea>
     </div>
   </div>
 
-  <div class="col-md-3 mb-3">
-    <label for="validationCustom05">EndAt</label>
-    <input type="date" class="form-control" id="validationCustomUsername" name="EndAt" required>
-    <div class="invalid-feedback">
-      Please provide a valid EndAt.
-    </div>
-  </div>
-  </div>
+
+  <br>
   <div class="form-group">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
       <label class="form-check-label" for="invalidCheck">
         Agree to terms and conditions
       </label>
-      <div class="invalid-feedback">
-        You must agree before submitting.
-      </div>
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
+  </div>
+</div>
 
+<div th:replace="fragments/common :: footer" th:remove="tag"></div>
 
 </body>
+<div th:replace="fragments/bootstrapFragment :: BSfragmentScript" th:remove="tag"></div>
+
 </html>

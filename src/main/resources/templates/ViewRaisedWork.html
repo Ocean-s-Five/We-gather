@@ -11,7 +11,7 @@
 <body>
 <div class="bodyclass" th:each="post : ${user.raisedWorkProjects}">
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" th:src="${post.images}" alt="Card image cap">
+        <img class="card-img-top" th:src="${post.images.get(0)}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title"> <h3 th:text="${post.topic}"> </h3> </h5>
             <h5 class="card-title"> <h3 th:text="${post.id}"> </h3>

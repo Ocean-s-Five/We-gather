@@ -16,6 +16,8 @@ public class RaisedWorkProject {
     @ElementCollection
     private List<String> images;
     private String topic;
+
+    @Column(length = 200000)
     private String description;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

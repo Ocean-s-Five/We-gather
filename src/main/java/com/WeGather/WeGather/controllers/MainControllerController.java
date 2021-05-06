@@ -106,11 +106,7 @@ class MainControllerController {
         return new RedirectView("/");
     }
 
-    @GetMapping("/profile")
-    public String profile() {
 
-        return "profile.html";
-    }
 
     @GetMapping("/navbar")
     public String navbar() {

@@ -11,7 +11,6 @@ public class UserContactInfo {
     private Long id;
     private String phoneNumber;
     private String address;
-    private String email;
     private String governorate;
     private String district;
     private String suburb;
@@ -29,17 +28,13 @@ public class UserContactInfo {
     public UserContactInfo() {
     }
 
-    public UserContactInfo(String phoneNumber, String address, String email, String governorate, String district, String suburb) {
+    public UserContactInfo(String phoneNumber, String address,  String governorate, String district, String suburb) {
         this.phoneNumber = phoneNumber;
         this.address = address;
-        this.email = email;
         this.governorate = governorate;
         this.district = district;
         this.suburb = suburb;
     }
-
-
-
 
 
 
@@ -66,14 +61,6 @@ public class UserContactInfo {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getGovernorate() {
@@ -115,7 +102,6 @@ public class UserContactInfo {
                 "id=" + id +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
                 ", governorate='" + governorate + '\'' +
                 ", district='" + district + '\'' +
                 ", suburb='" + suburb + '\'' +

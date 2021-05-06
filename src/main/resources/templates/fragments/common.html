@@ -5,48 +5,54 @@
 <body>
 
 <div th:fragment="navbar">
-    <nav class="navbar navbar-expand-md" >
+
+    <nav class="navbar navbar-expand-md "  >
+
         <a href="#" class="navbar-brand">
             <img src="images/logo.png"  class="rounded-sm"  height="60" width="110" alt="We Gather">
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <i class="fas fa-bars  text-white"></i>
+            <i class="fas fa-bars  text-success"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
-                <a href="/" class="nav-item nav-link  text-white ">Home</a>
-                <li class="nav-item dropdown " sec:authorize="isAuthenticated()" >
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Raised Project
+                <a href="/" class="nav-item nav-link  text-success ">Home</a>
+
+
+                <li class="nav-item dropdown "  >
+                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdownRaisedFund" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Raised Fund
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/raisedWork">Raised Work</a>
-                        <a class="dropdown-item" href="/displayForm">Raised Funds</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownRaisedFund">
+                        <a class="dropdown-item" href="/displayCards">View Raised Fund</a>
+                        <a class="dropdown-item" sec:authorize="isAuthenticated()" href="/displayForm">Raise New Fund</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                        Contributors
+
+                <li class="nav-item dropdown " >
+                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdownRaisedWork" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Raised Work
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/displayContributors/{id}">Display your Contributors</a>
-                        <a class="dropdown-item" href="/AddContributors">Add Contributors</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownRaisedWork">
+                        <a class="dropdown-item" href="/raisedWorkView">View Raised Work</a>
+                        <a class="dropdown-item"  sec:authorize="isAuthenticated()" href="/raisedWork">Raise New Work</a>
                     </div>
                 </li>
 
                 <!--                <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>-->
             </div>
+
             <div class="navbar-nav ml-auto">
 
-                <a href="/login" class="nav-item nav-link text-white  "  sec:authorize="!isAuthenticated()">Login</a>
-                <a href="/signup" class="nav-item nav-link text-white  " sec:authorize="!isAuthenticated()">SignUp</a>
+                <a href="/login" class="nav-item nav-link text-success  "  sec:authorize="!isAuthenticated()">Login</a>
+                <a href="/signup" class="nav-item nav-link text-success  " sec:authorize="!isAuthenticated()">SignUp</a>
 
                 <div class="collapse navbar-collapse" id="navbar-list-4"  sec:authorize="isAuthenticated()">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
+                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="20" height="20" class="rounded-circle">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="/profile">Profile</a>
@@ -68,55 +74,55 @@
 </div>
 
 <div th:fragment="footer">
-<footer class="footer-bs p-5 mt-5 bg-light">
-    <div class="row">
-        <div class="col-md-3 footer-brand animated fadeInLeft">
-            <h2>We Gather</h2>
-            <p>This website was created to help poor people by collecting donations from users and getting them to those in need.</p>
-            <p>© 2021 We Gather project </p>
-        </div>
-        <div class="col-md-4 footer-nav animated fadeInUp ">
-            <h4>Menu </h4>
-            <div class="col-md-6">
-                <ul class="pages">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Raise Charity</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <!-- <li><a href="#">Science</a></li> -->
-                    <!-- <li><a href="#">Advice</a></li> -->
+    <footer class="footer-bs p-5 mt-5 bg-light">
+        <div class="row">
+            <div class="col-md-3 footer-brand animated fadeInLeft">
+                <h2>We Gather</h2>
+                <p>This website was created to help poor people by collecting donations from users and getting them to those in need.</p>
+                <p>© 2021 We Gather project </p>
+            </div>
+            <div class="col-md-4 footer-nav animated fadeInUp ">
+                <h4>Menu </h4>
+                <div class="col-md-6">
+                    <ul class="pages">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Raise Charity</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <!-- <li><a href="#">Science</a></li> -->
+                        <!-- <li><a href="#">Advice</a></li> -->
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contacts</a></li>
+                        <li><a href="#">Terms & Condition</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 footer-social animated fadeInDown">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
                 </ul>
             </div>
-            <div class="col-md-6">
-                <ul class="list">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contacts</a></li>
-                    <li><a href="#">Terms & Condition</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-2 footer-social animated fadeInDown">
-            <h4>Follow Us</h4>
-            <ul>
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Instagram</a></li>
-            </ul>
-        </div>
-        <div class="col-md-3 footer-ns animated fadeInRight">
-            <h4>Newsletter</h4>
-            <p>A rover wearing a fuzzy suit doesn’t alarm the real penguins</p>
-            <p>
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
+            <div class="col-md-3 footer-ns animated fadeInRight">
+                <h4>Newsletter</h4>
+                <p>A rover wearing a fuzzy suit doesn’t alarm the real penguins</p>
+                <p>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
                         <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
                       </span>
-            </div><!-- /input-group -->
-            </p>
+                </div><!-- /input-group -->
+                </p>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </div>
 </div>
 </body>

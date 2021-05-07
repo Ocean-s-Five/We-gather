@@ -23,7 +23,7 @@
             <div class="mx-auto" style="width: 140px;" >
                                         <div class="d-flex justify-content-center align-items-center rounded"
                                              style="height: 140px; background-color: rgb(233, 236, 239);">
-                                            <img th:src="${user.profilePictures}" class="rounded-circle">
+                                            <img th:src="${user.profilePictures.get(0)}" class="rounded-circle">
                                         </div>
                                     </div>
                             <div class="row">

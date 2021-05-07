@@ -10,6 +10,8 @@ import com.WeGather.WeGather.repositories.RaisedWorkProjectRepository;
 import com.WeGather.WeGather.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -118,14 +120,16 @@ public class RaisedWorkProjectController {
 
     @GetMapping(value = "/fundContributors/{id}")
     public String displayRaisedWork(@PathVariable Long id, Model m,Principal p) {
-
-
+        Object principal = SecurityContextHolder.getContext(). getAuthentication(). getPrincipal();
         RaisedWorkProject raisedWorkProject = raisedWorkProjectRepository.findById(id)
                                                                          .get();
         m.addAttribute("raisedWorkProject", raisedWorkProject);
-        String loggedInUserName = p.getName();
-        Users loggedInUser = usersRepository.findByUsername(loggedInUserName);
-        m.addAttribute("userId",loggedInUser.getId());
+
+        if(principal instanceof UserDetails) {
+            String loggedInUserName = p.getName();
+            Users loggedInUser = usersRepository.findByUsername(loggedInUserName);
+            m.addAttribute("userId", loggedInUser.getId());
+        }
         return "raisedWorkView.html";
     }
 //    @GetMapping("/displayCards")

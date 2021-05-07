@@ -7,6 +7,7 @@ import com.WeGather.WeGather.models.Users;
 import com.WeGather.WeGather.repositories.CharityFundContributorsRepository;
 import com.WeGather.WeGather.repositories.RasisdFundProjectRepositorise;
 import com.WeGather.WeGather.repositories.UsersRepository;
+import com.WeGather.WeGather.services.UploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
@@ -36,6 +38,8 @@ public class RaisedFundProjectController {
     @Autowired
     CharityFundContributorsRepository charityRepository ;
 
+    @Autowired
+    UploadFileService uploadFileService;
 //    @GetMapping("/displayForm")
 //    public String displayRaisedFund() {
 //
@@ -48,7 +52,7 @@ public class RaisedFundProjectController {
 //        return "footer.html";
 //    }
 
-    @GetMapping("/displayForm")
+    @GetMapping("/AddRaise")
     public String displayRaisedFund(Principal p, Model m){
         return "AddRaisedFundProject.html";
     }
@@ -59,19 +63,27 @@ public class RaisedFundProjectController {
                            @RequestParam(value = "RequiredAmount") Integer RequiredAmount,
                            @RequestParam(value = "topic") String topic,
                            @RequestParam(value = "Description") String description,
-                           @RequestParam(value = "image") List image,
+                           @RequestParam(value = "image") MultipartFile image,
                            @RequestParam(value = "StartFrom") String StartFrom,
                            @RequestParam(value = "EndAt") String endAt,Principal p) {
 
+        List<String> images=new ArrayList();
+        String fileName=uploadFileService.uploadFile(image);
+
+        if (fileName!=null) {
+            images.add(fileName);
+        }else{
+            images.add("default.jpg");
+        }
         String userName= ((UsernamePasswordAuthenticationToken)p).getName();
         Users user =usersRepository.findByUsername(userName);
-        RaisedFundProject raisedFundProject= new RaisedFundProject( RequiredAmount,  topic,  description,   StartFrom, endAt, image,user) ;
+        RaisedFundProject raisedFundProject= new RaisedFundProject( RequiredAmount,  topic,  description,   StartFrom, endAt, images,user) ;
         rasisdFundProjectRepositorise.save(raisedFundProject);
 
-        return new RedirectView("/displayCards");
+        return new RedirectView("/viewRaisedFund");
     }
 
-    @GetMapping("/displayCards")
+    @GetMapping("/viewRaisedFund")
     public String  displayPost(Principal p,Model m){
         Iterable<RaisedFundProject> df =rasisdFundProjectRepositorise.findAll() ;
         m.addAttribute("user",df);

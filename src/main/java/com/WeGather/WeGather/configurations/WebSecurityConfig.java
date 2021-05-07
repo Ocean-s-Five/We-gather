@@ -40,9 +40,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                     .cors().disable()
                     .csrf().disable()
                     .authorizeRequests()
-                    .antMatchers("/").permitAll()
+                    .antMatchers("/","/raisedWorkView","/viewRaisedFund","/RaisedFundDetail/**").permitAll()
                     .antMatchers("/signup").permitAll()
                     .antMatchers("/login").permitAll()
+
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
@@ -63,6 +64,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         public void configure(WebSecurity web) throws Exception {
             web
                     .ignoring()
-                    .antMatchers("/resources/**", "/static/**","/webjars/**","/css/**","/images/**","/js/**");
+                    .antMatchers("/resources/**", "/static/**","/webjars/**","/css/**","/images/**","/js/**","/users-images/**");
         }
 }

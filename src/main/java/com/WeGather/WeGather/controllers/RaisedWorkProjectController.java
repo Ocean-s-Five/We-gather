@@ -132,6 +132,9 @@ public class RaisedWorkProjectController {
         }
         return "raisedWorkView.html";
     }
+
+
+
 //    @GetMapping("/displayCards")
 //    public String  displayPost(Principal p,Model m){
 //        Iterable<RaisedFundProject> df =rasisdFundProjectRepositorise.findAll() ;

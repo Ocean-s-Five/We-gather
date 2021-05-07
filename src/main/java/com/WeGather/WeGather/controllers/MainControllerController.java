@@ -6,6 +6,7 @@ import com.WeGather.WeGather.models.User;
 //import com.WeGather.WeGather.repositories.ApplicationUsersRepository;
 import com.WeGather.WeGather.models.Users;
 import com.WeGather.WeGather.repositories.UsersRepository;
+import com.WeGather.WeGather.services.UploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -33,7 +34,8 @@ class MainControllerController {
     UsersRepository usersRepository;
     @Autowired
     PasswordEncoder passwordEncoder;
-
+    @Autowired
+    UploadFileService uploadFileService;
 //    @Autowired
 //    ApplicationUsersRepository applicationUsersRepository;
 

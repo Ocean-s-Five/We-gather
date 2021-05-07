@@ -1,9 +1,9 @@
 package com.WeGather.WeGather.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class CharityFundContributors {
@@ -14,18 +14,19 @@ public class CharityFundContributors {
     private Long RaisedFundId;
     private Long userFundRaiserId;
     private Integer amountPaid;
-    private String date;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
     private Integer status;
 
     public CharityFundContributors() {
 
     }
 
-    public CharityFundContributors(Long raisedFundId, Long userFundRaiserId, Integer amountPaid, String date, Integer status) {
+    public CharityFundContributors(Long raisedFundId, Long userFundRaiserId, Integer amountPaid, Integer status) {
         RaisedFundId = raisedFundId;
         this.userFundRaiserId = userFundRaiserId;
         this.amountPaid = amountPaid;
-        this.date = date;
         this.status = status;
     }
 
@@ -65,11 +66,11 @@ public class CharityFundContributors {
         this.amountPaid = amountPaid;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }

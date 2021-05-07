@@ -18,12 +18,12 @@ public class CommentsController {
     @Autowired
     CommentsRepository commentsRepository;
 
-    @PostMapping("/addComment")
-    public RedirectView addComment (@RequestParam(value = "body") String body, Principal p){
-        Users userDetails = (Users) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
-//        Comments newComment = new Comments(body, userDetails);
-
-    }
+//    @PostMapping("/addComment")
+//    public RedirectView addComment (@RequestParam(value = "body") String body, Principal p){
+//        Users userDetails = (Users) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
+////        Comments newComment = new Comments(body, userDetails);
+//        ret
+//    }
 
 
 }

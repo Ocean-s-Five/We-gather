@@ -15,7 +15,7 @@ import java.nio.file.StandardCopyOption;
 public
 class UploadFileService {
 
-        @Value("users-images")
+        @Value("./src/main/resources/users-images")
         public String uploadDir;
 
         public String uploadFile(MultipartFile file) {
@@ -28,9 +28,6 @@ class UploadFileService {
                     Files.createDirectories(copyLocation);
                 }
 
-                System.out.println("StringUtils.cleanPath(file.getOriginalFilename()) "+StringUtils.cleanPath(file.getOriginalFilename()));
-                System.out.println("copyLocation.toUri() "+copyLocation.toUri());
-
                 Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
 //
             } catch (Exception e) {
@@ -42,5 +39,6 @@ class UploadFileService {
 
             return StringUtils.cleanPath(file.getOriginalFilename());
         }
+
 
 }

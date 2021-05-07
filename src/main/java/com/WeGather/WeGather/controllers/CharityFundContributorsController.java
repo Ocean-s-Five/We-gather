@@ -62,7 +62,7 @@ public class CharityFundContributorsController {
         CharityFundContributors charityFundContributors = new CharityFundContributors(fundRaisedId, loggedInUser, amountPAid, 1);
         charityFundContributorsRepository.save(charityFundContributors);
 
-        return new RedirectView("/RaisedFundDetail"+fundRaisedId);
+        return new RedirectView("/RaisedFundDetail/"+fundRaisedId);
     }
 
 

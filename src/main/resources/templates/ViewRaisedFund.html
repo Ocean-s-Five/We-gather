@@ -22,12 +22,13 @@
             <a class="hideLink" th:href="@{/RaisedFundDetail/}+ ${post.id}" style="text-decoration:none">
 
                 <div class="card w-100 h-100 " >
-<!--                    <div th:if="${post.getImages().get(0)}">-->
-<!--                             <img class="card-img-top img-size" th:src="@{|${post.getImages().get(0)}|}" alt="Card image" style="width:100%">-->
-<!--                    </div>-->
-                    <div >
-                        <img class="card-img-top img-size" th:src="@{images/default.jpg}" alt="Card image" style="width:100%">
+
+                    <div th:if="${post.getImages().get(0)}">
+                             <img class="card-img-top img-size" th:src="@{|users-images/${post.getImages().get(0)}|}" alt="Card image" style="width:100%">
                     </div>
+<!--                    <div >-->
+<!--                        <img class="card-img-top img-size" th:src="@{images/default.jpg}" alt="Card image" style="width:100%">-->
+<!--                    </div>-->
                     <div class="card-body">
                         <h4 class="card-title text-success" th:text="${post.getTopic()}"></h4>
                         <p class="card-text" th:text="${#strings.abbreviate(post.getDescription(),100)}"></p>
@@ -37,7 +38,7 @@
                         </div>
 
                         <div class="Raised mt-3 ">
-                            <b> <span th:text="${amountArray[post.getId()]}" class="text-success"></span><span class="text-success">$</span> Raised out of <span th:text="${post.getRequiredAmount()}"></span> <span class="text-success">$</span>  </b>
+                            <b> <span th:text="${amountArray[post.getId()]}" class="text-success"></span><span class="text-success">$</span> Raised out of <span class="text-success" th:text="@{|${post.getRequiredAmount()}$|}"></span></b>
                         </div>
                     </div>
 

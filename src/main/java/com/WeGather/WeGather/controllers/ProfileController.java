@@ -34,7 +34,7 @@ public class ProfileController {
         m.addAttribute("user", usersRepository.findById(user.getId())
                 .get());
 //        Optional<UserContactInfo> userContact =userContactInfoRepository.findById(user.getId());
-
+//
 //        m.addAttribute("contact",userContact.get());
 
 
@@ -43,21 +43,19 @@ public class ProfileController {
 
 
     @PutMapping("/profile")
-    public RedirectView editProfile(@RequestParam String userName,
-                                        @RequestParam String firstName,
-                                        @RequestParam String middleName,
-                                        @RequestParam String lastName,
-                                        @RequestParam String email,
-                                         @RequestParam String nationalNumber,
-                                         @RequestParam String nationalCardNumber,
-                                         @RequestParam String passportNumber,
-                                         @RequestParam String nameWrittenInPassport,
+    public RedirectView editProfile( @RequestParam (value ="firstName")String firstName,
+                                        @RequestParam (value ="middleName")String middleName,
+                                        @RequestParam (value ="lastName")String lastName,
+                                        @RequestParam (value ="email")String email,
+                                         @RequestParam (value ="nationalNumber")String nationalNumber,
+                                         @RequestParam (value ="nationalCardNumber") String nationalCardNumber,
+                                         @RequestParam (value ="passportNumber") String passportNumber,
+                                         @RequestParam (value ="nameWrittenInPassport") String nameWrittenInPassport,
                                     Principal p){
 
         String loggedInUserName = p.getName();
         User user = (User) usersRepository.findByUsername(loggedInUserName);
-
-        user.setUserName(userName);
+        System.out.println(user);
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setMiddleName(middleName);

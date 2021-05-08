@@ -23,7 +23,7 @@
             <div class="mx-auto" style="width: 140px;" >
                                         <div class="d-flex justify-content-center align-items-center rounded"
                                              style="height: 140px; background-color: rgb(233, 236, 239);">
-                                            <img th:src="${user.profilePictures}" class="rounded-circle">
+                                            <img th:src="${user.profilePictures.get(0)}" class="rounded-circle">
                                         </div>
                                     </div>
                             <div class="row">
@@ -79,14 +79,7 @@
 
                                     </div>
                                     <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label>User Name</label>
-                                                <input class="form-control" type="text"
-                                                       name="userName"
-                                                       th:value="${user.userName}">
-                                            </div>
-                                        </div>
+
 
                                         <div class="col">
                                             <div class="form-group">

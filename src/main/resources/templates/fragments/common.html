@@ -18,11 +18,11 @@
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
-                <a href="/" class="nav-item nav-link  text-success ">Home</a>
+                <a href="/" class="nav-item nav-link nav-items-text-props  ">Home</a>
 
 
-                <li class="nav-item dropdown "  >
-                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdownRaisedFund" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item dropdown nav-items-text-props"  >
+                    <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownRaisedFund" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Raised Fund
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownRaisedFund">
@@ -31,13 +31,13 @@
                     </div>
                 </li>
 
-                <li class="nav-item dropdown " >
-                    <a class="nav-link dropdown-toggle text-success" href="#" id="navbarDropdownRaisedWork" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <li class="nav-item dropdown nav-items-text-props " >
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRaisedWork" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Raised Work
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownRaisedWork">
-                        <a class="dropdown-item" href="/raisedWorkView">View Raised Work</a>
-                        <a class="dropdown-item"  sec:authorize="isAuthenticated()" href="/raisedWork">Raise New Work</a>
+                        <a class="dropdown-item" href="/viewRaisedWork">View Raised Work</a>
+                        <a class="dropdown-item"  sec:authorize="isAuthenticated()" href="/AddWork">Raise New Work</a>
                     </div>
                 </li>
 
@@ -46,8 +46,8 @@
 
             <div class="navbar-nav ml-auto">
 
-                <a href="/login" class="nav-item nav-link text-success  "  sec:authorize="!isAuthenticated()">Login</a>
-                <a href="/signup" class="nav-item nav-link text-success  " sec:authorize="!isAuthenticated()">SignUp</a>
+                <a href="/login" class="nav-item nav-link  nav-items-text-props "  sec:authorize="!isAuthenticated()">Login</a>
+                <a href="/signup" class="nav-item nav-link  nav-items-text-props " sec:authorize="!isAuthenticated()">SignUp</a>
 
                 <div class="collapse navbar-collapse" id="navbar-list-4"  sec:authorize="isAuthenticated()">
                     <ul class="navbar-nav">
@@ -57,7 +57,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="UserDropdownMenuLink">
                                 <a class="dropdown-item" href="/profile">Profile</a>
-                                <a class="dropdown-item" href="/contact_info">Contact Info</a>
+                                <a class="dropdown-item" href="/yourContributions">your Contributions</a>
                                 <a class="dropdown-item" href="/logout">Log Out</a>
                             </div>
                         </li>

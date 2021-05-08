@@ -25,30 +25,30 @@
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="px-4 pt-0 pb-4 cover">
-                            <!--                    <img class="profile-img image-size" th:src="${raisedFund.images.get(0)}" alt="">-->
-                            <img class="profile-img image-size" th:src="@{/images/default.jpg}" alt="">
+                            <img class="card-img-top img-size" th:src="@{|/users-images/${raisedFund.getImages().get(0)}|}" alt="Card image" style="width:100%">
+
                         </div>
                     </div>
                 </div>
 
-                <div class="row ">
-                    <div class="col-md-12 border border-left-0 border-right-0  p-2">
-                        <span>profile</span>
-                        <span class="text-secondary"> anas is organizing this fundraiser</span>
+                <div class="row p-2">
+                    <div class="col-md-12 border border-left-0 border-right-0 p-2 ">
+                        <span class=" ">profile    <span class="text-secondary"> anas is organizing this fundraiser</span> </span>
+
                     </div>
                 </div>
 
-                <div class="row pt-2 ">
+                <div class="row p-2 ">
                     <div class="col-md-12 border border-left-0 border-right-0 border-top-0  p-2">
 
-                        <p class="text-default">Created At: <i class="font-italic font-weight-lighter">2007-8-9 </i></p>
-                        <p class="text-default">Ends At: <i class="font-italic font-weight-lighter">2007-8-9 </i></p>
+                        <p class="text-default">Created At: <i class="font-italic font-weight-lighter" th:text="${raisedFund.startFrom}"> </i></p>
+                        <p class="text-default">Ends At: <i class="font-italic font-weight-lighter" th:text="${raisedFund.endAt}"> </i></p>
 
 
                     </div>
                 </div>
 
-                <div class="row ">
+                <div class="row p-2 ">
                     <div class="col-md-12 border border-left-0 border-right-0 border-top-0 p-2">
                         <p class="font-italic mb-0" th:text="${raisedFund.description}"></p>
                     </div>
@@ -128,7 +128,7 @@
 
                                             <!--                                        ------------------------------------------->
                                             <div class="row">
-                                                <div class="col-lg-6 mx-auto">
+                                                <div class="col-md-12 mx-auto">
                                                     <div class="card ">
                                                         <div class="card-header">
                                                             <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
@@ -287,7 +287,6 @@
                                             <input type="text" class="form-control" id="validationCustom01"
                                                    name="amountPAid" required>
 
-
                                             <input type="hidden" th:value="${raisedFund.id}" name="fundRaisedId">
                                             <input type="hidden" sec:authorize="isAuthenticated()"
                                                    th:value="${loggedInUser.id}" name="loggedInUser">
@@ -303,16 +302,21 @@
                                     </form>
 
                                 </div>
+
                             </div>
+
+
                         </div>
 
 
 
-
-                        
                     </div>
 
+                    <div th:each="alldata:${findAllData}">
+                        <img src="https://cdn.iconscout.com/icon/free/png-256/user-1648810-1401302.png" width=10% alt="">
 
+                        <p th:text="${alldata.donorName +' Has donated with '+ alldata.amountPaid+'$'}"></p>
+                    </div>
                 </div>
 
 
@@ -321,6 +325,7 @@
         </div>
 
     </div>
+
 </div>
 
 
@@ -329,28 +334,34 @@
         <div class="col-md-8">
             <div class="d-flex flex-column comment-section">
                 <div class="bg-white p-2">
-                    <div class="d-flex flex-row user-info"><img class="rounded-circle"
-                                                                src="https://i.imgur.com/RpzrMR2.jpg" width="40">
-                        <div class="d-flex flex-column justify-content-start ml-2"><span
-                                class="d-block font-weight-bold name">Marry Andrews</span><span
-                                class="date text-black-50">Shared publicly - Jan 2020</span></div>
+                    <h3> Comments</h3>
+                    <div class="border border-left-0 border-right-0 p-3"  th:each="comment:${AllComment}">
+                      <div th:if="${comment.getCommentTypeId()}==2">
+                        <div class="d-flex flex-row user-info"><img class="rounded-circle"
+                                                                    src="https://i.imgur.com/RpzrMR2.jpg" width="40">
+                            <div class="d-flex flex-column justify-content-start ml-2"><span
+                                    class="d-block font-weight-bold name" th:text="${comment.getCommenterName()}"  ></span><span
+                                    class="date text-black-50"  th:text="${comment.getTimeStamp()}"></span></div>
+                        </div>
+
+                        <p class="p-2" th:text="${comment.body}"></p>
                     </div>
-                    <div class="mt-2">
-                        <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                </div>
-                <div class="bg-light p-2">
-                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
-                                                                        src="https://i.imgur.com/RpzrMR2.jpg"
-                                                                        width="40"><textarea
-                            class="form-control ml-1 shadow-none textarea"></textarea></div>
-                    <div class="mt-2 text-right">
-                        <button class="btn btn-primary btn-sm shadow-none" type="button">Post comment</button>
-                        <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button>
                     </div>
                 </div>
+                <form  method="post" action="/addComment">
+                    <div class="bg-light p-2">
+
+                        <input class="form-control ml-1 shadow-none textarea" type="text" name="body">
+                        <input type="hidden" name="workId" th:value="${raisedFund.id}">
+
+
+                        <input type="hidden" name="status" value="2">
+                            <button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
+                            <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="submit">Cancel
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

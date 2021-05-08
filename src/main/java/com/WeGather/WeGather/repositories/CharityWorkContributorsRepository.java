@@ -17,4 +17,8 @@ public interface CharityWorkContributorsRepository extends CrudRepository<Charit
     @Query(value = "select * from charity_work_contributors",nativeQuery = true)
     public List<CharityWorkContributors> findContribute();
 
+
+    @Query(value = "select * from charity_work_contributors where user_work_raiser_id =?1 and worked_raiser_id=?2",nativeQuery = true)
+    public CharityWorkContributors findSpecificContribute(Long user_work_raiser_id, Long worked_raiser_id);
+
 }

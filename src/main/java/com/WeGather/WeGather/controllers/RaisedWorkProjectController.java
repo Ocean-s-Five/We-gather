@@ -6,8 +6,6 @@ import com.WeGather.WeGather.repositories.*;
 
 import com.WeGather.WeGather.services.UploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,8 +17,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.*;
-
-import static org.thymeleaf.util.ArrayUtils.toArray;
 
 @Controller
 public class RaisedWorkProjectController<T> {
@@ -127,18 +123,23 @@ public class RaisedWorkProjectController<T> {
                                                                          .get();
         m.addAttribute("raisedWorkProject", raisedWorkProject);
 
+        String loggedInUserName = p.getName();
+        Users loggedInUser = usersRepository.findByUsername(loggedInUserName);
         if(principal instanceof UserDetails) {
-            String loggedInUserName = p.getName();
-            Users loggedInUser = usersRepository.findByUsername(loggedInUserName);
+
             m.addAttribute("userId", loggedInUser.getId());
+            System.out.println(loggedInUser.getId().getClass().getName());
         }
 
         List<Comments> allComments =  commentsRepository.findComment(id,1L);
 
 List<CharityWorkContributors> contribute = charityWorkContributorsRepository.findContribute();
-
+        CharityWorkContributors findSpecificContribute = charityWorkContributorsRepository.findSpecificContribute(loggedInUser.getId(),id);
+        System.out.println(findSpecificContribute.getUserWorkRaiserId().getClass().getName());
+        System.out.println(findSpecificContribute);
         m.addAttribute("AllComment",allComments);
         m.addAttribute("contribute" ,contribute);
+        m.addAttribute("findContribute",findSpecificContribute);
         return "ViewRaisedWorkDetail.html";
     }
 

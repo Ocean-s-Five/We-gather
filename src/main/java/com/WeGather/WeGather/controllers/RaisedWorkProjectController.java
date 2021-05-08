@@ -2,11 +2,9 @@ package com.WeGather.WeGather.controllers;
 
 import com.WeGather.WeGather.models.*;
 
-import com.WeGather.WeGather.repositories.CharityWorkContributorsRepository;
-import com.WeGather.WeGather.repositories.LocationRepository;
-import com.WeGather.WeGather.repositories.RaisedWorkProjectRepository;
-import com.WeGather.WeGather.repositories.UsersRepository;
+import com.WeGather.WeGather.repositories.*;
 
+import com.WeGather.WeGather.services.UploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

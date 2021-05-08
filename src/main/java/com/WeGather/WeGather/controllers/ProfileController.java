@@ -34,7 +34,7 @@ public class ProfileController {
         m.addAttribute("user", usersRepository.findById(user.getId())
                 .get());
 //        Optional<UserContactInfo> userContact =userContactInfoRepository.findById(user.getId());
-
+//
 //        m.addAttribute("contact",userContact.get());
 
 

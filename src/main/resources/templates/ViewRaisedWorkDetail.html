@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="px-4 pt-0 pb-4 cover">
-                            <img class="profile-img image-size" th:src="${raisedWorkProject.images.get(0)}" alt="">
+                            <img class="profile-img image-size" th:src="@{|allImages/${raisedWorkProject.images.get(0)}|}" alt="">
                         </div>
                     </div>
                 </div>

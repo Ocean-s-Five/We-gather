@@ -21,19 +21,29 @@
                 <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Your Information</h4>
             </div>
             <div class="mx-auto" style="width: 140px;" >
-                                        <div class="d-flex justify-content-center align-items-center rounded"
-                                             style="height: 140px; background-color: rgb(233, 236, 239);">
-                                            <img th:src="${user.profilePictures.get(0)}" class="rounded-circle">
+                                        <div class="d-flex justify-content-center align-items-center rounded-circle"
+                                             style="height: 140px; background-color: rgb(233, 236, 239); ">
+                                            <img  style="height: 140px; width:140px;" th:src="@{|allImages/${user.profilePictures.get(0)}|}" class=" rounded-circle">
                                         </div>
                                     </div>
-                            <div class="row">
-                                <div class="d-flex justify-content-center col mt-3">
-                                    <button class="btn btn-primary" type="button">
+                          <form action="/profile_image?_method=PUT"  method="post" enctype="multipart/form-data">
+                            <div class="row d-flex justify-content-center ">
+                                <div class="col-md-4 mt-3">
+                                    <div class="form-group">
+                                        <label for="profilePictures">Profile Picture</label>
+                                        <input type="file" class="form-control" id="profilePictures" name="profilePictures">
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="row d-flex justify-content-center ">
+                                <div class=" col-md-4 mt-3">
+                                    <button class="btn btn-primary" type="submit">
                                         <i class="fa fa-fw fa-camera"></i>
                                         <span>Change Photo</span>
                                     </button>
                                 </div>
                             </div>
+                         </form>
         </div>
 
         <div class="row">

@@ -102,7 +102,7 @@ public class RaisedWorkProjectController<T> {
         m.addAttribute("user",allRaisedWork);
         Integer amount = 0;
         ArrayList<Integer> array=new ArrayList<>();
-
+        array.add(0);
         for (RaisedWorkProject singleRaisedWork : allRaisedWork)
         {
             Long id=singleRaisedWork.getId();

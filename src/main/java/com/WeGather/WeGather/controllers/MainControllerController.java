@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
@@ -82,13 +83,24 @@ class MainControllerController {
                                    @RequestParam(value = "lastName") String lastName,
                                    @RequestParam(value = "password") String password,
                                    @RequestParam(value = "middleName") String middleName,
-                                   @RequestParam(value = "profilePictures") String profilePictures,
+                                   @RequestParam(value = "profilePictures") MultipartFile profilePictures,
                                    @RequestParam(value = "nationalNumber") String nationalNumber,
                                    @RequestParam(value = "nationalCardNumber") String nationalCardNumber,
                                    @RequestParam(value = "passportNumber") String passportNumber,
                                    @RequestParam(value = "nameWrittenInPassport") String nameWrittenInPassport) {
-        List<String> profilepictures = new ArrayList();
-        profilepictures.add(profilePictures);
+
+
+
+        List<String> images=new ArrayList();
+        String fileName=uploadFileService.uploadFile(profilePictures);
+
+        if (fileName!=null) {
+            images.set(0,fileName);
+        }else{
+
+            images.set(0,"default.jpg");
+
+        }
 
         Date date = new Date();
         Users user = new User(username,
@@ -100,7 +112,7 @@ class MainControllerController {
                 nationalCardNumber,
                 passportNumber,
                 nameWrittenInPassport,
-                profilepictures,
+                images,
                 date,
                 null, email);
         ApplicationUsers applicationUsers = new ApplicationUsers(user);

@@ -7,9 +7,12 @@
 </head>
 <body>
 
-<div class="container container-full-height align-items-center">
-    <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
-    <main>
+<div class="container  fixed-nav "  id="fixed-nav">
+    <div th:replace="fragments/common :: navbar" th:remove="tag">
+
+    </div>
+</div>
+<div class="container mt-6">
         <div class="d-flex justify-content-center  h-100">
             <div class="login_card">
                 <div class="card-header">
@@ -48,7 +51,7 @@
                 </div>
             </div>
         </div>
-    </main>
+</div>
 </div>
 <div th:replace="fragments/common :: footer" th:remove="tag"></div>
 </body>

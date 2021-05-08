@@ -9,10 +9,15 @@ import java.util.List;
 @Repository
 public interface CharityWorkContributorsRepository extends CrudRepository<CharityWorkContributors,Long> {
     @Query(value = "select * from charity_work_contributors where worked_raiser_id=?1 ",nativeQuery = true)
+    public List<CharityWorkContributors> findByWorkRaiserId(Long id);
+
+    @Query(value = "select * from charity_work_contributors where user_work_raiser_id=?1 ",nativeQuery = true)
     public List<CharityWorkContributors> findByUserWorkRaiserId(Long id);
 
-//    @Query("select user_work_raiser_id from charity_work_contributors")
-//    public List<CharityWorkContributors> findUserWorkRaiserId;
+    @Query(value = "select * from charity_work_contributors",nativeQuery = true)
+    public List<CharityWorkContributors> findContribute();
 
 
+    @Query(value = "select user_work_raiser_id from charity_work_contributors where worked_raiser_id=?1",nativeQuery = true)
+    public List<Integer> findContributorsIds(Long id);
 }

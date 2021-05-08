@@ -10,13 +10,13 @@
 </style>
 
 <body>
+<div class="container fixed-nav "  id="fixed-nav">
+    <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
+</div>
 
-<main>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <div class="container">
-        <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
 
-        <div class="container">
+
+        <div class="container mt-6">
             <div class="col align-self-center">
                 <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Your Information</h4>
             </div>
@@ -37,7 +37,7 @@
                             </div>
                               <div class="row d-flex justify-content-center ">
                                 <div class=" col-md-4 mt-3">
-                                    <button class="btn btn-primary" type="submit">
+                                    <button class="btn btn-primary  w-100" type="submit">
                                         <i class="fa fa-fw fa-camera"></i>
                                         <span>Change Photo</span>
                                     </button>
@@ -45,7 +45,7 @@
                             </div>
                          </form>
         </div>
-
+<div class="container mt-6">
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6">
 
@@ -89,14 +89,7 @@
 
                                     </div>
                                     <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label>User Name</label>
-                                                <input class="form-control" type="text"
-                                                       name="userName"
-                                                       th:value="${user.userName}">
-                                            </div>
-                                        </div>
+
 
                                         <div class="col">
                                             <div class="form-group">
@@ -184,40 +177,40 @@
                 <div class="form-row">
                     <div class="col mb-3">
                         <label for="phoneNumber" >Phone Number</label>
-                        <input type="text" class="form-control" name="phoneNumber" id="phoneNumber">
-<!--                        th:value="${contact.getPhoneNumber()}"-->
+                        <input type="text" class="form-control" name="phoneNumber" id="phoneNumber"
+                        th:value="${contact.getPhoneNumber()}">
                     </div>
                     <div class="col mb-3">
                         <label for="address">Address:</label>
-                        <input type="text" class="form-control" name="address" id="address">
-<!--                               th:value="${contact.getAddress()}"-->
+                        <input type="text" class="form-control" name="address" id="address"
+                               th:value="${contact.getAddress()}">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col mb-3">
                         <label for="governorate" >Governorate:</label>
-                        <input type="text" class="form-control"  name="governorate" id="governorate">
-<!--                               th:value="${contact.getGovernorate()}"-->
+                        <input type="text" class="form-control"  name="governorate" id="governorate"
+                               th:value="${contact.getGovernorate()}">
                     </div>
                     <div class="col mb-3">
                         <label for="district">District:</label>
-                        <input type="text" class="form-control" name="district" id="district">
-<!--                               th:value="${contact.getDistrict()}"-->
+                        <input type="text" class="form-control" name="district" id="district"
+                               th:value="${contact.getDistrict()}">
 
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col mb-3">
                         <label for="suburb" >Suburb:</label>
-                        <input type="text" class="form-control" name="suburb" id="suburb">
-<!--                               th:value="${contact.getSuburb()}"-->
+                        <input type="text" class="form-control" name="suburb" id="suburb"
+                               th:value="${contact.getSuburb()}">
 
                     </div>
                 </div>
 
-                            <div class="form-row">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">Submit</button>
+                            <div class="row">
+                                <div class="col d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
                 </form>
@@ -246,8 +239,8 @@
 
         </div>
     </div>
+</div>
 
-</main>
 
 <div th:replace="fragments/common :: footer" th:remove="tag"></div>
 

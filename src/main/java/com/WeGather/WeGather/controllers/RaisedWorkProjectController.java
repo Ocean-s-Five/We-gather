@@ -1,11 +1,12 @@
+
 package com.WeGather.WeGather.controllers;
 
 import com.WeGather.WeGather.models.*;
+
 import com.WeGather.WeGather.repositories.*;
+
 import com.WeGather.WeGather.services.UploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,12 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-import static org.thymeleaf.util.ArrayUtils.toArray;
+import java.util.*;
 
 @Controller
 public class RaisedWorkProjectController<T> {
@@ -38,6 +34,7 @@ public class RaisedWorkProjectController<T> {
 
     @Autowired
     CommentsRepository commentsRepository;
+
 
     @Autowired
     UploadFileService uploadFileService;
@@ -116,9 +113,10 @@ public class RaisedWorkProjectController<T> {
         }
             System.out.println("This is the array:"+array);
         m.addAttribute("amountArray",array);
-        return "viewRaisedWork.html";
+        return "ViewRaisedWork.html";
 
     }
+
 
     @GetMapping(value = "/viewRaisedWork/{id}")
     public String displayRaisedWork(@PathVariable Long id, Model m, Principal p) {
@@ -126,27 +124,40 @@ public class RaisedWorkProjectController<T> {
         RaisedWorkProject raisedWorkProject = raisedWorkProjectRepository.findById(id)
                                                                          .get();
         m.addAttribute("raisedWorkProject", raisedWorkProject);
-
+        m.addAttribute("isAllow",true);
         if(principal instanceof UserDetails) {
             String loggedInUserName = p.getName();
             Users loggedInUser = usersRepository.findByUsername(loggedInUserName);
             m.addAttribute("userId", loggedInUser.getId());
+            //-------------------
+            List<Integer> contributorsIds = charityWorkContributorsRepository.findContributorsIds(id);
+//            System.out.println("contributorsIds: "+ contributorsIds);
+            Integer loggedInIntegerUserId = Math.toIntExact(loggedInUser.getId());
+            boolean showingButtonCond =  contributorsIds.contains(loggedInIntegerUserId);
+//            System.out.println("Condition: "+showingButtonCond);
+            if (showingButtonCond){
+//                System.out.println("Inside is contains");
+                m.addAttribute("isAllow",false);
+            }else {
+//                System.out.println("Inside is NOT contains");
+                m.addAttribute("isAllow",true);
+            }
+            System.out.println("loggedIn userId: "+ loggedInUser.getId());
         }
 
-        List<Comments> raisedWorkFundComments =  commentsRepository.findRaisedWorkFundId(id);
-        List<Comments> allComments =  commentsRepository.findComment(id);
+
+        List<Comments> allComments =  commentsRepository.findComment(id,1L);
+
+        List<CharityWorkContributors> contributes = charityWorkContributorsRepository.findByWorkRaiserId(id);
 
 
-//Users user = (Users) commentsRepository.findById(comments);
-//        System.out.println(user);
+//contributes.containsAll();
+//        System.out.println(contributes.contains());
         m.addAttribute("AllComment",allComments);
-//        m.addAttribute("AllComment",Arrays.toString(allComments..toArray()));
-//        m.addAttribute("AllComment",raisedWorkFundComments);
 
+        m.addAttribute("contributes" ,contributes);
         return "ViewRaisedWorkDetail.html";
     }
-
-
 
 //    @GetMapping("/displayCards")
 //    public String  displayPost(Principal p,Model m){
@@ -172,13 +183,15 @@ public class RaisedWorkProjectController<T> {
     @PostMapping(value = "/addContributors")
     public RedirectView addContribute(@RequestParam(value = "workedRaised_id") Long workedRaised_id,
                                       @RequestParam(value = "userWorkRaiser_id") Long userWorkRaiser_id,
+                                      @RequestParam(value = "status") Integer status,Principal p ) {
 
-                                      @RequestParam(value = "status") Integer status ) {
-
-        CharityWorkContributors charityWorkContributors = new CharityWorkContributors(workedRaised_id, userWorkRaiser_id, 1, status);
+        ApplicationUsers userDetails = (ApplicationUsers) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
+        String contributorName = userDetails.getUser().getFirstName() + " " +userDetails.getUser().getLastName();
+        CharityWorkContributors charityWorkContributors = new CharityWorkContributors(workedRaised_id, userWorkRaiser_id, 1, status,contributorName);
         charityWorkContributorsRepository.save(charityWorkContributors);
-
 
         return new RedirectView("/viewRaisedWork/"+workedRaised_id);
     }
+
+
 }

@@ -85,11 +85,15 @@
                             <input type="hidden" name="userWorkRaiser_id" th:value="${userId}">
 
                             <input type="hidden" name="status" value="1">
-
-                            <button type="submit" class="donate" data-toggle="modal" data-target="#addDonation">
+<!--                            th:if="${userId==contribute.getId() ||findContribute==null}"-->
+                            <button sec:authorize="isAuthenticated()"  th:if="${isAllow}" type="submit" class="donate" data-toggle="modal" data-target="#addDonation">
                                 Contributor
                             </button>
                         </form>
+                        <div th:each="contribute:${contributes}">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/user-1648810-1401302.png" width=10% alt="">
+                            <p th:text="${contribute.contributorName}+' Has contribute'"></p>
+                        </div>
                     </div>
                 </div>
 
@@ -107,35 +111,38 @@
             <div class="d-flex flex-column comment-section">
                 <div class="bg-white p-2">
                     <h3> Comments</h3>
-                    <div class="border border-left-0 border-right-0 p-3" th:each="comment:${AllComment}">
-                        <div class="d-flex flex-row user-info"><img class="rounded-circle"
-                                                                    src="https://i.imgur.com/RpzrMR2.jpg" width="40">
-                            <div class="d-flex flex-column justify-content-start ml-2"><span
-                                    class="d-block font-weight-bold name" th:text="${comment.getCommenterName()}"  ></span><span
-                                    class="date text-black-50" th:text="${comment.getTimeStamp()}"></span></div>
-                        </div>
+                    <div class="border border-left-0 border-right-0 p-3"  th:each="comment:${AllComment}">
+                        <div th:if="${comment.getCommentTypeId()}==1">
+                            <div class="d-flex flex-row user-info"><img class="rounded-circle"
+                                                                        src="https://i.imgur.com/RpzrMR2.jpg" width="40">
+                                <div class="d-flex flex-column justify-content-start ml-2"><span
+                                        class="d-block font-weight-bold name" th:text="${comment.getCommenterName()}"  ></span><span
+                                        class="date text-black-50"  th:text="${comment.getTimeStamp()}"></span></div>
+                            </div>
 
-                        <p class="p-2" th:text="${comment.body}"></p>
+                            <p class="p-2" th:text="${comment.body}"></p>
+                        </div>
                     </div>
                 </div>
                 <div class="bg-light p-2"  sec:authorize="isAuthenticated()">
                     <div class="d-flex flex-row align-items-start">
                         <h3> Add A Comment</h3>
                     </div>
-                    <div class="mt-2 text-right">
-                        <form class="d-flex flex-row align-items-start" action="/addComment" method="post">
+                    <div class="mt-2 ">
+                        <form class=" " action="/addComment" method="post">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input class="form-control ml-1 shadow-none textarea" type="text" name="body">
+                                    <textarea class="form-control ml-1 shadow-none textarea" name="body" id="" cols="30" rows="3"></textarea>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-12 col-md-3">
+                                <div class="col-sm-12 col-md-3 mt-2">
                                     <button class="btn btn-primary  shadow-none" type="submit">Post comment</button>
                                 </div>
                             </div>
 
                             <input type="hidden" name="workId" th:value="${raisedWorkProject.id}">
+                            <input type="hidden" name="status" value="1">
                         </form>
 
                     </div>
@@ -144,6 +151,7 @@
         </div>
     </div>
 </div>
+
 
 
 <div th:replace="fragments/common :: footer" th:remove="tag"></div>

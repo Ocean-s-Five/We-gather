@@ -1,13 +1,12 @@
 package com.WeGather.WeGather.controllers;
 
 
-import com.WeGather.WeGather.models.ApplicationUsers;
-import com.WeGather.WeGather.models.User;
+import com.WeGather.WeGather.models.*;
 //import com.WeGather.WeGather.repositories.ApplicationUsersRepository;
-import com.WeGather.WeGather.models.Users;
-import com.WeGather.WeGather.repositories.UsersRepository;
+import com.WeGather.WeGather.repositories.*;
 import com.WeGather.WeGather.services.UploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -37,13 +36,73 @@ class MainControllerController {
     PasswordEncoder passwordEncoder;
     @Autowired
     UploadFileService uploadFileService;
+    @Autowired
+    CharityFundContributorsRepository charityRepository ;
+    @Autowired
+    RasisdFundProjectRepositorise rasisdFundProjectRepositorise;
+    @Autowired
+    RaisedWorkProjectRepository raisedWorkProjectRepository;
+    @Autowired
+    CharityWorkContributorsRepository charityWorkContributorsRepository;
+
 //    @Autowired
 //    ApplicationUsersRepository applicationUsersRepository;
 
     @GetMapping("/")
-    public String home() {
+    public String home(Principal p,Model m) {
+
+
+
+        Iterable<RaisedFundProject> df =rasisdFundProjectRepositorise.findAll() ;
+        m.addAttribute("user",df);
+        Integer amount = 0;
+        int counter=0;
+        ArrayList<Integer> array=new ArrayList<>();
+        array.add(0);
+        ArrayList<Integer> arraycount=new ArrayList<>();
+        for (RaisedFundProject don : df)
+        {
+            Long id=don.getId();
+            List<CharityFundContributors> donate = charityRepository.findByFundRaiserId(id);
+            for (CharityFundContributors donTow : donate)
+            {
+                amount+=donTow.getAmountPaid();
+                counter++;
+
+            }
+            array.add(amount);
+            arraycount.add(counter);
+            amount=0;
+            counter=0;
+
+        }
+        m.addAttribute("amountArray",array);
+        m.addAttribute("arraycount",arraycount);
+
+
+
+        Iterable<RaisedWorkProject> allRaisedWork =raisedWorkProjectRepository.findAll() ;
+
+        m.addAttribute("user2",allRaisedWork);
+        Integer amount2 = 0;
+        ArrayList<Integer> array2=new ArrayList<>();
+
+        for (RaisedWorkProject singleRaisedWork : allRaisedWork)
+        {
+            Long id=singleRaisedWork.getId();
+            List<CharityWorkContributors> contributors = charityWorkContributorsRepository.findByUserWorkRaiserId(id);
+            for (CharityWorkContributors donTow : contributors)
+            {
+                amount+=donTow.getAvailableContAmount();
+            }
+            array2.add(amount2);
+            amount2=0;
+        }
+        m.addAttribute("amountArray",array);
         return "index.html";
     }
+
+
 
     @GetMapping("/login")
     public String login() {
@@ -95,10 +154,10 @@ class MainControllerController {
         String fileName=uploadFileService.uploadFile(profilePictures);
 
         if (fileName!=null) {
-            images.set(0,fileName);
+            images.add(fileName);
         }else{
 
-            images.set(0,"default.jpg");
+            images.add("default.jpg");
 
         }
 

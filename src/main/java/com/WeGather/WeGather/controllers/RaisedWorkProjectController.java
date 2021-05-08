@@ -1,31 +1,28 @@
 package com.WeGather.WeGather.controllers;
 
-import com.WeGather.WeGather.models.CharityWorkContributors;
-import com.WeGather.WeGather.models.Location;
-import com.WeGather.WeGather.models.RaisedWorkProject;
-import com.WeGather.WeGather.models.Users;
-import com.WeGather.WeGather.repositories.CharityWorkContributorsRepository;
-import com.WeGather.WeGather.repositories.LocationRepository;
-import com.WeGather.WeGather.repositories.RaisedWorkProjectRepository;
-import com.WeGather.WeGather.repositories.UsersRepository;
+import com.WeGather.WeGather.models.*;
+import com.WeGather.WeGather.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
+import static org.thymeleaf.util.ArrayUtils.toArray;
+
 @Controller
-public class RaisedWorkProjectController {
+public class RaisedWorkProjectController<T> {
 
     @Autowired
     UsersRepository usersRepository;
@@ -36,6 +33,9 @@ public class RaisedWorkProjectController {
 
     @Autowired
     LocationRepository locationRepository;
+
+    @Autowired
+    CommentsRepository commentsRepository;
 
     @GetMapping(value = "/raisedWork")
     public String getRaisedWork() {
@@ -119,7 +119,7 @@ public class RaisedWorkProjectController {
     }
 
     @GetMapping(value = "/fundContributors/{id}")
-    public String displayRaisedWork(@PathVariable Long id, Model m,Principal p) {
+    public String displayRaisedWork(@PathVariable Long id, Model m, Principal p) {
         Object principal = SecurityContextHolder.getContext(). getAuthentication(). getPrincipal();
         RaisedWorkProject raisedWorkProject = raisedWorkProjectRepository.findById(id)
                                                                          .get();
@@ -130,6 +130,17 @@ public class RaisedWorkProjectController {
             Users loggedInUser = usersRepository.findByUsername(loggedInUserName);
             m.addAttribute("userId", loggedInUser.getId());
         }
+
+        List<Comments> raisedWorkFundComments =  commentsRepository.findRaisedWorkFundId(id);
+        List<Comments> allComments =  commentsRepository.findComment(id);
+
+
+//Users user = (Users) commentsRepository.findById(comments);
+//        System.out.println(user);
+        m.addAttribute("AllComment",allComments);
+//        m.addAttribute("AllComment",Arrays.toString(allComments..toArray()));
+//        m.addAttribute("AllComment",raisedWorkFundComments);
+
         return "raisedWorkView.html";
     }
 //    @GetMapping("/displayCards")

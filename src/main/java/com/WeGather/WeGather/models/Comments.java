@@ -13,6 +13,7 @@ public class Comments {
     private Long id;
 
     private Long userId;
+    private String commenterName;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -48,8 +49,9 @@ public class Comments {
 ////        this.raised_Fund_Project_id = raisedFund;
 ////        this.raisedWork = raisedWorkProject;
 //    }
-    public Comments(Long userId, Date createdAt, String body, Long raisedWorkFundId, int commentTypeId) {
+    public Comments(Long userId,String commenterName ,Date createdAt, String body, Long raisedWorkFundId, int commentTypeId) {
         this.userId = userId;
+        this.commenterName =  commenterName;
         this.createdAt = createdAt;
         this.body = body;
         this.raisedWorkFundId = raisedWorkFundId;
@@ -104,7 +106,15 @@ public class Comments {
         this.commentTypeId = commentTypeId;
     }
 
-//    public RaisedFundProject getRaisedFund() {
+    public String getCommenterName() {
+        return commenterName;
+    }
+
+    public void setCommenterName(String commenterName) {
+        commenterName = commenterName;
+    }
+
+    //    public RaisedFundProject getRaisedFund() {
 //        return raised_Fund_Project_id;
 //    }
 //

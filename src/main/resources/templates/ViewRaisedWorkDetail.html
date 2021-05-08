@@ -85,12 +85,12 @@
                             <input type="hidden" name="userWorkRaiser_id" th:value="${userId}">
 
                             <input type="hidden" name="status" value="1">
-
-                            <button  type="submit" class="donate" data-toggle="modal" data-target="#addDonation">
+<!--                            th:if="${userId==contribute.getId() ||findContribute==null}"-->
+                            <button th:if="${isAllow}" type="submit" class="donate" data-toggle="modal" data-target="#addDonation">
                                 Contributor
                             </button>
                         </form>
-                        <div th:each="contribute:${contribute}">
+                        <div th:each="contribute:${contributes}">
                             <img src="https://cdn.iconscout.com/icon/free/png-256/user-1648810-1401302.png" width=10% alt="">
                             <p th:text="${contribute.contributorName}+' Has contribute'"></p>
                         </div>

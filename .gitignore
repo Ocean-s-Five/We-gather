@@ -22,7 +22,6 @@
 .gradle
 build
 
-/src/main/resources/application.properties
 
 *.iws
 *.iml

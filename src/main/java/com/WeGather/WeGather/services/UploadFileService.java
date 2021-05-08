@@ -15,11 +15,10 @@ import java.nio.file.StandardCopyOption;
 public
 class UploadFileService {
 
-        @Value("./src/main/resources/users-images")
+        @Value("./allImages/")
         public String uploadDir;
 
         public String uploadFile(MultipartFile file) {
-
             try {
                 Path copyLocation = Paths
                         .get( uploadDir + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
@@ -27,7 +26,7 @@ class UploadFileService {
                 if (!Files.exists(copyLocation)) {
                     Files.createDirectories(copyLocation);
                 }
-                System.out.println(StringUtils.cleanPath(file.getOriginalFilename()));
+
                 Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
 //
             } catch (Exception e) {

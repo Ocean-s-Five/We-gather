@@ -10,14 +10,24 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.firewall.DefaultHttpFirewall;
+import org.springframework.security.web.firewall.HttpFirewall;
+import org.springframework.security.web.firewall.StrictHttpFirewall;
 
-import java.io.File;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Autowired
     public UsersService userService;
+
+    @Bean
+    public
+    HttpFirewall allowUrlEncodedSlashHttpFirewall() {
+        DefaultHttpFirewall firewall = new DefaultHttpFirewall();
+        firewall.setAllowUrlEncodedSlash(true);
+        return firewall;
+    }
 
 
         @Bean
@@ -43,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                     .antMatchers("/","/viewRaisedWork","/viewRaisedFund","/RaisedFundDetail/**","/viewRaisedWork/**").permitAll()
                     .antMatchers("/signup").permitAll()
                     .antMatchers("/login").permitAll()
-
+                    .antMatchers("/resources/**", "/static/**","/webjars/**","/css/**","/js/**","**/allImages/**","/images/**","/resources/allImages/**","/allImages/**" ).permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
@@ -54,19 +64,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                     .logout()
                     .logoutUrl("/logout")
                     .invalidateHttpSession(true)
-                    .deleteCookies("JSESSIONID")
-            ;
+                    .deleteCookies("JSESSIONID");
+     }
 
-
-
-        }
-
-        @Override
-        public void configure(WebSecurity web) throws Exception {
-            web
-                    .ignoring()
-                    .antMatchers("/resources/**", "/static/**","/webjars/**","/css/**","/images/**","/js/**","/users-images/**")
-                    ;
-
-        }
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        super.configure(web);
+        web.httpFirewall(allowUrlEncodedSlashHttpFirewall());
+    }
 }

@@ -2,6 +2,7 @@ package com.WeGather.WeGather.controllers;
 
 import com.WeGather.WeGather.models.ApplicationUsers;
 import com.WeGather.WeGather.models.Comments;
+import com.WeGather.WeGather.models.User;
 import com.WeGather.WeGather.models.Users;
 import com.WeGather.WeGather.repositories.CommentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,17 @@ public class CommentsController {
     @Autowired
     CommentsRepository commentsRepository;
 
+
     @PostMapping("/addComment")
     public RedirectView addComment (@RequestParam(value = "body") String body,@RequestParam (value="workId") Long workId , Principal p ) {
         ApplicationUsers userDetails = (ApplicationUsers) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
+//        Users user = (Users) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
+        String commenterName = userDetails.getUser().getFirstName() + " " +userDetails.getUser().getLastName();
+
 //        System.out.println(id);
         Date date = new Date();
-        Comments comments = new Comments(userDetails.getId(), date, body,workId, 1);
+
+        Comments comments = new Comments(userDetails.getId(),commenterName, date, body,workId, 1);
         commentsRepository.save(comments);
 String redirectView = "/viewRaisedWork/"+workId;
         return new RedirectView(redirectView);

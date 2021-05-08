@@ -103,10 +103,10 @@ public class RaisedWorkProjectController<T> {
         for (RaisedWorkProject singleRaisedWork : allRaisedWork)
         {
             Long id=singleRaisedWork.getId();
-            List<CharityWorkContributors> contributors = charityWorkContributorsRepository.findByUserWorkRaiserId(id);
-            for (CharityWorkContributors donTow : contributors)
+            List<CharityWorkContributors> contributors = charityWorkContributorsRepository.findByWorkRaiserId(id);
+            for (CharityWorkContributors contribute : contributors)
                 {
-                    amount+=donTow.getAvailableContAmount();
+                    amount+=contribute.getAvailableContAmount();
                 }
             array.add(amount);
             amount=0;
@@ -147,15 +147,19 @@ public class RaisedWorkProjectController<T> {
 
         // Calculate the summation of contributors
         Integer contributorsSum = 0;
-        List<CharityWorkContributors> contributors = charityWorkContributorsRepository.findByUserWorkRaiserId(id);
+        List<CharityWorkContributors> contributors = charityWorkContributorsRepository.findByWorkRaiserId(id);
+        System.out.println("contributors list: "+ contributors);
+
         for (CharityWorkContributors contributor : contributors)
         {
             contributorsSum+=contributor.getAvailableContAmount();
+            System.out.println("contributorsSum result: "+ contributorsSum);
         }
         m.addAttribute("contributorsNumber",contributorsSum);
 
-
-
+        // getting the required_contributions_amount
+        RaisedWorkProject currentRaisedWork = raisedWorkProjectRepository.findById(id).get();
+        m.addAttribute("requiredContAmount",currentRaisedWork.getRequiredContAmount());
         List<Comments> allComments =  commentsRepository.findComment(id,1L);
 
         List<CharityWorkContributors> contributes = charityWorkContributorsRepository.findByWorkRaiserId(id);

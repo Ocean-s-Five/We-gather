@@ -1,8 +1,12 @@
 package com.WeGather.WeGather.controllers;
 
 import com.WeGather.WeGather.models.*;
-import com.WeGather.WeGather.repositories.*;
-import com.WeGather.WeGather.services.UploadFileService;
+
+import com.WeGather.WeGather.repositories.CharityWorkContributorsRepository;
+import com.WeGather.WeGather.repositories.LocationRepository;
+import com.WeGather.WeGather.repositories.RaisedWorkProjectRepository;
+import com.WeGather.WeGather.repositories.UsersRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -181,4 +185,6 @@ public class RaisedWorkProjectController<T> {
 
         return new RedirectView("/viewRaisedWork/"+workedRaised_id);
     }
+
+
 }

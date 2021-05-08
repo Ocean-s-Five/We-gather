@@ -21,7 +21,7 @@
 
         <h2>Raise New Charity Work </h2>
 
-        <form action="/raisedWork" method="post">
+        <form action="/AddWork" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col">
                     <div class="form-group">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group">
                         <label for="image">Image:</label>
-                        <input type="text" class="form-control" id="image"
+                        <input type="file" class="form-control" id="image"
                                placeholder="Enter the link of your Image" name="image">
                     </div>
                     <div class="form-group">

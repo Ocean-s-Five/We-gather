@@ -25,30 +25,30 @@
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="px-4 pt-0 pb-4 cover">
-                            <!--                    <img class="profile-img image-size" th:src="${raisedFund.images.get(0)}" alt="">-->
-                            <img class="profile-img image-size" th:src="@{/images/default.jpg}" alt="">
+                            <img class="card-img-top img-size" th:src="@{|/users-images/${raisedFund.getImages().get(0)}|}" alt="Card image" style="width:100%">
+
                         </div>
                     </div>
                 </div>
 
-                <div class="row ">
-                    <div class="col-md-12 border border-left-0 border-right-0  p-2">
-                        <span>profile</span>
-                        <span class="text-secondary"> anas is organizing this fundraiser</span>
+                <div class="row p-2">
+                    <div class="col-md-12 border border-left-0 border-right-0 p-2 ">
+                        <span class=" ">profile    <span class="text-secondary"> anas is organizing this fundraiser</span> </span>
+
                     </div>
                 </div>
 
-                <div class="row pt-2 ">
+                <div class="row p-2 ">
                     <div class="col-md-12 border border-left-0 border-right-0 border-top-0  p-2">
 
-                        <p class="text-default">Created At: <i class="font-italic font-weight-lighter">2007-8-9 </i></p>
-                        <p class="text-default">Ends At: <i class="font-italic font-weight-lighter">2007-8-9 </i></p>
+                        <p class="text-default">Created At: <i class="font-italic font-weight-lighter" th:text="${raisedFund.startFrom}"> </i></p>
+                        <p class="text-default">Ends At: <i class="font-italic font-weight-lighter" th:text="${raisedFund.endAt}"> </i></p>
 
 
                     </div>
                 </div>
 
-                <div class="row ">
+                <div class="row p-2 ">
                     <div class="col-md-12 border border-left-0 border-right-0 border-top-0 p-2">
                         <p class="font-italic mb-0" th:text="${raisedFund.description}"></p>
                     </div>

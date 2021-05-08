@@ -27,7 +27,7 @@ class UploadFileService {
                 if (!Files.exists(copyLocation)) {
                     Files.createDirectories(copyLocation);
                 }
-
+                System.out.println(StringUtils.cleanPath(file.getOriginalFilename()));
                 Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
 //
             } catch (Exception e) {

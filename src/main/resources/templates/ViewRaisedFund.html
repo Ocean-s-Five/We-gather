@@ -22,6 +22,7 @@
             <a class="hideLink" th:href="@{/RaisedFundDetail/}+ ${post.id}" style="text-decoration:none">
 
                 <div class="card w-100 h-100 " >
+
                     <div th:if="${post.getImages().get(0)}">
                              <img class="card-img-top img-size" th:src="@{|users-images/${post.getImages().get(0)}|}" alt="Card image" style="width:100%">
                     </div>

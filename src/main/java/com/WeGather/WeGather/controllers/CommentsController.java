@@ -33,7 +33,7 @@ public class CommentsController {
         Date date = new Date();
         Comments comments = new Comments(userDetails.getId(), date, body,workId, 1);
         commentsRepository.save(comments);
-String redirectView = "/fundContributors/"+workId;
+String redirectView = "/viewRaisedWork/"+workId;
         return new RedirectView(redirectView);
     }
 

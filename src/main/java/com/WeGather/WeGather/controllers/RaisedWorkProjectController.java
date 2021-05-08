@@ -125,7 +125,8 @@ public class RaisedWorkProjectController<T> {
         m.addAttribute("raisedWorkProject", raisedWorkProject);
         m.addAttribute("isAllow",true);
         if(principal instanceof UserDetails) {
-
+            String loggedInUserName = p.getName();
+            Users loggedInUser = usersRepository.findByUsername(loggedInUserName);
             m.addAttribute("userId", loggedInUser.getId());
             //-------------------
             List<Integer> contributorsIds = charityWorkContributorsRepository.findContributorsIds(id);
@@ -146,7 +147,7 @@ public class RaisedWorkProjectController<T> {
 
         List<Comments> allComments =  commentsRepository.findComment(id,1L);
 
-List<CharityWorkContributors> contributes = charityWorkContributorsRepository.findByWorkRaiserId(id);
+        List<CharityWorkContributors> contributes = charityWorkContributorsRepository.findByWorkRaiserId(id);
 
 
 //contributes.containsAll();
@@ -156,8 +157,6 @@ List<CharityWorkContributors> contributes = charityWorkContributorsRepository.fi
         m.addAttribute("contributes" ,contributes);
         return "ViewRaisedWorkDetail.html";
     }
-
-
 
 //    @GetMapping("/displayCards")
 //    public String  displayPost(Principal p,Model m){

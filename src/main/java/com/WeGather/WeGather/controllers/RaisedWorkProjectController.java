@@ -7,8 +7,6 @@ import com.WeGather.WeGather.repositories.*;
 
 import com.WeGather.WeGather.services.UploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,8 +18,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 import java.util.*;
-
-import static org.thymeleaf.util.ArrayUtils.toArray;
 
 @Controller
 public class RaisedWorkProjectController<T> {
@@ -152,7 +148,7 @@ public class RaisedWorkProjectController<T> {
 
         List<Comments> allComments =  commentsRepository.findComment(id,1L);
 
-List<CharityWorkContributors> contributes = charityWorkContributorsRepository.findByWorkRaiserId(id);
+        List<CharityWorkContributors> contributes = charityWorkContributorsRepository.findByWorkRaiserId(id);
 
 
 //contributes.containsAll();
@@ -162,8 +158,6 @@ List<CharityWorkContributors> contributes = charityWorkContributorsRepository.fi
         m.addAttribute("contributes" ,contributes);
         return "ViewRaisedWorkDetail.html";
     }
-
-
 
 //    @GetMapping("/displayCards")
 //    public String  displayPost(Principal p,Model m){

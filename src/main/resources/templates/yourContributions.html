@@ -10,25 +10,31 @@
     <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
 </div>
 <div class="container mt-6" >
+    <div class="row">
+        <div class="d-flex justify-content-center col-12">
+            <h1 class="text-black">Your funds contributions</h1>
+
+        </div>
+    </div>
     <div class="row ">
 
 
         <div class="col-md-4 mt-3"  th:each="val : ${countArray}">
 
-            <div class="card-body">
+            <div class="card w-100 h-100">
+                <div class="card-body">
+
                 <h4>Topic :
                 <span class="card-title text-success" th:text="${arrayTopic[val]}"></span>
                     </h4>
-                <p>Description :
+                <h6>Description :
                 <span class="card-text" th:text="${arrayDescription[val]}"></span>
-                </p>
-                <h4>Contribution :
+                </h6>
+                <h6>Contribution :
                     <span class="card-title text-success" th:text="${amountArray[val]}"></span>
-                </h4>
+                </h6>
+                </div>
             </div>
-
-
-
         </div>
     </div>
 </div>

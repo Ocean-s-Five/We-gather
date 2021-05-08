@@ -101,7 +101,12 @@ public class RaisedFundProjectController {
         return "ViewRaisedFund.html";
     }
 
-
+    @GetMapping("/search")
+    public String findByDescription(@RequestParam String search,Model m) {
+        List<RaisedFundProject> listSearch=rasisdFundProjectRepositorise.search(search);
+        m.addAttribute("listSearch",listSearch);
+        return "search.html";
+    }
 
 
 

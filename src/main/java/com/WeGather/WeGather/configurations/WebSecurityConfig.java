@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                     .cors().disable()
                     .csrf().disable()
                     .authorizeRequests()
-                    .antMatchers("/","/raisedWorkView","/viewRaisedFund","/RaisedFundDetail/**","/fundContributors/**").permitAll()
+                    .antMatchers("/","/viewRaisedWork","/viewRaisedFund","/RaisedFundDetail/**","/viewRaisedWork/**").permitAll()
                     .antMatchers("/signup").permitAll()
                     .antMatchers("/login").permitAll()
 
@@ -54,7 +54,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                     .logout()
                     .logoutUrl("/logout")
                     .invalidateHttpSession(true)
-                    .deleteCookies("JSESSIONID");
+                    .deleteCookies("JSESSIONID")
+            ;
 
 
 
@@ -64,6 +65,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         public void configure(WebSecurity web) throws Exception {
             web
                     .ignoring()
-                    .antMatchers("/resources/**", "/static/**","/webjars/**","/css/**","/images/**","/js/**","/users-images/**");
+                    .antMatchers("/resources/**", "/static/**","/webjars/**","/css/**","/images/**","/js/**","/users-images/**")
+                    ;
+
         }
 }

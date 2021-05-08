@@ -25,30 +25,30 @@
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="px-4 pt-0 pb-4 cover">
-                            <!--                    <img class="profile-img image-size" th:src="${raisedFund.images.get(0)}" alt="">-->
-                            <img class="profile-img image-size" th:src="@{/images/default.jpg}" alt="">
+                            <img class="card-img-top img-size" th:src="@{|/users-images/${raisedFund.getImages().get(0)}|}" alt="Card image" style="width:100%">
+
                         </div>
                     </div>
                 </div>
 
-                <div class="row ">
-                    <div class="col-md-12 border border-left-0 border-right-0  p-2">
-                        <span>profile</span>
-                        <span class="text-secondary"> anas is organizing this fundraiser</span>
+                <div class="row p-2">
+                    <div class="col-md-12 border border-left-0 border-right-0 p-2 ">
+                        <span class=" ">profile    <span class="text-secondary"> anas is organizing this fundraiser</span> </span>
+
                     </div>
                 </div>
 
-                <div class="row pt-2 ">
+                <div class="row p-2 ">
                     <div class="col-md-12 border border-left-0 border-right-0 border-top-0  p-2">
 
-                        <p class="text-default">Created At: <i class="font-italic font-weight-lighter">2007-8-9 </i></p>
-                        <p class="text-default">Ends At: <i class="font-italic font-weight-lighter">2007-8-9 </i></p>
+                        <p class="text-default">Created At: <i class="font-italic font-weight-lighter" th:text="${raisedFund.startFrom}"> </i></p>
+                        <p class="text-default">Ends At: <i class="font-italic font-weight-lighter" th:text="${raisedFund.endAt}"> </i></p>
 
 
                     </div>
                 </div>
 
-                <div class="row ">
+                <div class="row p-2 ">
                     <div class="col-md-12 border border-left-0 border-right-0 border-top-0 p-2">
                         <p class="font-italic mb-0" th:text="${raisedFund.description}"></p>
                     </div>
@@ -308,8 +308,6 @@
 
 
 
-
-
                     </div>
 
 
@@ -341,16 +339,20 @@
                             exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </div>
                 </div>
-                <div class="bg-light p-2">
-                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
-                                                                        src="https://i.imgur.com/RpzrMR2.jpg"
-                                                                        width="40"><textarea
-                            class="form-control ml-1 shadow-none textarea"></textarea></div>
-                    <div class="mt-2 text-right">
-                        <button class="btn btn-primary btn-sm shadow-none" type="button">Post comment</button>
-                        <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button>
+                <form th:action="@{'restaurants/newadmin'}" method="post" action="/addComment">
+                    <div class="bg-light p-2">
+                        <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
+                                                                            src="https://i.imgur.com/RpzrMR2.jpg"
+                                                                            width="40"><textarea
+                                class="form-control ml-1 shadow-none textarea"></textarea></div>
+                        <div class="mt-2 text-right">
+                            <input th: type="hidden">
+                            <button class="btn btn-primary btn-sm shadow-none" type="button">Post comment</button>
+                            <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel
+                            </button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

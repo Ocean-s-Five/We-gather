@@ -38,9 +38,6 @@ public class CharityFundContributorsController {
     CharityFundContributorsRepository charityFundContributorsRepository;
 
     @Autowired
-    CharityFundContributorsRepository charityRepository ;
-
-    @Autowired
     CommentsRepository commentsRepository;
     @GetMapping("/RaisedFundDetail/{id}")
     public String displayContributors(@PathVariable(value = "id") Long id, Model m, Principal p) {
@@ -61,10 +58,34 @@ public class CharityFundContributorsController {
         m.addAttribute("AllComment",allComments);
 
 
-        List<CharityFundContributors> findAllData = charityFundContributorsRepository.findAllData();
+//         i have changed the findAll
+        List<CharityFundContributors> findAllData = charityFundContributorsRepository.findByFundRaiserId(id);
         m.addAttribute("findAllData",findAllData);
-        System.out.println(findAllData);
 
+        RaisedFundProject userId = rasisdFundProjectRepositorise.findById(id).get() ;
+        m.addAttribute("findUserRaisedFund",userId.getUsers().getFirstName());
+
+
+
+//         this for progressbar findByUserFundRaiserId
+        Iterable<RaisedFundProject> donateFund =rasisdFundProjectRepositorise.findAll() ;
+        m.addAttribute("user",donateFund);
+        Integer amount = 0;
+        ArrayList<Integer> array=new ArrayList<>();
+        array.add(0);
+        for (RaisedFundProject don : donateFund)
+        {
+            Long idTow=don.getId();
+            List<CharityFundContributors> donate = charityFundContributorsRepository.findByFundRaiserId(idTow);
+            for (CharityFundContributors donTow : donate)
+            {
+                amount+=donTow.getAmountPaid();
+            }
+            array.add(amount);
+            amount=0;
+
+        }
+        m.addAttribute("amountArray",array);
 
         return "ViewRaisedFundDetail.html";
     }
@@ -94,10 +115,11 @@ public class CharityFundContributorsController {
 
         ArrayList<Integer> arrayContributions=new ArrayList<>();
         ArrayList<Integer> countArray=new ArrayList<>();
+        ArrayList<Long> idArray=new ArrayList<>();
         ArrayList<String> arrayTopic=new ArrayList<>();
         ArrayList<String> arrayDescription=new ArrayList<>();
 
-        List<CharityFundContributors> donate = charityRepository.findByUserFundRaiserId(userMe.getId());
+        List<CharityFundContributors> donate = charityFundContributorsRepository.findByUserFundRaiserId(userMe.getId());
 
         for (CharityFundContributors donTow : donate)
         {
@@ -106,12 +128,14 @@ public class CharityFundContributorsController {
             arrayTopic.add(userDetails.get().getTopic());
             arrayDescription.add(userDetails.get().getDescription());
             arrayContributions.add(donTow.getAmountPaid());
+            idArray.add(userDetails.get().getId());
             size++;
         }
         m.addAttribute("amountArray",arrayContributions);
         m.addAttribute("arrayTopic",arrayTopic);
         m.addAttribute("arrayDescription",arrayDescription);
         m.addAttribute("countArray",countArray);
+        m.addAttribute("idArray",idArray);
 
         return "/yourContributions.html";
     }

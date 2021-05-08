@@ -103,7 +103,7 @@
 
 
                         <!-- Button trigger modal -->
-                        <button type="button" class="donate" data-toggle="modal" data-target="#addDonation">
+                        <button sec:authorize="isAuthenticated()" type="button" class="donate" data-toggle="modal" data-target="#addDonation">
                             Donate
                         </button>
 
@@ -189,10 +189,11 @@
                                                 </span></label>
                                                                                 <div class="input-group"><input
                                                                                         type="number" placeholder="MM"
-                                                                                        name="" class="form-control"
-                                                                                        required> <input type="number"
+                                                                                        name="mm" class="form-control"
+                                                                                        required>
+                                                                                    <input type="number"
                                                                                                          placeholder="YY"
-                                                                                                         name=""
+                                                                                                         name="yy"
                                                                                                          class="form-control"
                                                                                                          required></div>
                                                                             </div>
@@ -205,7 +206,7 @@
                                                                                         class="fa fa-question-circle d-inline"></i>
                                                                                 </h6>
                                                                             </label> <input type="text" required
-                                                                                            class="form-control"></div>
+                                                                                            class="form-control" name="cvc"></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="card-footer">
@@ -243,7 +244,7 @@
                                                                     <div class="form-group "><label
                                                                             for="SelectYourBank">
                                                                         <h6 id="SelectYourBank">Select your Bank</h6>
-                                                                    </label> <select class="form-control" id="ccmonth">
+                                                                    </label> <select class="form-control" id="ccmonth" name="ccmonth">
                                                                         <option value="" selected disabled>--Please
                                                                             select your Bank--
                                                                         </option>
@@ -348,20 +349,29 @@
                     </div>
                     </div>
                 </div>
-                <form  method="post" action="/addComment">
-                    <div class="bg-light p-2">
-
-                        <input class="form-control ml-1 shadow-none textarea" type="text" name="body">
-                        <input type="hidden" name="workId" th:value="${raisedFund.id}">
-
-
-                        <input type="hidden" name="status" value="2">
-                            <button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
-                            <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="submit">Cancel
-                            </button>
-                        </div>
+                <div class="bg-light p-2"  sec:authorize="isAuthenticated()">
+                    <div class="d-flex flex-row align-items-start">
+                        <h3> Add A Comment</h3>
                     </div>
-                </form>
+                    <div class="mt-2 ">
+                        <form class=" " action="/addComment" method="post">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea class="form-control ml-1 shadow-none textarea" name="body" id="" cols="30" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-3 mt-2">
+                                    <button class="btn btn-primary  shadow-none" type="submit">Post comment</button>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="workId" th:value="${raisedFund.id}">
+                            <input type="hidden" name="status" value="2">
+                        </form>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>

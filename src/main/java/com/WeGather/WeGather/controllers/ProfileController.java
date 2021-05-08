@@ -38,9 +38,9 @@ public class ProfileController {
         Users user = usersRepository.findByUsername(userName);
         m.addAttribute("user", usersRepository.findById(user.getId())
                 .get());
-//        Optional<UserContactInfo> userContact =userContactInfoRepository.findById(user.getId());
-//
-//        m.addAttribute("contact",userContact.get());
+        UserContactInfo userContact = userContactInfoRepository.findById(user.getId()).get();
+
+       m.addAttribute("contact",userContact);
 
 
               return "profile.html";

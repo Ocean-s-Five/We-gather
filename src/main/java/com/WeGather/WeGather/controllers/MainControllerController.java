@@ -6,6 +6,7 @@ import com.WeGather.WeGather.models.*;
 import com.WeGather.WeGather.repositories.*;
 import com.WeGather.WeGather.services.UploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -49,6 +50,9 @@ class MainControllerController {
 
     @GetMapping("/")
     public String home(Principal p,Model m) {
+
+
+
         Iterable<RaisedFundProject> df =rasisdFundProjectRepositorise.findAll() ;
         m.addAttribute("user",df);
         Integer amount = 0;
@@ -150,10 +154,10 @@ class MainControllerController {
         String fileName=uploadFileService.uploadFile(profilePictures);
 
         if (fileName!=null) {
-            images.set(0,fileName);
+            images.add(fileName);
         }else{
 
-            images.set(0,"default.jpg");
+            images.add("default.jpg");
 
         }
 

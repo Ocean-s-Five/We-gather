@@ -41,6 +41,7 @@ public class RaisedFundProjectController {
 
     @GetMapping("/AddRaise")
     public String displayRaisedFund(Principal p, Model m){
+
         return "AddRaisedFundProject.html";
     }
 
@@ -75,10 +76,8 @@ public class RaisedFundProjectController {
         Iterable<RaisedFundProject> df =rasisdFundProjectRepositorise.findAll() ;
         m.addAttribute("user",df);
         Integer amount = 0;
-        int counter=0;
         ArrayList<Integer> array=new ArrayList<>();
         array.add(0);
-        ArrayList<Integer> arraycount=new ArrayList<>();
         for (RaisedFundProject don : df)
         {
             Long id=don.getId();
@@ -86,16 +85,12 @@ public class RaisedFundProjectController {
             for (CharityFundContributors donTow : donate)
             {
                 amount+=donTow.getAmountPaid();
-                counter++;
             }
             array.add(amount);
-            arraycount.add(counter);
             amount=0;
-            counter=0;
 
         }
         m.addAttribute("amountArray",array);
-        m.addAttribute("arraycount",arraycount);
 
 
         return "ViewRaisedFund.html";

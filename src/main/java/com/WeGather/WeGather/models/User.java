@@ -31,6 +31,7 @@ class User extends Users {
         this.nationalCardNumber = nationalCardNumber;
         this.nameWrittenInPassport = nameWrittenInPassport;
         this.passportNumber = passportNumber;
+
     }
 
     public String getNationalNumber() {

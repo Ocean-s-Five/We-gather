@@ -161,6 +161,7 @@ class MainControllerController {
 
         }
 
+
         Date date = new Date();
         Users user = new User(username,
                 passwordEncoder.encode(password),

@@ -33,8 +33,10 @@
 
                 <div class="row p-2">
                     <div class="col-md-12 border border-left-0 border-right-0 p-2 ">
-                        <span class=" ">profile    <span class="text-secondary"> anas is organizing this fundraiser</span> </span>
+<!--                        <div th:each="alldata:${findAllData}">-->
 
+                        <span class=" "> <span class="text-secondary"><span th:text="${findUserRaisedFund}"></span>  is organizing this fundraiser</span> </span>
+<!--                        </div>-->
                     </div>
                 </div>
 
@@ -88,16 +90,12 @@
 
                     <div class="card-body">
                         <div class="card-title">
-                            <b>
-                                <span class="text-success"></span><span class="text-success">500$</span>
+                            <b> <span th:text="${amountArray[raisedFund.getId()]}" class="text-success"></span><span class="text-success">$</span> Raised out of <span class="text-success" th:text="@{|${raisedFund.getRequiredAmount()}$|}"></span></b>
 
-                                <span class="text-default"> Raised out of  <span
-                                        class="text-success">1000$</span> </span>
-                            </b>
                         </div>
 
                         <div class="progress progress-bar-height">
-                            <div class="progress-bar bg-success" th:style="@{| width: 70% |}" role="progressbar"
+                            <div class="progress-bar bg-success"  th:style="@{| width: ${ ( amountArray[raisedFund.getId()]/ (raisedFund.getRequiredAmount()+0.00) ) * 100.00 }%; |}" role="progressbar"
                                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
 

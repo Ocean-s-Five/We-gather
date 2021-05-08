@@ -19,12 +19,12 @@ a, a:hover, a:focus, a:active {
 
 <div class="container mt-6">
     <div class="row">
-        <div class="col-md-4 mt-3" th:each="post : ${user}">
+        <div class="col-md-4 mt-3" th:each="post,is : ${user}">
 
             <a class="hideLink" th:href="@{/viewRaisedWork/}+${post.id}" style="text-decoration:none">
 
-                <div class="card w-100 h-100 ">
 
+                <div class="card w-100 h-100 ">
                     <div th:if="${post.getImages().get(0)}">
                         <img class="card-img-top img-size" th:src="@{|/allImages/${post.getImages().get(0)}|}"
                              alt="Card image" style="width:100%">
@@ -40,7 +40,7 @@ a, a:hover, a:focus, a:active {
                         </div>
 
                         <div class="Raised mt-3 ">
-                            <b> <span th:text="@{|${amountArray[post.getId()-1]}|}"  class="text-success"></span> Contributed out
+                            <b> <span th:text="@{|${amountArray[post.getId()]}|}"  class="text-success"></span> Contributed out
                                 of <span class="text-success" th:text="${post.requiredContAmount}" ></span></b>
                         </div>
                     </div>

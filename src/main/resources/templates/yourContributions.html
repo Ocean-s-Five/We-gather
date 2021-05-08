@@ -2,7 +2,12 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <div th:replace="fragments/bootstrapFragment :: head" th:remove="tag"></div>
-
+    <style>
+        a, a:hover, a:focus, a:active {
+      text-decoration: none;
+      color: inherit;
+ }
+    </style>
 </head>
 <body>
 
@@ -20,6 +25,7 @@
 
 
         <div class="col-md-4 mt-3"  th:each="val : ${countArray}">
+            <a class="hideLink" th:href="@{/RaisedFundDetail/}+ ${idArray[val]}" style="text-decoration:none">
 
             <div class="card w-100 h-100">
                 <div class="card-body">
@@ -37,6 +43,8 @@
             </div>
         </div>
     </div>
+    </a>
+
 </div>
 <footer>
     <div th:replace="fragments/common :: footer" th:remove="tag"></div>

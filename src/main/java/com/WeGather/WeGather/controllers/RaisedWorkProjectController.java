@@ -2,11 +2,9 @@ package com.WeGather.WeGather.controllers;
 
 import com.WeGather.WeGather.models.*;
 
-import com.WeGather.WeGather.repositories.CharityWorkContributorsRepository;
-import com.WeGather.WeGather.repositories.LocationRepository;
-import com.WeGather.WeGather.repositories.RaisedWorkProjectRepository;
-import com.WeGather.WeGather.repositories.UsersRepository;
+import com.WeGather.WeGather.repositories.*;
 
+import com.WeGather.WeGather.services.UploadFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static org.thymeleaf.util.ArrayUtils.toArray;
 
@@ -42,6 +37,7 @@ public class RaisedWorkProjectController<T> {
 
     @Autowired
     CommentsRepository commentsRepository;
+
 
     @Autowired
     UploadFileService uploadFileService;
@@ -120,7 +116,7 @@ public class RaisedWorkProjectController<T> {
         }
             System.out.println("This is the array:"+array);
         m.addAttribute("amountArray",array);
-        return "viewRaisedWork.html";
+        return "ViewRaisedWork.html";
 
     }
 
@@ -137,16 +133,12 @@ public class RaisedWorkProjectController<T> {
             m.addAttribute("userId", loggedInUser.getId());
         }
 
-        List<Comments> raisedWorkFundComments =  commentsRepository.findRaisedWorkFundId(id);
-        List<Comments> allComments =  commentsRepository.findComment(id);
+        List<Comments> allComments =  commentsRepository.findComment(id,1L);
 
+List<CharityWorkContributors> contribute = charityWorkContributorsRepository.findContribute();
 
-//Users user = (Users) commentsRepository.findById(comments);
-//        System.out.println(user);
         m.addAttribute("AllComment",allComments);
-//        m.addAttribute("AllComment",Arrays.toString(allComments..toArray()));
-//        m.addAttribute("AllComment",raisedWorkFundComments);
-
+        m.addAttribute("contribute" ,contribute);
         return "ViewRaisedWorkDetail.html";
     }
 
@@ -176,12 +168,13 @@ public class RaisedWorkProjectController<T> {
     @PostMapping(value = "/addContributors")
     public RedirectView addContribute(@RequestParam(value = "workedRaised_id") Long workedRaised_id,
                                       @RequestParam(value = "userWorkRaiser_id") Long userWorkRaiser_id,
+                                      @RequestParam(value = "status") Integer status,Principal p ) {
 
-                                      @RequestParam(value = "status") Integer status ) {
+        ApplicationUsers userDetails = (ApplicationUsers) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
+        String contributorName = userDetails.getUser().getFirstName() + " " +userDetails.getUser().getLastName();
 
-        CharityWorkContributors charityWorkContributors = new CharityWorkContributors(workedRaised_id, userWorkRaiser_id, 1, status);
+        CharityWorkContributors charityWorkContributors = new CharityWorkContributors(workedRaised_id, userWorkRaiser_id, 1, status,contributorName);
         charityWorkContributorsRepository.save(charityWorkContributors);
-
 
         return new RedirectView("/viewRaisedWork/"+workedRaised_id);
     }

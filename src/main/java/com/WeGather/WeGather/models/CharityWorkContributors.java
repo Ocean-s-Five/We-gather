@@ -15,17 +15,27 @@ public class CharityWorkContributors {
     private Long userWorkRaiserId;
     private Integer availableContAmount;
     private Integer status;
+    private String contributorName;
+
 
     public
     CharityWorkContributors() {
     }
 
-    public CharityWorkContributors(Long workedRaiserId, Long userWorkRaiserId, Integer availableContAmount , Integer status) {
+    public CharityWorkContributors(Long workedRaiserId, Long userWorkRaiserId, Integer availableContAmount, Integer status, String contributorName) {
         this.workedRaiserId = workedRaiserId;
         this.userWorkRaiserId = userWorkRaiserId;
         this.availableContAmount = availableContAmount;
         this.status = status;
+        this.contributorName = contributorName;
+    }
 
+    public String getContributorName() {
+        return contributorName;
+    }
+
+    public void setContributorName(String contributorName) {
+        this.contributorName = contributorName;
     }
 
     public Integer getStatus() {

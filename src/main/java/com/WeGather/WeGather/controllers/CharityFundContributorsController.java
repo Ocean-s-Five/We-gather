@@ -2,9 +2,11 @@
 package com.WeGather.WeGather.controllers;
 
 import com.WeGather.WeGather.models.CharityFundContributors;
+import com.WeGather.WeGather.models.Comments;
 import com.WeGather.WeGather.models.RaisedFundProject;
 import com.WeGather.WeGather.models.Users;
 import com.WeGather.WeGather.repositories.CharityFundContributorsRepository;
+import com.WeGather.WeGather.repositories.CommentsRepository;
 import com.WeGather.WeGather.repositories.RasisdFundProjectRepositorise;
 import com.WeGather.WeGather.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,8 @@ public class CharityFundContributorsController {
     @Autowired
     CharityFundContributorsRepository charityRepository ;
 
+    @Autowired
+    CommentsRepository commentsRepository;
     @GetMapping("/RaisedFundDetail/{id}")
     public String displayContributors(@PathVariable(value = "id") Long id, Model m, Principal p) {
 
@@ -55,6 +59,11 @@ public class CharityFundContributorsController {
             Users loggedInUser = usersRepository.findByUsername(user);
             m.addAttribute("loggedInUser", loggedInUser);
         }
+        List<Comments> raisedWorkFundComments =  commentsRepository.findRaisedWorkFundId(id);
+        List<Comments> allComments =  commentsRepository.findComment(id,2L);
+        m.addAttribute("AllComment",allComments);
+
+
         return "ViewRaisedFundDetail.html";
     }
 

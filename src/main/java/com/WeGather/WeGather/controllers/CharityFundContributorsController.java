@@ -1,10 +1,7 @@
 
 package com.WeGather.WeGather.controllers;
 
-import com.WeGather.WeGather.models.CharityFundContributors;
-import com.WeGather.WeGather.models.Comments;
-import com.WeGather.WeGather.models.RaisedFundProject;
-import com.WeGather.WeGather.models.Users;
+import com.WeGather.WeGather.models.*;
 import com.WeGather.WeGather.repositories.CharityFundContributorsRepository;
 import com.WeGather.WeGather.repositories.CommentsRepository;
 import com.WeGather.WeGather.repositories.RasisdFundProjectRepositorise;
@@ -64,6 +61,11 @@ public class CharityFundContributorsController {
         m.addAttribute("AllComment",allComments);
 
 
+        List<CharityFundContributors> findAllData = charityFundContributorsRepository.findAllData();
+        m.addAttribute("findAllData",findAllData);
+        System.out.println(findAllData);
+
+
         return "ViewRaisedFundDetail.html";
     }
 
@@ -74,8 +76,11 @@ public class CharityFundContributorsController {
     public RedirectView AddContributors(@RequestParam(value = "amountPAid") Integer amountPAid,
                                         @RequestParam(value = "fundRaisedId") Long fundRaisedId,
                                         @RequestParam(value = "loggedInUser") Long loggedInUser,
-                                  Integer status, Principal p) {
-        CharityFundContributors charityFundContributors = new CharityFundContributors(fundRaisedId, loggedInUser, amountPAid, 1);
+                                  Integer status, Principal p,Model m) {
+
+        ApplicationUsers userDetails = (ApplicationUsers) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
+        String donorName = userDetails.getUser().getFirstName() + " " +userDetails.getUser().getLastName();
+        CharityFundContributors charityFundContributors = new CharityFundContributors(fundRaisedId, loggedInUser, amountPAid, 1,donorName);
         charityFundContributorsRepository.save(charityFundContributors);
         return new RedirectView("/viewRaisedFund");
     }

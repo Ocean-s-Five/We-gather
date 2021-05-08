@@ -13,4 +13,7 @@ public interface CharityFundContributorsRepository extends CrudRepository<Charit
 
     @Query(value = "select * from charity_fund_contributors where user_fund_raiser_id=?1 ",nativeQuery = true)
     public List<CharityFundContributors> findByUserFundRaiserId(Long id);
+
+    @Query(value = "select * from charity_fund_contributors",nativeQuery = true)
+    public List<CharityFundContributors> findAllData();
 }

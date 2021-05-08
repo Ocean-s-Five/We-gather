@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <div th:replace="fragments/bootstrapFragment :: head" th:remove="tag"></div>
 
@@ -106,32 +106,38 @@
         <div class="col-md-8">
             <div class="d-flex flex-column comment-section">
                 <div class="bg-white p-2">
-                    <div th:each="comment:${AllComment}">
+                    <h3> Comments</h3>
+                    <div class="border border-left-0 border-right-0 p-3" th:each="comment:${AllComment}">
                         <div class="d-flex flex-row user-info"><img class="rounded-circle"
                                                                     src="https://i.imgur.com/RpzrMR2.jpg" width="40">
                             <div class="d-flex flex-column justify-content-start ml-2"><span
-                                    class="d-block font-weight-bold name"  >Marry Andrews</span><span
+                                    class="d-block font-weight-bold name" th:text="${comment.getCommenterName()}"  ></span><span
                                     class="date text-black-50" th:text="${comment.getTimeStamp()}"></span></div>
                         </div>
 
-                        <p th:text="${comment.body}"></p>
-                        <div th:text="${comment.getCommenterName()}"></div>
-
+                        <p class="p-2" th:text="${comment.body}"></p>
                     </div>
                 </div>
-                <div class="bg-light p-2">
-                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
-                                                                        src="https://i.imgur.com/RpzrMR2.jpg"
-                                                                        width="40"></div>
+                <div class="bg-light p-2"  sec:authorize="isAuthenticated()">
+                    <div class="d-flex flex-row align-items-start">
+                        <h3> Add A Comment</h3>
+                    </div>
                     <div class="mt-2 text-right">
-
                         <form class="d-flex flex-row align-items-start" action="/addComment" method="post">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input class="form-control ml-1 shadow-none textarea" type="text" name="body">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-3">
+                                    <button class="btn btn-primary  shadow-none" type="submit">Post comment</button>
+                                </div>
+                            </div>
 
-                            <input class="form-control ml-1 shadow-none textarea" type="text" name="body">
                             <input type="hidden" name="workId" th:value="${raisedWorkProject.id}">
-                            <button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
                         </form>
-                        <button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button>
+
                     </div>
                 </div>
             </div>

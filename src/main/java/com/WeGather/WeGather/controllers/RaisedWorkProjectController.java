@@ -1,9 +1,6 @@
 package com.WeGather.WeGather.controllers;
 
-import com.WeGather.WeGather.models.CharityWorkContributors;
-import com.WeGather.WeGather.models.Location;
-import com.WeGather.WeGather.models.RaisedWorkProject;
-import com.WeGather.WeGather.models.Users;
+import com.WeGather.WeGather.models.*;
 import com.WeGather.WeGather.repositories.CharityWorkContributorsRepository;
 import com.WeGather.WeGather.repositories.LocationRepository;
 import com.WeGather.WeGather.repositories.RaisedWorkProjectRepository;
@@ -165,4 +162,6 @@ public class RaisedWorkProjectController {
 
         return new RedirectView("/raisedWorkView");
     }
+
+
 }

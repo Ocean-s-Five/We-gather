@@ -5,6 +5,8 @@ import com.WeGather.WeGather.models.UserContactInfo;
 import com.WeGather.WeGather.models.Users;
 import com.WeGather.WeGather.repositories.UserContactInfoRepository;
 import com.WeGather.WeGather.repositories.UsersRepository;
+import com.WeGather.WeGather.services.UploadFileService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
@@ -13,9 +15,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +30,8 @@ public class ProfileController {
     UsersRepository usersRepository;
     @Autowired
     UserContactInfoRepository userContactInfoRepository;
-
+    @Autowired
+    UploadFileService uploadFileService;
     @GetMapping("/profile")
     public String profile(Principal p, Model m) {
         String userName = ((UsernamePasswordAuthenticationToken) p).getName();
@@ -39,6 +44,29 @@ public class ProfileController {
 
 
               return "profile.html";
+    }
+
+    @PutMapping("/profile_image")
+    public RedirectView editProfileImage(@RequestParam(value = "profilePictures")MultipartFile profilePictures, Principal p)
+    {
+        String loggedInUserName = p.getName();
+        User user = (User) usersRepository.findByUsername(loggedInUserName);
+
+        List<String> images=new ArrayList();
+        String fileName=uploadFileService.uploadFile(profilePictures);
+
+
+        if (fileName!=null) {
+            images.add(fileName);
+        }else{
+
+            images.add("default.jpg");
+
+        }
+
+        user.setProfilePictures(images);
+        usersRepository.save(user);
+        return new RedirectView("/profile");
     }
 
 

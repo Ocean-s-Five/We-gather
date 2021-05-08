@@ -69,4 +69,14 @@ background-color:#FBF8F6;
 }
 
 .nav-items-text-props{
+    color: #337500;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
+
+.nav-items-text-props:hover{
+    color: #0bb300;
+
+}
+
+

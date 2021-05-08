@@ -66,10 +66,10 @@
                     <div class="card-body">
                         <div class="card-title">
                             <b>
-                                <span class="text-success"></span><span class="text-success">500$</span>
+                                <span class="text-success"></span><span class="text-success" th:text="${contributorsNumber}"></span>
 
-                                <span class="text-default"> Raised out of  <span
-                                        class="text-success">1000$</span> </span>
+                                <span class="text-default"> Contributors out of  <span
+                                        class="text-success">1000</span> </span>
                             </b>
                         </div>
 
@@ -77,6 +77,10 @@
                             <div class="progress-bar bg-success" th:style="@{| width: 70% |}" role="progressbar"
                                  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
+
+<!--                        <div class="progress progress-bar-height">-->
+<!--                            <div class="progress-bar bg-success" th:style="@{| width: ${ ( amountArray[post.getId()]/ (post.requiredContAmount  + 0.00) ) * 100.00 }%; |}" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>-->
+<!--                        </div>-->
 
                         <form action="/addContributors" method="post">
 

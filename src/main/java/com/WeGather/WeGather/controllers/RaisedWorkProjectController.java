@@ -146,8 +146,18 @@ public class RaisedWorkProjectController<T> {
 //                System.out.println("Inside is NOT contains");
                 m.addAttribute("isAllow",true);
             }
-            System.out.println("loggedIn userId: "+ loggedInUser.getId());
+//            System.out.println("loggedIn userId: "+ loggedInUser.getId());
         }
+
+        // Calculate the summation of contributors
+        Integer contributorsSum = 0;
+        List<CharityWorkContributors> contributors = charityWorkContributorsRepository.findByUserWorkRaiserId(id);
+        for (CharityWorkContributors contributor : contributors)
+        {
+            contributorsSum+=contributor.getAvailableContAmount();
+        }
+        m.addAttribute("contributorsNumber",contributorsSum);
+
 
 
         List<Comments> allComments =  commentsRepository.findComment(id,1L);

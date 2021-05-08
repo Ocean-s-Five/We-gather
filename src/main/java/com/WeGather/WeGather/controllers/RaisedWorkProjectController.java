@@ -116,30 +116,44 @@ public class RaisedWorkProjectController<T> {
 
     }
 
+
     @GetMapping(value = "/viewRaisedWork/{id}")
     public String displayRaisedWork(@PathVariable Long id, Model m, Principal p) {
         Object principal = SecurityContextHolder.getContext(). getAuthentication(). getPrincipal();
         RaisedWorkProject raisedWorkProject = raisedWorkProjectRepository.findById(id)
                                                                          .get();
         m.addAttribute("raisedWorkProject", raisedWorkProject);
-
-        String loggedInUserName = p.getName();
-        Users loggedInUser = usersRepository.findByUsername(loggedInUserName);
+        m.addAttribute("isAllow",true);
         if(principal instanceof UserDetails) {
 
             m.addAttribute("userId", loggedInUser.getId());
-            System.out.println(loggedInUser.getId().getClass().getName());
+            //-------------------
+            List<Integer> contributorsIds = charityWorkContributorsRepository.findContributorsIds(id);
+//            System.out.println("contributorsIds: "+ contributorsIds);
+            Integer loggedInIntegerUserId = Math.toIntExact(loggedInUser.getId());
+            boolean showingButtonCond =  contributorsIds.contains(loggedInIntegerUserId);
+//            System.out.println("Condition: "+showingButtonCond);
+            if (showingButtonCond){
+//                System.out.println("Inside is contains");
+                m.addAttribute("isAllow",false);
+            }else {
+//                System.out.println("Inside is NOT contains");
+                m.addAttribute("isAllow",true);
+            }
+            System.out.println("loggedIn userId: "+ loggedInUser.getId());
         }
+
 
         List<Comments> allComments =  commentsRepository.findComment(id,1L);
 
-List<CharityWorkContributors> contribute = charityWorkContributorsRepository.findContribute();
-        CharityWorkContributors findSpecificContribute = charityWorkContributorsRepository.findSpecificContribute(loggedInUser.getId(),id);
-        System.out.println(findSpecificContribute.getUserWorkRaiserId().getClass().getName());
-        System.out.println(findSpecificContribute);
+List<CharityWorkContributors> contributes = charityWorkContributorsRepository.findByWorkRaiserId(id);
+
+
+//contributes.containsAll();
+//        System.out.println(contributes.contains());
         m.addAttribute("AllComment",allComments);
-        m.addAttribute("contribute" ,contribute);
-        m.addAttribute("findContribute",findSpecificContribute);
+
+        m.addAttribute("contributes" ,contributes);
         return "ViewRaisedWorkDetail.html";
     }
 
@@ -173,7 +187,6 @@ List<CharityWorkContributors> contribute = charityWorkContributorsRepository.fin
 
         ApplicationUsers userDetails = (ApplicationUsers) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
         String contributorName = userDetails.getUser().getFirstName() + " " +userDetails.getUser().getLastName();
-
         CharityWorkContributors charityWorkContributors = new CharityWorkContributors(workedRaised_id, userWorkRaiser_id, 1, status,contributorName);
         charityWorkContributorsRepository.save(charityWorkContributors);
 

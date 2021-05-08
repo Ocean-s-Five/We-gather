@@ -18,16 +18,26 @@ public class CharityFundContributors {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
     private Integer status;
+    private String donorName;
 
     public CharityFundContributors() {
 
     }
 
-    public CharityFundContributors(Long raisedFundId, Long userFundRaiserId, Integer amountPaid, Integer status) {
+    public CharityFundContributors(Long raisedFundId, Long userFundRaiserId, Integer amountPaid, Integer status,String donorName) {
         RaisedFundId = raisedFundId;
         this.userFundRaiserId = userFundRaiserId;
         this.amountPaid = amountPaid;
         this.status = status;
+        this.donorName=donorName;
+    }
+
+    public String getDonorName() {
+        return donorName;
+    }
+
+    public void setDonorName(String donorName) {
+        this.donorName = donorName;
     }
 
     public Integer getStatus() {

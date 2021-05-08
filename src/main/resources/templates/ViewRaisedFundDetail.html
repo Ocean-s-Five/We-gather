@@ -287,7 +287,6 @@
                                             <input type="text" class="form-control" id="validationCustom01"
                                                    name="amountPAid" required>
 
-
                                             <input type="hidden" th:value="${raisedFund.id}" name="fundRaisedId">
                                             <input type="hidden" sec:authorize="isAuthenticated()"
                                                    th:value="${loggedInUser.id}" name="loggedInUser">
@@ -303,14 +302,21 @@
                                     </form>
 
                                 </div>
+
                             </div>
+
+
                         </div>
 
 
 
                     </div>
 
+                    <div th:each="alldata:${findAllData}">
+                        <img src="https://cdn.iconscout.com/icon/free/png-256/user-1648810-1401302.png" width=10% alt="">
 
+                        <p th:text="${alldata.donorName +' Has donated with '+ alldata.amountPaid+'$'}"></p>
+                    </div>
                 </div>
 
 
@@ -319,6 +325,7 @@
         </div>
 
     </div>
+
 </div>
 
 

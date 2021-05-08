@@ -64,6 +64,7 @@ class MainControllerController {
             {
                 amount+=donTow.getAmountPaid();
                 counter++;
+
             }
             array.add(amount);
             arraycount.add(counter);

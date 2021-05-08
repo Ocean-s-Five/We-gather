@@ -21,10 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class RaisedFundProjectController {
@@ -40,17 +37,7 @@ public class RaisedFundProjectController {
 
     @Autowired
     UploadFileService uploadFileService;
-//    @GetMapping("/displayForm")
-//    public String displayRaisedFund() {
-//
-//        return "AddRaisedFundProject.html";
-//    }
 
-//        @GetMapping("/header")
-//    public String navbar() {
-//
-//        return "footer.html";
-//    }
 
     @GetMapping("/AddRaise")
     public String displayRaisedFund(Principal p, Model m){
@@ -95,7 +82,7 @@ public class RaisedFundProjectController {
         for (RaisedFundProject don : df)
         {
             Long id=don.getId();
-            List<CharityFundContributors> donate = charityRepository.findByUserFundRaiserId(id);
+            List<CharityFundContributors> donate = charityRepository.findByFundRaiserId(id);
             for (CharityFundContributors donTow : donate)
             {
                 amount+=donTow.getAmountPaid();
@@ -113,6 +100,12 @@ public class RaisedFundProjectController {
 
         return "ViewRaisedFund.html";
     }
+
+
+
+
+
+
 
 
 

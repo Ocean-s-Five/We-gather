@@ -150,10 +150,10 @@ class MainControllerController {
         String fileName=uploadFileService.uploadFile(profilePictures);
 
         if (fileName!=null) {
-            images.set(0,fileName);
+            images.add(fileName);
         }else{
 
-            images.set(0,"default.jpg");
+            images.add("default.jpg");
 
         }
 

@@ -15,7 +15,7 @@ import java.nio.file.StandardCopyOption;
 public
 class UploadFileService {
 
-        @Value("./allImages/")
+        @Value("./src/main/resources/allImages/")
         public String uploadDir;
 
         public String uploadFile(MultipartFile file) {

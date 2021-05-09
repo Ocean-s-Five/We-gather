@@ -7,7 +7,7 @@
 
     var map = new google.maps.Map($('#map')[0], {
         zoom: 5,
-        center: new google.maps.LatLng(40.747688, -74.004142),
+        center: new google.maps.LatLng(31.951467116865587, 35.87480872765769),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 

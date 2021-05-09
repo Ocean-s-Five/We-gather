@@ -1,11 +1,14 @@
-body {
- background-image: url('/images/plant.jpg');
-background-size: cover;
 
-height: 100%;
+html,body{
+background-image: url('/images/plant.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+
+
 }
 
-form {
-    font-size: .8em;
-    color:white;
+
+
+form{
+margin-block-end:0!important;
 }

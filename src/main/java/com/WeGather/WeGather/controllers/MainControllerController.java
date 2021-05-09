@@ -20,9 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,6 +42,7 @@ class MainControllerController {
     RaisedWorkProjectRepository raisedWorkProjectRepository;
     @Autowired
     CharityWorkContributorsRepository charityWorkContributorsRepository;
+
 
 //    @Autowired
 //    ApplicationUsersRepository applicationUsersRepository;
@@ -99,6 +98,16 @@ class MainControllerController {
             amount2=0;
         }
         m.addAttribute("amountArray",array);
+
+       List<Long> maxList= charityRepository.findMaxContributors();
+        List<Long> maxListValue= charityRepository.findMaxContributorsValue();
+        Optional<Users> maxFund=  usersRepository.findById(maxList.get(0));
+
+                m.addAttribute("maxfund",maxFund.get());
+                m.addAttribute("maxListValue",maxListValue.get(0));
+
+//        System.out.println();
+
         return "index.html";
     }
 
@@ -193,6 +202,8 @@ class MainControllerController {
 
         return "footer.html";
     }
+
+
 
 
 }

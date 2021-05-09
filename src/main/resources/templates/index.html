@@ -50,7 +50,12 @@
         </div>
         <div class="col-2">
             <h4 class="subheading">Most Financier</h4>
-            <img src="https://image.ibb.co/cHgKnU/Work_Section2_freelance_img2.png" class="rounded-circle" alt=""/>
+            <img th:src= "${maxfund.getProfilePictures()}" class="rounded-circle" alt=""/>
+<!--            <img src="https://image.ibb.co/cHgKnU/Work_Section2_freelance_img2.png" class="rounded-circle" alt=""/>-->
+
+            <h4 th:text="${maxfund.getFirstName()}"></h4>
+            <h4> <span th:text="${maxListValue}"></span></h4>
+
         </div>
     </div>
 </div>

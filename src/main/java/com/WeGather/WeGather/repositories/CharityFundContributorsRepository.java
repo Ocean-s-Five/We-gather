@@ -16,4 +16,10 @@ public interface CharityFundContributorsRepository extends CrudRepository<Charit
 
     @Query(value = "select * from charity_fund_contributors",nativeQuery = true)
     public List<CharityFundContributors> findAllData();
+
+    @Query(value = "select  u_id , max(a_p) from (select user_fund_raiser_id as u_id, sum(amount_paid) as a_p from charity_fund_contributors group by user_fund_raiser_id) as al group by u_id order by max DESC ",nativeQuery = true)
+    public List<Long> findMaxContributors();
+
+    @Query(value = "select  max(a_p) from (select user_fund_raiser_id as u_id, sum(amount_paid) as a_p from charity_fund_contributors group by user_fund_raiser_id) as al group by u_id order by max DESC ",nativeQuery = true)
+    public List<Long> findMaxContributorsValue();
 }

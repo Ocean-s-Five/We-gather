@@ -23,7 +23,7 @@
             <div class="mx-auto" style="width: 140px;" >
                                         <div class="d-flex justify-content-center align-items-center rounded-circle"
                                              style="height: 140px; background-color: rgb(233, 236, 239); ">
-                                            <img  style="height: 140px; width:140px;" th:src="@{|allImages/${user.profilePictures.get(0)}|}" class=" rounded-circle">
+                                            <img  style="height: 140px; width:140px;" th:src="@{|src/main/resources/allImages/${user.profilePictures.get(0)}|}" class=" rounded-circle">
                                         </div>
                                     </div>
                           <form action="/profile_image?_method=PUT"  method="post" enctype="multipart/form-data">

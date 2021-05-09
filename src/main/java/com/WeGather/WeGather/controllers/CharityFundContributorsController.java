@@ -137,7 +137,7 @@ public class CharityFundContributorsController {
         m.addAttribute("countArray",countArray);
         m.addAttribute("idArray",idArray);
 
-        return "/yourContributions.html";
+        return "yourContributions.html";
     }
 
 }

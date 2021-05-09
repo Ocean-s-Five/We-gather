@@ -139,6 +139,5 @@ public class CharityFundContributorsController {
 
         return "yourContributions.html";
     }
-
 }
 

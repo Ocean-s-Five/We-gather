@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                     .antMatchers("/","/viewRaisedWork","/viewRaisedFund","/RaisedFundDetail/**","/viewRaisedWork/**").permitAll()
                     .antMatchers("/signup").permitAll()
                     .antMatchers("/login").permitAll()
-                    .antMatchers("/resources/**", "/static/**","/webjars/**","/css/**","/js/**","**/allImages/**","/images/**","/resources/allImages/**","/allImages/**","/search/**" ).permitAll()
+                    .antMatchers("/resources/**", "/static/**","/webjars/**","/css/**","/js/**","**/allImages/**","/images/**","/resources/allImages/**","/allImages/**","/search/**","/src/main/resources/allImages/**" ).permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()

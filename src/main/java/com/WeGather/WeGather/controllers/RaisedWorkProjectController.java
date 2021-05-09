@@ -123,6 +123,8 @@ public class RaisedWorkProjectController<T> {
         Object principal = SecurityContextHolder.getContext(). getAuthentication(). getPrincipal();
         RaisedWorkProject raisedWorkProject = raisedWorkProjectRepository.findById(id)
                                                                          .get();
+
+//        System.out.println(raisedWorkProject.usersId());
         m.addAttribute("raisedWorkProject", raisedWorkProject);
         m.addAttribute("isAllow",true);
         if(principal instanceof UserDetails) {
@@ -163,8 +165,11 @@ public class RaisedWorkProjectController<T> {
         List<Comments> allComments =  commentsRepository.findComment(id,1L);
 
         List<CharityWorkContributors> contributes = charityWorkContributorsRepository.findByWorkRaiserId(id);
-
-
+        Long finUserName = raisedWorkProjectRepository.finUserName(id);
+        System.out.println(finUserName);
+        List<Users> user =  usersRepository.findAllById(Collections.singleton((finUserName)));
+        System.out.println(user);
+m.addAttribute("user",user);
 //contributes.containsAll();
 //        System.out.println(contributes.contains());
         m.addAttribute("AllComment",allComments);

@@ -5,8 +5,8 @@
 </head>
 <body>
 <!--id="fixed-nav"-->
-<div class="container  rounded-bottom fixed-nav "  id="fixed-nav">
-<div th:replace="fragments/common :: navbar" th:remove="tag"></div>
+<div class="container  rounded-bottom fixed-nav " id="fixed-nav">
+    <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
 
 </div>
 
@@ -19,7 +19,9 @@
             <img class="d-block w-100 " src="images/58-Children-play-in-Gursum-village_1200x630.jpg" alt="Second slide">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100 " src="https://img.huffingtonpost.com/asset/58501752120000dd00eef068.jpeg?cache=Rii2vhKjh9&ops=1778_1000" alt="Third slide">
+            <img class="d-block w-100 "
+                 src="https://img.huffingtonpost.com/asset/58501752120000dd00eef068.jpeg?cache=Rii2vhKjh9&ops=1778_1000"
+                 alt="Third slide">
         </div>
         <div class="carousel-item">
             <img class="d-block w-100  " src="images/south-africa-xenophobic-attacks.jpg" alt="Forth slide">
@@ -30,35 +32,46 @@
 
     <div class="row">
         <div class="col-md-6 how-img">
-            <img src="https://theshapeoffaith.org/wp-content/uploads/2010/08/hands-holding-plant3.jpg" class="img-thumbnail" width="400" height="250"  >
+            <img src="https://theshapeoffaith.org/wp-content/uploads/2010/08/hands-holding-plant3.jpg"
+                 class="img-thumbnail" width="400" height="250">
         </div>
         <div class="col-md-6">
             <h1 class="text-success">We Gather</h1>
             <h4 class="subheading">We Gather is a great place to serve people</h4>
-            <p class="text-muted">With We-gather, we are creating the giving layer of the internet: a space where individuals, teams, organizations, and nonprofits can champion causes that matter and raise money to make a lasting difference.
-                Through We-Gather, people and organizations have the tools they need to share their cause far and wide and harness the power of generosity. We are transforming the way people give and changing lives—are you ready to join us?</p>
+            <p class="text-muted">With We-gather, we are creating the giving layer of the internet: a space where
+                individuals, teams, organizations, and nonprofits can champion causes that matter and raise money to
+                make a lasting difference.
+                Through We-Gather, people and organizations have the tools they need to share their cause far and wide
+                and harness the power of generosity. We are transforming the way people give and changing lives—are you
+                ready to join us?</p>
         </div>
     </div>
 </div>
-<br>
-<br>
-<div class="container">
+
+<div class="container mt-6">
     <div class="row justify-content-center">
-        <div class="col-2">
-            <h4 class="subheading">Most Contributor</h4>
-            <img src="https://image.ibb.co/cHgKnU/Work_Section2_freelance_img2.png" class="rounded-circle" alt=""/>
+        <div class="col-md-6 text-center">
+            <h4 class="subheading text-success">Top Fundraiser </h4>
         </div>
-        <div class="col-2">
-            <h4 class="subheading">Most Financier</h4>
-            <img th:src= "${maxfund.getProfilePictures()}" class="rounded-circle" alt=""/>
-<!--            <img src="https://image.ibb.co/cHgKnU/Work_Section2_freelance_img2.png" class="rounded-circle" alt=""/>-->
+    </div>
 
-            <h4 th:text="${maxfund.getFirstName()}"></h4>
-            <h4> <span th:text="${maxListValue}"></span></h4>
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <img th:src="@{/images/default-user.png}" class="rounded-circle" alt="" style="
+    max-width: 100px;
+    height: 100px;
+    max-height: 200px;
+" />
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
 
+            <h4  th:inline="text" > [[@{| ${ maxfund.getFirstName()} Contributed  |}]] &nbsp; <span class="text-success" th:text="${maxListValue}"></span><span class="text-success" >$</span></h4>
         </div>
     </div>
 </div>
+
 
 <section class="pt-5 pb-5">
     <div class="container">
@@ -81,20 +94,28 @@
                         <div class="carousel-item active">
                             <div class="row">
 
-                                <div class="col-md-4 mb-3" th:each="post,isState : ${user}" th:if="${ isState.count<= 3}">
+                                <div class="col-md-4 mb-3" th:each="post,isState : ${user}"
+                                     th:if="${ isState.count<= 3}">
 
-                                    <a class="hideLink" th:href="@{/RaisedFundDetail/}+ ${post.id}" style="text-decoration:none">
+                                    <a class="hideLink" th:href="@{/RaisedFundDetail/}+ ${post.id}"
+                                       style="text-decoration:none">
 
 
-                                    <div class="card" >
-                                        <img class="img-fluid" alt="100%x280" th:src="@{|allImages/${post.getImages().get(0)}|}" width="100%" height="240">
-                                        <div class="card-body">
-                                            <h4 class="card-title" th:text="${post.getTopic()}"></h4>
-                                            <p class="card-text" th:text="${#strings.abbreviate(post.getDescription(),100)}"></p>
+                                        <div class="card">
+                                            <img class="img-fluid" alt="100%x280"
+                                                 th:src="@{|/images/default.jpg|}" width="100%"
+                                                 height="240">
+<!--                                            <img class="img-fluid" alt="100%x280"-->
+<!--                                                 th:src="@{|allImages/${post.getImages().get(0)}|}" width="100%"-->
+<!--                                                 height="240">-->
+                                            <div class="card-body">
+                                                <h4 class="card-title" th:text="${post.getTopic()}"></h4>
+                                                <p class="card-text"
+                                                   th:text="${#strings.abbreviate(post.getDescription(),100)}"></p>
+
+                                            </div>
 
                                         </div>
-
-                                    </div>
                                     </a>
                                 </div>
 
@@ -103,18 +124,26 @@
                         <div class="carousel-item">
                             <div class="row">
 
-                                <div class="col-md-4 mb-3" th:each="post,isstate2 : ${user2}" th:if="${isstate2.count<=3}">
-                                    <a class="hideLink" th:href="@{/viewRaisedWork/}+${post.id}" style="text-decoration:none">
+                                <div class="col-md-4 mb-3" th:each="post,isstate2 : ${user2}"
+                                     th:if="${isstate2.count<=3}">
+                                    <a class="hideLink" th:href="@{/viewRaisedWork/}+${post.id}"
+                                       style="text-decoration:none">
 
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" th:src="@{|allImages/${post.getImages().get(0)}|}" width="100%" height="240">
-                                        <div class="card-body">
-                                            <h4 class="card-title" th:text="${post.getTopic()}"></h4>
-                                            <p class="card-text" th:text="${#strings.abbreviate(post.getDescription(),100)}"></p>
+                                        <div class="card">
+                                            <img class="img-fluid" alt="100%x280"
+                                                 th:src="@{|/images/default.jpg|}" width="100%"
+                                                 height="240">
+<!--                                            <img class="img-fluid" alt="100%x280"-->
+<!--                                                 th:src="@{|allImages/${post.getImages().get(0)}|}" width="100%"-->
+<!--                                                 height="240">-->
+                                            <div class="card-body">
+                                                <h4 class="card-title" th:text="${post.getTopic()}"></h4>
+                                                <p class="card-text"
+                                                   th:text="${#strings.abbreviate(post.getDescription(),100)}"></p>
+
+                                            </div>
 
                                         </div>
-
-                                    </div>
                                     </a>
                                 </div>
 

@@ -106,7 +106,7 @@ class MainControllerController {
                 m.addAttribute("maxfund",maxFund.get());
                 m.addAttribute("maxListValue",maxListValue.get(0));
 
-//        System.out.println();
+       System.out.println();
 
         return "index.html";
     }

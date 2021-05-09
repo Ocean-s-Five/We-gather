@@ -25,7 +25,8 @@
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="px-4 pt-0 pb-4 cover">
-                            <img class="card-img-top img-size" th:src="@{|/src/main/resources/allImages/${raisedFund.getImages().get(0)}|}" alt="Card image" style="width:100%">
+                            <img class="card-img-top img-size" th:src="@{|/images/default-cash.png|}" alt="Card image" style="width:100%">
+<!--                            <img class="card-img-top img-size" th:src="@{|/src/main/resources/allImages/${raisedFund.getImages().get(0)}|}" alt="Card image" style="width:100%">-->
 
                         </div>
                     </div>
@@ -312,9 +313,12 @@
                     </div>
 
                     <div th:each="alldata:${findAllData}">
-                        <img src="https://cdn.iconscout.com/icon/free/png-256/user-1648810-1401302.png" width=10% alt="">
-
-                        <p th:text="${alldata.donorName +' Has donated with '+ alldata.amountPaid+'$'}"></p>
+                        <div class=" p-2  border border-right-0  border-left-0">
+                            <div class="col-md-12 ">
+                                <img class="rounded-circle border border-dark" th:src="@{|/images/default-user.png|}" width="25" >
+                                <p class="text-dark" th:text="${alldata.donorName +' has donated  '+ alldata.amountPaid+'$'}"></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -337,7 +341,7 @@
                     <div class="border border-left-0 border-right-0 p-3"  th:each="comment:${AllComment}">
                       <div th:if="${comment.getCommentTypeId()}==2">
                         <div class="d-flex flex-row user-info"><img class="rounded-circle"
-                                                                    src="https://i.imgur.com/RpzrMR2.jpg" width="40">
+                                                                    th:src="@{|/images/default-user.png|}" width="40">
                             <div class="d-flex flex-column justify-content-start ml-2"><span
                                     class="d-block font-weight-bold name" th:text="${comment.getCommenterName()}"  ></span><span
                                     class="date text-black-50"  th:text="${comment.getTimeStamp()}"></span></div>

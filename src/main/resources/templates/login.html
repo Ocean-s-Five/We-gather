@@ -7,12 +7,11 @@
 </head>
 <body>
 
-<div class="container  fixed-nav "  id="fixed-nav">
-    <div th:replace="fragments/common :: navbar" th:remove="tag">
+<div class="container  rounded-bottom fixed-nav "  id="fixed-nav">
+    <div th:replace="fragments/common :: navbar" th:remove="tag"></div>
 
-    </div>
 </div>
-<div class="container mt-6">
+<main class="container d-flex justify-content-center align-items-center">
         <div class="d-flex justify-content-center  h-100">
             <div class="login_card">
                 <div class="card-header">
@@ -42,7 +41,7 @@
                     </form>
                 </div>
                 <div class="card-footer">
-                    <div class="d-flex justify-content-center links">
+                    <div class="d-flex justify-content-center links text-white">
                         Don't have an account?<a href="/signup">Sign Up</a>
                     </div>
                     <div class="d-flex justify-content-center">
@@ -51,9 +50,9 @@
                 </div>
             </div>
         </div>
-</div>
-</div>
-<div th:replace="fragments/common :: footer" th:remove="tag"></div>
+</main>
+
+<footer th:replace="fragments/common :: footer" th:remove="tag"></footer>
 </body>
 <div th:replace="fragments/bootstrapFragment :: BSfragmentScript" th:remove="tag"></div>
 </html>

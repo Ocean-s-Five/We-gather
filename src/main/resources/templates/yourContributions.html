@@ -34,10 +34,12 @@
                 <span class="card-title text-success" th:text="${arrayTopic[val]}"></span>
                     </h4>
                 <h6>Description :
-                <span class="card-text" th:text="${arrayDescription[val]}"></span>
+                <span class="card-text" th:text="${#strings.abbreviate(arrayDescription[val],50)} "></span>
                 </h6>
-                <h6>Contribution :
-                    <span class="card-title text-success" th:text="${amountArray[val]}"></span>
+
+
+                    <h6>Contribution :
+                    <span class="card-title text-success" th:text="@{|${amountArray[val]}$|}"></span>
                 </h6>
                 </div>
             </div>

@@ -64,7 +64,7 @@ Communication plan and strategy :
 [Requirements](./requirements.md)
 
 ## Domain modeling 
-![domainModeling](https://github.com/Ocean-s-Five/We-gather/blob/main/wireframe/domainmodeling.JPEG)
+![domainModeling](https://github.com/Ocean-s-Five/We-gather/blob/main/wireframe/domain%20modeling.jpeg)
 
 ## Database Relationships:
 ![homepage](https://github.com/Ocean-s-Five/We-gather/blob/main/wireframe/5.PNG)

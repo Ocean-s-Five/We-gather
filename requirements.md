@@ -36,6 +36,8 @@
 
 # Non-Functional Requirements 
 
+* #### Security : we add the important information to .ignore file to ignore it after deploying in GitHub or heroku.
+* #### Usability : all the important request we add them to the header.
 * #### The user can't contrubute mulipule time 
 * #### The  user can't change his user name.
 
